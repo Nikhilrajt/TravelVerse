@@ -1,13 +1,14 @@
 
 import ProductLoader from "./components/ProductLoader";
+import ProductList from "./components/ProductList";
 
 function App(){
 
   return(
-    <div>
-    <h1>TravelVerse</h1>
+    <>
     <ProductLoader />
-    </div>
+    <ProductList />
+    </>
   )
 }
 export default App;
