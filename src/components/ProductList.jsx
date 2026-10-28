@@ -97,23 +97,27 @@ function ProductList() {
                 </div>
             )}
             {sortedProducts.length > 0 && (
-                <div className="mt-8 flex justify-center gap-3">
+                <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
                     <button
                         onClick={() =>
                             setCurrentPage((previousPage) => previousPage - 1)
                         }
                         disabled={currentPage === 1}
-                        className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-40"
+                        className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
                     >
                         Previous
                     </button>
+
+                    <span className="min-w-24 text-center text-sm font-medium text-gray-600" aria-live="polite">
+                        Page {currentPage} of {totalPages}
+                    </span>
 
                     <button
                         onClick={() =>
                             setCurrentPage((previousPage) => previousPage + 1)
                         }
                         disabled={currentPage === totalPages}
-                        className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-40"
+                        className="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white"
                     >
                         Next
                     </button>
