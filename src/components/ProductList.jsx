@@ -2,34 +2,44 @@
 import { useSelector } from "react-redux";
 import ProductCard from "./ProductCard";
 import ProductFilters from "./ProductFilters";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function ProductList() {
     const products = useSelector((state) => state.product.products);
     const isLoading = useSelector((state) => state.product.loading);
     const error = useSelector((state) => state.product.error);
-    const [search,setSearch] = useState("");
-    const [category,setCategory] = useState("All Categories");
-    const [sort,setSort] = useState("Default");
-    const [pages,setPages] = useState(1);
-    const filteredProducts = products.filter((product)=>{
+    const [search, setSearch] = useState("");
+    const [category, setCategory] = useState("All Categories");
+    const [sort, setSort] = useState("Default");
+    const [currentPage, setCurrentPage] = useState(1);
+    const perPage = 8;
+    const filteredProducts = products.filter((product) => {
         const matchesSearch = product.name
             .toLowerCase()
             .includes(search.toLowerCase());
         const matchesCategory = category === "All Categories" ||
             product.category === category;
-         return matchesCategory && matchesSearch;
+        return matchesCategory && matchesSearch;
     })
-    const sortedProducts = filteredProducts.sort((a,b)=>{
-        if(sort === "Price: Low to High"){
-            return a.price-b.price;
+    const sortedProducts = filteredProducts.sort((a, b) => {
+        if (sort === "Price: Low to High") {
+            return a.price - b.price;
         }
-        if(sort === "Price: High to Low"){
-            return b.price-a.price;
+        else if (sort === "Price: High to Low") {
+            return b.price - a.price;
         }
-        
-});
+        else if (sort === "Default") {
+            return 0;
+        }
 
+    });
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = startIndex + perPage;
+    const totalPages = Math.ceil(sortedProducts.length / perPage);
+    const currentProducts = sortedProducts.slice(startIndex, endIndex);
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [search, category, sort])
     if (isLoading) {
         return (
             <div className="flex min-h-[60vh] items-center justify-center">
@@ -50,18 +60,8 @@ function ProductList() {
         );
     }
 
-    if (products.length === 0) {
-        return (
-            <div className="flex min-h-[60vh] items-center justify-center">
-                <p className="text-lg font-medium text-gray-500">
-                    No products found.
-                </p>
-            </div>
-        );
-    }
-
     return (
-        <section className="mx-auto max-w-7xl px-6 py-12">
+          <section className="mx-auto max-w-7xl px-6 py-12">
 
             <div className="mb-8">
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-gray-500">
@@ -76,18 +76,49 @@ function ProductList() {
                     Everything you need for the journey ahead.
                 </p>
             </div>
-            <ProductFilters 
+            <ProductFilters
                 setSearch={setSearch}
                 setCategory={setCategory}
-                setSort={setSort}/>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {sortedProducts.map((product) => (
-                    <ProductCard
-                        key={product.id}
-                        product={product}
-                    />
-                ))}
-            </div>
+                setSort={setSort} />
+            {sortedProducts.length === 0 ? (
+                <div className="flex min-h-[40vh] items-center justify-center">
+                    <p className="text-lg font-medium text-gray-500">
+                        No products found.
+                    </p>
+                </div>
+            ) : (
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    {currentProducts.map((product) => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+                        />
+                    ))}
+                </div>
+            )}
+            {sortedProducts.length > 0 && (
+                <div className="mt-8 flex justify-center gap-3">
+                    <button
+                        onClick={() =>
+                            setCurrentPage((previousPage) => previousPage - 1)
+                        }
+                        disabled={currentPage === 1}
+                        className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                        Previous
+                    </button>
+
+                    <button
+                        onClick={() =>
+                            setCurrentPage((previousPage) => previousPage + 1)
+                        }
+                        disabled={currentPage === totalPages}
+                        className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium disabled:cursor-not-allowed disabled:opacity-40"
+                    >
+                        Next
+                    </button>
+                </div>
+            )}
         </section>
     );
 }

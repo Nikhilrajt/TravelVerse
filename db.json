@@ -1,585 +1,595 @@
 {
-    "products": [
+  "products": [
+    {
+      "id": "1",
+      "name": "AeroLite Cabin Suitcase",
+      "description": "A lightweight cabin suitcase designed for short trips.",
+      "price": 4999,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 12,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Navy Blue",
+        "Silver"
+      ],
+      "rating": 4.5,
+      "reviewCount": 84,
+      "featured": true
+    },
+    {
+      "id": "2",
+      "name": "Voyager Check-In Suitcase",
+      "description": "A spacious and durable suitcase designed for longer journeys and check-in travel.",
+      "price": 7499,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 8,
+      "sizes": [
+        "24-inch",
+        "28-inch"
+      ],
+      "colors": [
+        "Black",
+        "Charcoal",
+        "Blue"
+      ],
+      "rating": 4.6,
+      "reviewCount": 67,
+      "featured": true
+    },
+    {
+      "id": "3",
+      "name": "TrailPack Travel Backpack",
+      "description": "A durable travel backpack designed for short trips and everyday travel.",
+      "price": 2499,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 15,
+      "sizes": [
+        "20L",
+        "30L",
+        "40L"
+      ],
+      "colors": [
+        "Black",
+        "Navy Blue",
+        "Olive Green"
+      ],
+      "rating": 4.5,
+      "reviewCount": 84,
+      "featured": true
+    },
+    {
+      "id": "4",
+      "name": "Weekender Duffel Bag",
+      "description": "A spacious duffel bag suitable for weekend trips, gym visits, and short getaways.",
+      "price": 1899,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 18,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Olive Green"
+      ],
+      "rating": 4.4,
+      "reviewCount": 52,
+      "featured": false
+    },
+    {
+      "id": "5",
+      "name": "UrbanCross Sling Bag",
+      "description": "A compact sling bag for carrying everyday travel essentials while on the move.",
+      "price": 999,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 25,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Beige"
+      ],
+      "rating": 4.3,
+      "reviewCount": 41,
+      "featured": false
+    },
+    {
+      "id": "6",
+      "name": "Nomad Laptop Backpack",
+      "description": "A practical travel backpack with a padded laptop compartment and organized storage.",
+      "price": 2799,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 14,
+      "sizes": [
+        "20L",
+        "25L",
+        "30L"
+      ],
+      "colors": [
+        "Black",
+        "Navy Blue",
+        "Grey"
+      ],
+      "rating": 4.6,
+      "reviewCount": 73,
+      "featured": true
+    },
+    {
+      "id": "7",
+      "name": "Compact Weekend Bag",
+      "description": "A compact travel bag designed for short weekend trips and overnight stays.",
+      "price": 1599,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 20,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Brown",
+        "Navy Blue"
+      ],
+      "rating": 4.2,
+      "reviewCount": 38,
+      "featured": false
+    },
+    {
+      "id": "8",
+      "name": "Explorer Crossbody Bag",
+      "description": "A lightweight crossbody bag for keeping travel essentials secure and easily accessible.",
+      "price": 1299,
+      "category": "Luggage & Bags",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 22,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Khaki",
+        "Grey"
+      ],
+      "rating": 4.4,
+      "reviewCount": 46,
+      "featured": false
+    },
+    {
+      "id": "9",
+      "name": "PackMate Packing Cube Set",
+      "description": "A set of packing cubes designed to organize clothing and maximize luggage space.",
+      "price": 899,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 30,
+      "sizes": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.6,
+      "reviewCount": 91,
+      "featured": true
+    },
+    {
+      "id": "10",
+      "name": "Travel Document Organizer",
+      "description": "A compact organizer for keeping passports, tickets, cards, and travel documents together.",
+      "price": 699,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 28,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Brown",
+        "Navy Blue"
+      ],
+      "rating": 4.5,
+      "reviewCount": 64,
+      "featured": false
+    },
+    {
+      "id": "11",
+      "name": "Passport & Card Holder",
+      "description": "A slim holder designed to keep passports and essential travel cards organized.",
+      "price": 499,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 35,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Brown",
+        "Red"
+      ],
+      "rating": 4.4,
+      "reviewCount": 58,
+      "featured": false
+    },
+    {
+      "id": "12",
+      "name": "Cable Organizer Pouch",
+      "description": "A compact pouch with organized compartments for storing charging cables and small accessories.",
+      "price": 599,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 26,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.5,
+      "reviewCount": 72,
+      "featured": true
+    },
+    {
+      "id": "13",
+      "name": "Shoe Storage Bag Set",
+      "description": "A set of lightweight shoe bags that keeps footwear separated from other belongings.",
+      "price": 399,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 32,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.3,
+      "reviewCount": 43,
+      "featured": false
+    },
+    {
+      "id": "14",
+      "name": "Travel Toiletry Organizer",
+      "description": "A travel organizer with multiple compartments for keeping personal care items neatly arranged.",
+      "price": 799,
+      "category": "Travel Organization",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 24,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Navy Blue",
+        "Grey"
+      ],
+      "rating": 4.5,
+      "reviewCount": 69,
+      "featured": false
+    },
+    {
+      "id": "15",
+      "name": "Universal Travel Adapter",
+      "description": "A versatile travel adapter designed to support charging devices across different international socket types.",
+      "price": 1499,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 18,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "rating": 4.6,
+      "reviewCount": 105,
+      "featured": true
+    },
+    {
+      "id": "16",
+      "name": "PowerGo 20,000mAh Power Bank",
+      "description": "A high-capacity power bank designed to keep smartphones and other devices charged while traveling.",
+      "price": 1999,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 16,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Blue"
+      ],
+      "rating": 4.5,
+      "reviewCount": 88,
+      "featured": true
+    },
+    {
+      "id": "17",
+      "name": "FastCharge 65W Travel Charger",
+      "description": "A compact 65W charger designed for fast charging compatible phones, tablets, and laptops.",
+      "price": 1799,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 20,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "rating": 4.7,
+      "reviewCount": 96,
+      "featured": true
+    },
+    {
+      "id": "18",
+      "name": "4-in-1 Travel Cable Kit",
+      "description": "A versatile charging cable kit with multiple connectors for everyday travel needs.",
+      "price": 699,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 34,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "rating": 4.4,
+      "reviewCount": 61,
+      "featured": false
+    },
+    {
+      "id": "19",
+      "name": "Compact USB Charging Hub",
+      "description": "A compact charging hub that allows multiple USB devices to be charged from a single outlet.",
+      "price": 999,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 21,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "rating": 4.3,
+      "reviewCount": 47,
+      "featured": false
+    },
+    {
+      "id": "20",
+      "name": "SmartLuggage Tracker",
+      "description": "A compact tracking device designed to help travelers locate their luggage and personal belongings.",
+      "price": 1299,
+      "category": "Travel Tech",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 17,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "White"
+      ],
+      "rating": 4.4,
+      "reviewCount": 55,
+      "featured": false
+    },
+    {
+      "id": "21",
+      "name": "CloudRest Memory Foam Neck Pillow",
+      "description": "A supportive memory foam neck pillow designed for comfortable rest during long journeys.",
+      "price": 1099,
+      "category": "Travel Comfort",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 19,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.6,
+      "reviewCount": 82,
+      "featured": true
+    },
+    {
+      "id": "22",
+      "name": "SleepEase Travel Eye Mask",
+      "description": "A soft travel eye mask designed to block light and improve comfort while resting.",
+      "price": 399,
+      "category": "Travel Comfort",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 40,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Navy Blue"
+      ],
+      "rating": 4.4,
+      "reviewCount": 63,
+      "featured": false
+    },
+    {
+      "id": "23",
+      "name": "CozyFold Travel Blanket",
+      "description": "A lightweight and foldable blanket designed to provide extra warmth during travel.",
+      "price": 899,
+      "category": "Travel Comfort",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 22,
+      "sizes": [
+        "Standard"
+      ],
+      "colors": [
+        "Grey",
+        "Navy Blue",
+        "Beige"
+      ],
+      "rating": 4.5,
+      "reviewCount": 57,
+      "featured": false
+    },
+    {
+      "id": "24",
+      "name": "AirRest Inflatable Footrest",
+      "description": "An inflatable footrest designed to provide comfortable leg and foot support during long journeys.",
+      "price": 699,
+      "category": "Travel Comfort",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 27,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.3,
+      "reviewCount": 39,
+      "featured": false
+    },
+    {
+      "id": "25",
+      "name": "ComfortFit Travel Lumbar Pillow",
+      "description": "A supportive lumbar pillow designed to provide back support while traveling or sitting for long periods.",
+      "price": 999,
+      "category": "Travel Comfort",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 18,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.5,
+      "reviewCount": 51,
+      "featured": false
+    },
+    {
+      "id": "26",
+      "name": "HydroGo Insulated Travel Bottle",
+      "description": "An insulated travel bottle designed to keep beverages at a suitable temperature while traveling.",
+      "price": 899,
+      "category": "Travel Essentials",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 25,
+      "sizes": [
+        "500ml",
+        "750ml",
+        "1L"
+      ],
+      "colors": [
+        "Black",
+        "Blue",
+        "White"
+      ],
+      "rating": 4.5,
+      "reviewCount": 74,
+      "featured": true
+    },
+    {
+      "id": "27",
+      "name": "TravelCare Toiletry Kit",
+      "description": "A compact toiletry kit for carrying essential personal care items during trips.",
+      "price": 699,
+      "category": "Travel Essentials",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 29,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Grey",
+        "Blue"
+      ],
+      "rating": 4.4,
+      "reviewCount": 48,
+      "featured": false
+    },
+    {
+      "id": "28",
+      "name": "SecureLock TSA Luggage Lock",
+      "description": "A compact TSA-compatible combination lock designed to secure luggage during travel.",
+      "price": 499,
+      "category": "Travel Essentials",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 36,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Silver"
+      ],
+      "rating": 4.5,
+      "reviewCount": 86,
+      "featured": false
+    },
+    {
+      "id": "29",
+      "name": "FoldAway Compact Umbrella",
+      "description": "A lightweight compact umbrella designed to fit easily inside travel bags.",
+      "price": 599,
+      "category": "Travel Essentials",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 31,
+      "sizes": [],
+      "colors": [
+        "Black",
+        "Blue",
+        "Red"
+      ],
+      "rating": 4.3,
+      "reviewCount": 44,
+      "featured": false
+    },
+    {
+      "id": "30",
+      "name": "TravelAid Mini First Aid Kit",
+      "description": "A compact first aid kit containing essential supplies for common minor travel emergencies.",
+      "price": 799,
+      "category": "Travel Essentials",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "stock": 23,
+      "sizes": [],
+      "colors": [],
+      "rating": 4.6,
+      "reviewCount": 71,
+      "featured": true
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "nikhil",
+      "email": "nikhil@gmail.com",
+      "password": "nikhil@123",
+      "fullName": "Nikhil Raj.T",
+      "avatar": "",
+      "createdAt": "2026-10-24T10:00:00.000Z"
+    },
+    {
+      "fullName": "Akshay",
+      "username": "akshay_s",
+      "email": "akshay@gmail.com",
+      "password": "akshay123",
+      "avatar": "",
+      "createdAt": "2026-10-28T05:17:54.419Z",
+      "id": "RqXuiIDc7zw"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "userId": 1,
+      "items": [
         {
-            "id": 1,
-            "name": "AeroLite Cabin Suitcase",
-            "description": "A lightweight cabin suitcase designed for short trips.",
-            "price": 4999,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 12,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Navy Blue",
-                "Silver"
-            ],
-            "rating": 4.5,
-            "reviewCount": 84,
-            "featured": true
-        },
-        {
-            "id": 2,
-            "name": "Voyager Check-In Suitcase",
-            "description": "A spacious and durable suitcase designed for longer journeys and check-in travel.",
-            "price": 7499,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 8,
-            "sizes": [
-                "24-inch",
-                "28-inch"
-            ],
-            "colors": [
-                "Black",
-                "Charcoal",
-                "Blue"
-            ],
-            "rating": 4.6,
-            "reviewCount": 67,
-            "featured": true
-        },
-        {
-            "id": 3,
-            "name": "TrailPack Travel Backpack",
-            "description": "A durable travel backpack designed for short trips and everyday travel.",
-            "price": 2499,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 15,
-            "sizes": [
-                "20L",
-                "30L",
-                "40L"
-            ],
-            "colors": [
-                "Black",
-                "Navy Blue",
-                "Olive Green"
-            ],
-            "rating": 4.5,
-            "reviewCount": 84,
-            "featured": true
-        },
-        {
-            "id": 4,
-            "name": "Weekender Duffel Bag",
-            "description": "A spacious duffel bag suitable for weekend trips, gym visits, and short getaways.",
-            "price": 1899,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 18,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Olive Green"
-            ],
-            "rating": 4.4,
-            "reviewCount": 52,
-            "featured": false
-        },
-        {
-            "id": 5,
-            "name": "UrbanCross Sling Bag",
-            "description": "A compact sling bag for carrying everyday travel essentials while on the move.",
-            "price": 999,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 25,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Beige"
-            ],
-            "rating": 4.3,
-            "reviewCount": 41,
-            "featured": false
-        },
-        {
-            "id": 6,
-            "name": "Nomad Laptop Backpack",
-            "description": "A practical travel backpack with a padded laptop compartment and organized storage.",
-            "price": 2799,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 14,
-            "sizes": [
-                "20L",
-                "25L",
-                "30L"
-            ],
-            "colors": [
-                "Black",
-                "Navy Blue",
-                "Grey"
-            ],
-            "rating": 4.6,
-            "reviewCount": 73,
-            "featured": true
-        },
-        {
-            "id": 7,
-            "name": "Compact Weekend Bag",
-            "description": "A compact travel bag designed for short weekend trips and overnight stays.",
-            "price": 1599,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 20,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Brown",
-                "Navy Blue"
-            ],
-            "rating": 4.2,
-            "reviewCount": 38,
-            "featured": false
-        },
-        {
-            "id": 8,
-            "name": "Explorer Crossbody Bag",
-            "description": "A lightweight crossbody bag for keeping travel essentials secure and easily accessible.",
-            "price": 1299,
-            "category": "Luggage & Bags",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 22,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Khaki",
-                "Grey"
-            ],
-            "rating": 4.4,
-            "reviewCount": 46,
-            "featured": false
-        },
-        {
-            "id": 9,
-            "name": "PackMate Packing Cube Set",
-            "description": "A set of packing cubes designed to organize clothing and maximize luggage space.",
-            "price": 899,
-            "category": "Travel Organization",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 30,
-            "sizes": [
-                "Small",
-                "Medium",
-                "Large"
-            ],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.6,
-            "reviewCount": 91,
-            "featured": true
-        },
-        {
-            "id": 10,
-            "name": "Travel Document Organizer",
-            "description": "A compact organizer for keeping passports, tickets, cards, and travel documents together.",
-            "price": 699,
-            "category": "Travel Organization",
-            "image":"/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 28,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Brown",
-                "Navy Blue"
-            ],
-            "rating": 4.5,
-            "reviewCount": 64,
-            "featured": false
-        },
-        {
-            "id": 11,
-            "name": "Passport & Card Holder",
-            "description": "A slim holder designed to keep passports and essential travel cards organized.",
-            "price": 499,
-            "category": "Travel Organization",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 35,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Brown",
-                "Red"
-            ],
-            "rating": 4.4,
-            "reviewCount": 58,
-            "featured": false
-        },
-        {
-            "id": 12,
-            "name": "Cable Organizer Pouch",
-            "description": "A compact pouch with organized compartments for storing charging cables and small accessories.",
-            "price": 599,
-            "category": "Travel Organization",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 26,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.5,
-            "reviewCount": 72,
-            "featured": true
-        },
-        {
-            "id": 13,
-            "name": "Shoe Storage Bag Set",
-            "description": "A set of lightweight shoe bags that keeps footwear separated from other belongings.",
-            "price": 399,
-            "category": "Travel Organization",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 32,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.3,
-            "reviewCount": 43,
-            "featured": false
-        },
-        {
-            "id": 14,
-            "name": "Travel Toiletry Organizer",
-            "description": "A travel organizer with multiple compartments for keeping personal care items neatly arranged.",
-            "price": 799,
-            "category": "Travel Organization",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 24,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Navy Blue",
-                "Grey"
-            ],
-            "rating": 4.5,
-            "reviewCount": 69,
-            "featured": false
-        },
-        {
-            "id": 15,
-            "name": "Universal Travel Adapter",
-            "description": "A versatile travel adapter designed to support charging devices across different international socket types.",
-            "price": 1499,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 18,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "rating": 4.6,
-            "reviewCount": 105,
-            "featured": true
-        },
-        {
-            "id": 16,
-            "name": "PowerGo 20,000mAh Power Bank",
-            "description": "A high-capacity power bank designed to keep smartphones and other devices charged while traveling.",
-            "price": 1999,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 16,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Blue"
-            ],
-            "rating": 4.5,
-            "reviewCount": 88,
-            "featured": true
-        },
-        {
-            "id": 17,
-            "name": "FastCharge 65W Travel Charger",
-            "description": "A compact 65W charger designed for fast charging compatible phones, tablets, and laptops.",
-            "price": 1799,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 20,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "rating": 4.7,
-            "reviewCount": 96,
-            "featured": true
-        },
-        {
-            "id": 18,
-            "name": "4-in-1 Travel Cable Kit",
-            "description": "A versatile charging cable kit with multiple connectors for everyday travel needs.",
-            "price": 699,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 34,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "rating": 4.4,
-            "reviewCount": 61,
-            "featured": false
-        },
-        {
-            "id": 19,
-            "name": "Compact USB Charging Hub",
-            "description": "A compact charging hub that allows multiple USB devices to be charged from a single outlet.",
-            "price": 999,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 21,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "rating": 4.3,
-            "reviewCount": 47,
-            "featured": false
-        },
-        {
-            "id": 20,
-            "name": "SmartLuggage Tracker",
-            "description": "A compact tracking device designed to help travelers locate their luggage and personal belongings.",
-            "price": 1299,
-            "category": "Travel Tech",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 17,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "White"
-            ],
-            "rating": 4.4,
-            "reviewCount": 55,
-            "featured": false
-        },
-        {
-            "id": 21,
-            "name": "CloudRest Memory Foam Neck Pillow",
-            "description": "A supportive memory foam neck pillow designed for comfortable rest during long journeys.",
-            "price": 1099,
-            "category": "Travel Comfort",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 19,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.6,
-            "reviewCount": 82,
-            "featured": true
-        },
-        {
-            "id": 22,
-            "name": "SleepEase Travel Eye Mask",
-            "description": "A soft travel eye mask designed to block light and improve comfort while resting.",
-            "price": 399,
-            "category": "Travel Comfort",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 40,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Navy Blue"
-            ],
-            "rating": 4.4,
-            "reviewCount": 63,
-            "featured": false
-        },
-        {
-            "id": 23,
-            "name": "CozyFold Travel Blanket",
-            "description": "A lightweight and foldable blanket designed to provide extra warmth during travel.",
-            "price": 899,
-            "category": "Travel Comfort",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 22,
-            "sizes": [
-                "Standard"
-            ],
-            "colors": [
-                "Grey",
-                "Navy Blue",
-                "Beige"
-            ],
-            "rating": 4.5,
-            "reviewCount": 57,
-            "featured": false
-        },
-        {
-            "id": 24,
-            "name": "AirRest Inflatable Footrest",
-            "description": "An inflatable footrest designed to provide comfortable leg and foot support during long journeys.",
-            "price": 699,
-            "category": "Travel Comfort",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 27,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.3,
-            "reviewCount": 39,
-            "featured": false
-        },
-        {
-            "id": 25,
-            "name": "ComfortFit Travel Lumbar Pillow",
-            "description": "A supportive lumbar pillow designed to provide back support while traveling or sitting for long periods.",
-            "price": 999,
-            "category": "Travel Comfort",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 18,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.5,
-            "reviewCount": 51,
-            "featured": false
-        },
-        {
-            "id": 26,
-            "name": "HydroGo Insulated Travel Bottle",
-            "description": "An insulated travel bottle designed to keep beverages at a suitable temperature while traveling.",
-            "price": 899,
-            "category": "Travel Essentials",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 25,
-            "sizes": [
-                "500ml",
-                "750ml",
-                "1L"
-            ],
-            "colors": [
-                "Black",
-                "Blue",
-                "White"
-            ],
-            "rating": 4.5,
-            "reviewCount": 74,
-            "featured": true
-        },
-        {
-            "id": 27,
-            "name": "TravelCare Toiletry Kit",
-            "description": "A compact toiletry kit for carrying essential personal care items during trips.",
-            "price": 699,
-            "category": "Travel Essentials",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 29,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Grey",
-                "Blue"
-            ],
-            "rating": 4.4,
-            "reviewCount": 48,
-            "featured": false
-        },
-        {
-            "id": 28,
-            "name": "SecureLock TSA Luggage Lock",
-            "description": "A compact TSA-compatible combination lock designed to secure luggage during travel.",
-            "price": 499,
-            "category": "Travel Essentials",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 36,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Silver"
-            ],
-            "rating": 4.5,
-            "reviewCount": 86,
-            "featured": false
-        },
-        {
-            "id": 29,
-            "name": "FoldAway Compact Umbrella",
-            "description": "A lightweight compact umbrella designed to fit easily inside travel bags.",
-            "price": 599,
-            "category": "Travel Essentials",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 31,
-            "sizes": [],
-            "colors": [
-                "Black",
-                "Blue",
-                "Red"
-            ],
-            "rating": 4.3,
-            "reviewCount": 44,
-            "featured": false
-        },
-        {
-            "id": 30,
-            "name": "TravelAid Mini First Aid Kit",
-            "description": "A compact first aid kit containing essential supplies for common minor travel emergencies.",
-            "price": 799,
-            "category": "Travel Essentials",
-            "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-            "stock": 23,
-            "sizes": [],
-            "colors": [],
-            "rating": 4.6,
-            "reviewCount": 71,
-            "featured": true
+          "productId": 3,
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 2,
+          "size": "30L",
+          "color": "Black",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
         }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "username": "nikhil",
-            "email": "nikhil@gmail.com",
-            "password": "nikhil@123",
-            "fullName": "Nikhil Raj.T",
-            "avatar": "",
-            "createdAt": "2026-10-24T10:00:00.000Z"
-        }
-    ],
-    "orders": [
-        {
-            "id": 1,
-            "userId": 1,
-            "items": [
-                {
-                    "productId": 3,
-                    "name": "TrailPack Travel Backpack",
-                    "price": 2499,
-                    "quantity": 2,
-                    "size": "30L",
-                    "color": "Black",
-                    "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
-                }
-            ],
-            "totalAmount": 4998,
-            "status": "Placed",
-            "createdAt": "2026-10-24T12:30:00.000Z"
-        }
-    ]
+      ],
+      "totalAmount": 4998,
+      "status": "Placed",
+      "createdAt": "2026-10-24T12:30:00.000Z"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
