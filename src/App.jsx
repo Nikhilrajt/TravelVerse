@@ -9,8 +9,9 @@ import { loggedIn } from "./redux/slices/authSlice";
 import WishList from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
-import Navbar from "./components/Navbar";
 import ShopLayout from "./layouts/ShopLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
     const dispatch = useDispatch();
@@ -25,14 +26,17 @@ function App() {
         <>
         <ProductLoader />
         <Routes>
-            <Route path="/" element={<Navigate to="/register" replace />}/>
+            <Route path="/" element={<Navigate to="/productlist" replace />}/>
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route element={<ShopLayout />}>
             <Route path="/productlist" element={<ProductList />}/>
+            <Route path="product/:id" element={<ProductDetails />}/>
+            <Route element={<ProtectedRoute />}>
             <Route path="/wishlist" element={<WishList />}/>
             <Route path="/cart" element={<Cart />}/>
             <Route path="/orders" element={<Orders />}/>
+            </Route>
             </Route>
         </Routes>
         
