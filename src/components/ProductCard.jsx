@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
     return (
+        <Link to={`/product/${product.id}`}>
         <div className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
 
             <div className="relative h-56 overflow-hidden bg-gray-100">
@@ -11,6 +13,7 @@ function ProductCard({ product }) {
                 />
 
                 {product.featured && (
+                    
                     <span className="absolute left-3 top-3 rounded-full bg-black px-3 py-1 text-xs font-semibold text-white">
                         Featured
                     </span>
@@ -43,6 +46,7 @@ function ProductCard({ product }) {
 
             </div>
         </div>
+        </Link>
     );
 }
 
