@@ -4,6 +4,7 @@ import { createUser, checkEmail, checkUsername, findUser } from "../../services/
 const initialState = {
     user: null,
     isAuthenticated: false,
+    authInitialized: false,
     loading: false,
     error: null
 }
@@ -47,7 +48,7 @@ export const loginUser = createAsyncThunk(
             if (user.password !== password) {
                 return rejectWithValue("Invalid email or password");
             }
-            const {password: _,...safeUser} = user;
+            const { password: _, ...safeUser } = user;
             return safeUser;
         }
         catch (error) {
@@ -65,8 +66,12 @@ const authSlice = createSlice({
         loggedIn: (state, action) => {
             state.user = action.payload
             state.isAuthenticated = true
+            state.authInitialized = true
             state.loading = false
             state.error = null
+        },
+        authInitialized: (state) => {
+            state.authInitialized = true;
         },
         logOut: (state) => {
             state.user = null
@@ -90,23 +95,23 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.error = action.payload;
             })
-            .addCase(loginUser.pending,(state)=>{
-                state.loading=true;
-                state.error=null;
+            .addCase(loginUser.pending, (state) => {
+                state.loading = true;
+                state.error = null;
             })
-            .addCase(loginUser.fulfilled,(state,action)=>{
-                state.loading=false;
-                state.user=action.payload;
-                state.isAuthenticated=true;
-                state.error=null;
-                localStorage.setItem("user",JSON.stringify(action.payload));
+            .addCase(loginUser.fulfilled, (state, action) => {
+                state.loading = false;
+                state.user = action.payload;
+                state.isAuthenticated = true;
+                state.error = null;
+                localStorage.setItem("user", JSON.stringify(action.payload));
             })
-            .addCase(loginUser.rejected,(state,action)=>{
-             state.loading=false;
-             state.error=action.payload;
+            .addCase(loginUser.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
             })
     }
 })
 
-export const { loggedIn, logOut } = authSlice.actions;
+export const { loggedIn, logOut, authInitialized} = authSlice.actions;
 export default authSlice.reducer;

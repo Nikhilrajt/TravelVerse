@@ -1,4 +1,4 @@
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { addItem } from "../redux/slices/cartSlice";
@@ -10,8 +10,10 @@ function ProductDetails() {
     const dispatch = useDispatch();
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
+    const [sizeError, setSizeError] = useState("");
+    const [colorError, setColorError] = useState("");
     const [quantity, setQuantity] = useState(1);
-    const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const navigate = useNavigate();
 
     const currentProduct = products.find((product) => {
@@ -27,11 +29,32 @@ function ProductDetails() {
             </div>
         );
     }
-    function handleAddToCart(){
-        if(!isAuthenticated){
+    function handleAddToCart() {
+        if (!isAuthenticated) {
             navigate("/login");
             return;
         }
+
+        let hasError = false;
+
+        if (currentProduct.sizes.length > 0 && !selectedSize) {
+            setSizeError("Please select a size");
+            hasError = true;
+        } else {
+            setSizeError("");
+        }
+
+        if (currentProduct.colors.length > 0 && !selectedColor) {
+            setColorError("Please select a color");
+            hasError = true;
+        } else {
+            setColorError("");
+        }
+
+        if (hasError) {
+            return;
+        }
+
         const cartItem = {
             productId: currentProduct.id,
             name: currentProduct.name,
@@ -41,7 +64,9 @@ function ProductDetails() {
             size: selectedSize,
             color: selectedColor
         };
+
         dispatch(addItem(cartItem));
+        navigate("/cart");
     }
 
     return (
@@ -109,15 +134,19 @@ function ProductDetails() {
                                     <button
                                         key={size}
                                         onClick={() => setSelectedSize(size)}
-                                        className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${
-                                            selectedSize === size
+                                        className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${selectedSize === size
                                                 ? "border-gray-900 bg-gray-900 text-white"
                                                 : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
-                                        }`}
+                                            }`}
                                     >
                                         {size}
                                     </button>
                                 ))}
+                                {sizeError && (
+                                    <p className="mt-2 text-sm text-red-600">
+                                        {sizeError}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     )}
@@ -133,15 +162,19 @@ function ProductDetails() {
                                     <button
                                         key={color}
                                         onClick={() => setSelectedColor(color)}
-                                        className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${
-                                            selectedColor === color
+                                        className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${selectedColor === color
                                                 ? "border-gray-900 bg-gray-900 text-white"
                                                 : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
-                                        }`}
+                                            }`}
                                     >
                                         {color}
                                     </button>
                                 ))}
+                                {colorError && (
+                                    <p className="mt-2 text-sm text-red-600">
+                                        {colorError}
+                                    </p>
+                                )}
                             </div>
                         </div>
                     )}

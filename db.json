@@ -589,6 +589,60 @@
       "totalAmount": 4998,
       "status": "Placed",
       "createdAt": "2026-10-24T12:30:00.000Z"
+    },
+    {
+      "userId": "RqXuiIDc7zw",
+      "shipping": {
+        "name": "Akshay",
+        "email": "akshay@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 2,
+          "size": "",
+          "color": "Silver"
+        }
+      ],
+      "subtotal": 9998,
+      "total": 9998,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:01:41.096Z",
+      "id": "jCMtU9w5ePY"
+    },
+    {
+      "userId": "1",
+      "shipping": {
+        "name": "Nikhil Raj.T",
+        "email": "nikhil@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "738933993",
+        "phone": "8075767720"
+      },
+      "items": [
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 4,
+          "size": "30L",
+          "color": "Navy Blue"
+        }
+      ],
+      "subtotal": 9996,
+      "total": 9996,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:09:00.887Z",
+      "id": "InXl7OgXlHI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,64 +1,96 @@
-import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import { logOut } from "../redux/slices/authSlice";
+import { useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 
-function Navbar(){
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    function handleLogout(){
-        dispatch(logOut());
-        navigate("/login")
-    }
-return (
-    <nav className="border-b border-slate-200 bg-white shadow-sm">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+function Navbar() {
 
-            <Link
-                to="/productlist"
-                className="text-2xl font-bold tracking-tight text-slate-900"
-            >
-                TravelVerse
-            </Link>
+    const isAuthenticated = useSelector(
+    (state) => state.auth.isAuthenticated
+);
 
-            <div className="flex items-center gap-8">
+    return (
+        <nav className="border-b border-slate-200 bg-white shadow-sm">
+            <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+
                 <Link
                     to="/productlist"
-                    className="text-sm font-medium text-slate-600 transition hover:text-blue-700"
+                    className="text-2xl font-bold tracking-tight text-slate-900"
                 >
-                    Products
+                    TravelVerse
                 </Link>
 
-                <Link
-                    to="/wishlist"
-                    className="text-sm font-medium text-slate-600 transition hover:text-blue-700"
-                >
-                    Wishlist
-                </Link>
+                <div className="flex items-center gap-8">
 
-                <Link
-                    to="/cart"
-                    className="text-sm font-medium text-slate-600 transition hover:text-blue-700"
-                >
-                    Cart
-                </Link>
+                    <NavLink
+                        to="/productlist"
+                        className={({ isActive }) =>
+                            `text-sm font-medium transition ${
+                                isActive
+                                    ? "text-blue-600"
+                                    : "text-slate-600 hover:text-blue-700"
+                            }`
+                        }
+                    >
+                        Products
+                    </NavLink>
 
-                <Link
-                    to="/orders"
-                    className="text-sm font-medium text-slate-600 transition hover:text-blue-700"
-                >
-                    Orders
-                </Link>
+                    <NavLink
+                        to="/wishlist"
+                        className={({ isActive }) =>
+                            `text-sm font-medium transition ${
+                                isActive
+                                    ? "text-blue-600"
+                                    : "text-slate-600 hover:text-blue-700"
+                            }`
+                        }
+                    >
+                        Wishlist
+                    </NavLink>
 
-                <button
-                    onClick={handleLogout}
-                    className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
-                >
-                    Logout
-                </button>
+                    <NavLink
+                        to="/cart"
+                        className={({ isActive }) =>
+                            `text-sm font-medium transition ${
+                                isActive
+                                    ? "text-blue-600"
+                                    : "text-slate-600 hover:text-blue-700"
+                            }`
+                        }
+                    >
+                        Cart
+                    </NavLink>
+
+                    <NavLink
+                        to="/orders"
+                        className={({ isActive }) =>
+                            `text-sm font-medium transition ${
+                                isActive
+                                    ? "text-blue-600"
+                                    : "text-slate-600 hover:text-blue-700"
+                            }`
+                        }
+                    >
+                        Orders
+                    </NavLink>
+
+{isAuthenticated && (
+    <NavLink
+        to="/profile"
+        className={({ isActive }) =>
+            `text-sm font-medium transition ${
+                isActive
+                    ? "text-blue-600"
+                    : "text-slate-600 hover:text-blue-700"
+            }`
+        }
+    >
+        Profile
+    </NavLink>
+)}
+
+                </div>
             </div>
-
-        </div>
-    </nav>
-);
+        </nav>
+    );
 }
+
 export default Navbar;

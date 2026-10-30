@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { updateQuantity, removeItem } from "../redux/slices/cartSlice";
 
 function Cart() {
@@ -135,11 +136,12 @@ function Cart() {
                 </span>
               </div>
 
-              <button
-                className="mt-6 w-full rounded-lg bg-gray-900 px-5 py-3 font-semibold text-white transition hover:bg-gray-800"
+              <Link
+                to="/checkout"
+                className="mt-6 block w-full rounded-lg bg-gray-900 px-5 py-3 text-center font-semibold text-white transition hover:bg-gray-800"
               >
                 Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>
