@@ -30,13 +30,10 @@ const cartSlice = createSlice({
                 item.color === deleteItem.color
             );
             if (existingItem) {
-                existingItem.quantity -= deleteItem.quantity;
-                if (existingItem.quantity <= 0) {
-                    state.items = state.items.filter(
-                        (item) => item !== existingItem
-                    )
-                }
-                state.totalItems -= deleteItem.quantity;
+                state.totalItems -= existingItem.quantity;
+                state.items = state.items.filter(
+                    (item) => item !== existingItem
+                );
             }
         },
         updateQuantity: (state, action) => {
