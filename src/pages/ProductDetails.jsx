@@ -1,14 +1,18 @@
-import { useSelector } from "react-redux";
+import { useSelector,useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { addItem } from "../redux/slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 function ProductDetails() {
     const { id } = useParams();
     const products = useSelector((state) => state.product.products);
-
+    const dispatch = useDispatch();
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
     const [quantity, setQuantity] = useState(1);
+    const isAuthenticated = useSelector((state)=>state.auth.isAuthenticated);
+    const navigate = useNavigate();
 
     const currentProduct = products.find((product) => {
         return product.id === id;
@@ -22,6 +26,22 @@ function ProductDetails() {
                 </h1>
             </div>
         );
+    }
+    function handleAddToCart(){
+        if(!isAuthenticated){
+            navigate("/login");
+            return;
+        }
+        const cartItem = {
+            productId: currentProduct.id,
+            name: currentProduct.name,
+            price: currentProduct.price,
+            image: currentProduct.image,
+            quantity: quantity,
+            size: selectedSize,
+            color: selectedColor
+        };
+        dispatch(addItem(cartItem));
     }
 
     return (
@@ -165,6 +185,7 @@ function ProductDetails() {
                                     +
                                 </button>
                             </div>
+                            <button onClick={handleAddToCart} className="mt-4 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800">Add to  Cart</button>
                         </div>
                     )}
                 </div>
