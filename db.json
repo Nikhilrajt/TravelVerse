@@ -6,7 +6,7 @@
       "description": "A lightweight cabin suitcase designed for short trips.",
       "price": 4999,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
       "stock": 12,
       "sizes": [],
       "colors": [
@@ -24,7 +24,7 @@
       "description": "A spacious and durable suitcase designed for longer journeys and check-in travel.",
       "price": 7499,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
       "stock": 8,
       "sizes": [
         "24-inch",
@@ -45,7 +45,7 @@
       "description": "A durable travel backpack designed for short trips and everyday travel.",
       "price": 2499,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
       "stock": 15,
       "sizes": [
         "20L",
@@ -67,7 +67,7 @@
       "description": "A spacious duffel bag suitable for weekend trips, gym visits, and short getaways.",
       "price": 1899,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
       "stock": 18,
       "sizes": [],
       "colors": [
@@ -553,15 +553,6 @@
   ],
   "users": [
     {
-      "id": "1",
-      "username": "nikhil",
-      "email": "nikhil@gmail.com",
-      "password": "nikhil@123",
-      "fullName": "Nikhil Raj.T",
-      "avatar": "",
-      "createdAt": "2026-10-24T10:00:00.000Z"
-    },
-    {
       "fullName": "Akshay",
       "username": "akshay_s",
       "email": "akshay@gmail.com",
@@ -569,6 +560,15 @@
       "avatar": "",
       "createdAt": "2026-10-28T05:17:54.419Z",
       "id": "RqXuiIDc7zw"
+    },
+    {
+      "fullName": "mydeen",
+      "username": "mydeen1",
+      "email": "mydeen@gmail.com",
+      "password": "12345678",
+      "avatar": "",
+      "createdAt": "2026-10-30T10:51:00.154Z",
+      "id": "-h-TDSjqa_k"
     }
   ],
   "orders": [
@@ -643,6 +643,195 @@
       "status": "placed",
       "createdAt": "2026-10-30T10:09:00.887Z",
       "id": "InXl7OgXlHI"
+    },
+    {
+      "userId": "1",
+      "shipping": {
+        "name": "Nikhil Raj.T",
+        "email": "nikhil@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 2,
+          "size": "",
+          "color": "Navy Blue"
+        }
+      ],
+      "subtotal": 9998,
+      "total": 9998,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:26:33.571Z",
+      "id": "pu-ru68HPZg"
+    },
+    {
+      "userId": "1",
+      "shipping": {
+        "name": "Nikhil Raj.T",
+        "email": "nikhil@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "679335",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 1,
+          "size": "",
+          "color": "Silver"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:27:05.206Z",
+      "id": "xfZqeA5Rnp0"
+    },
+    {
+      "userId": "1",
+      "shipping": {
+        "name": "Nikhil Raj.T",
+        "email": "nikhil@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "644884",
+        "phone": "8075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "",
+          "color": "Navy Blue"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:40:16.457Z",
+      "id": "3ZXUOx4Hcy0"
+    },
+    {
+      "userId": "1",
+      "shipping": {
+        "name": "Nikhil Raj.T",
+        "email": "nikhil@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "7272892",
+        "phone": "8075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "",
+          "color": "Navy Blue"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:44:05.701Z",
+      "id": "rkXzLf7kXaw"
+    },
+    {
+      "userId": "RqXuiIDc7zw",
+      "shipping": {
+        "name": "Akshay",
+        "email": "akshay@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "679335",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "4",
+          "name": "Weekender Duffel Bag",
+          "price": 1899,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "",
+          "color": "Grey"
+        }
+      ],
+      "subtotal": 1899,
+      "total": 1899,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:49:35.860Z",
+      "id": "SXW4ywyEWTQ"
+    },
+    {
+      "userId": "-h-TDSjqa_k",
+      "shipping": {
+        "name": "mydeen",
+        "email": "mydeen@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "5",
+          "name": "UrbanCross Sling Bag",
+          "price": 999,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 1,
+          "size": "",
+          "color": "Grey"
+        }
+      ],
+      "subtotal": 999,
+      "total": 999,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:51:32.992Z",
+      "id": "moeipeSqCBk"
+    },
+    {
+      "userId": "-h-TDSjqa_k",
+      "shipping": {
+        "name": "mydeen",
+        "email": "mydeen@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "728892",
+        "phone": "8075767720"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "name": "Voyager Check-In Suitcase",
+          "price": 7499,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "24-inch",
+          "color": "Blue"
+        }
+      ],
+      "subtotal": 7499,
+      "total": 7499,
+      "status": "placed",
+      "createdAt": "2026-10-30T10:51:49.337Z",
+      "id": "Oo915IYGYo8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
