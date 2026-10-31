@@ -4,9 +4,10 @@ import { updateQuantity, removeItem } from "../redux/slices/cartSlice";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.product.products);
   const totalItems = useSelector((state) => state.cart.totalItems);
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-10">
@@ -64,7 +65,8 @@ function Cart() {
                               productId: item.productId,
                               size: item.size,
                               color: item.color,
-                              quantity: item.quantity - 1
+                              quantity: item.quantity - 1,
+                              userId: user.id
                             })
                           )
                         }
@@ -83,6 +85,7 @@ function Cart() {
                           dispatch(
                             updateQuantity({
                               productId: item.productId,
+                              userId: user.id,
                               size: item.size,
                               color: item.color,
                               quantity: item.quantity + 1
@@ -111,9 +114,8 @@ function Cart() {
                     onClick={() =>
                       dispatch(
                         removeItem({
-                          productId: item.productId,
-                          size: item.size,
-                          color: item.color
+                          ...item,
+                          userId: user.id
                         })
                       )
                     }

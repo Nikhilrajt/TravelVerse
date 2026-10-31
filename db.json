@@ -569,6 +569,42 @@
       "avatar": "",
       "createdAt": "2026-10-30T10:51:00.154Z",
       "id": "-h-TDSjqa_k"
+    },
+    {
+      "fullName": "Kani",
+      "username": "KaniAnalyst",
+      "email": "kani@gmail.com",
+      "password": "12345678",
+      "avatar": "",
+      "createdAt": "2026-10-31T06:26:19.488Z",
+      "id": "Ho3OM9ujKBA"
+    },
+    {
+      "fullName": "nikhil",
+      "username": "niki",
+      "email": "nikhil@gmail.com",
+      "password": "12345678",
+      "avatar": "",
+      "createdAt": "2026-10-31T06:27:50.394Z",
+      "id": "jPXcSa1FYrk"
+    },
+    {
+      "fullName": "nikhil",
+      "username": "nikhillll",
+      "email": "nikhilraj@gmail.com",
+      "password": "12345678",
+      "avatar": "",
+      "createdAt": "2026-10-31T06:29:02.152Z",
+      "id": "bMc4-AsNwb0"
+    },
+    {
+      "fullName": "nikhil",
+      "username": "nikhilt",
+      "email": "nikhilt@gmail.com",
+      "password": "nikhilt123",
+      "avatar": "",
+      "createdAt": "2026-10-31T07:14:06.057Z",
+      "id": "XlBDwlA8x_0"
     }
   ],
   "orders": [
@@ -1111,6 +1147,114 @@
       "status": "placed",
       "createdAt": "2026-10-31T05:55:56.478Z",
       "id": "jWkylUnhx98"
+    },
+    {
+      "userId": "bMc4-AsNwb0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilraj@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "679335",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 5,
+          "size": "",
+          "color": "Silver"
+        }
+      ],
+      "subtotal": 24995,
+      "total": 24995,
+      "status": "placed",
+      "createdAt": "2026-10-31T06:31:07.572Z",
+      "id": "7Qflwl1YKLE"
+    },
+    {
+      "userId": "XlBDwlA8x_0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilt@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 1,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-10-31T07:34:03.057Z",
+      "id": "tGgKC7N9vQE"
+    },
+    {
+      "userId": "XlBDwlA8x_0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilt@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "23444",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 3,
+          "size": "20L",
+          "color": "Olive Green",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 7497,
+      "total": 7497,
+      "status": "placed",
+      "createdAt": "2026-10-31T07:35:14.889Z",
+      "id": "SjfRK2sKy0w"
+    },
+    {
+      "userId": "XlBDwlA8x_0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilt@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "23333",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 4,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 19996,
+      "total": 19996,
+      "status": "placed",
+      "createdAt": "2026-10-31T07:37:21.877Z",
+      "id": "KhdSnWQMkpc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

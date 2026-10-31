@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../redux/slices/authSlice";
+import { loadCart } from "../redux/slices/cartSlice";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -10,16 +11,21 @@ function Login() {
     const navigate = useNavigate();
     const { loading, error } = useSelector((state) => state.auth);
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        try {
-            await dispatch(loginUser({ email, password })).unwrap();
-            navigate("/productlist");
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    try {
+        const loggedInUser = await dispatch(
+            loginUser({ email, password })
+        ).unwrap();
+
+        dispatch(loadCart(loggedInUser.id));
+
+        navigate("/productlist");
+    } catch (error) {
+        console.log(error);
+    }
+};
 
     return (
         <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-6">

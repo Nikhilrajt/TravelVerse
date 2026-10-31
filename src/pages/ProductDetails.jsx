@@ -17,6 +17,7 @@ function ProductDetails() {
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const navigate = useNavigate();
     const wishlistItems = useSelector((state) => state.wishlist.items);
+    const user = useSelector((state) => state.auth.user);
 
     const currentProduct = products.find((product) => {
         return product.id === id;
@@ -34,45 +35,38 @@ function ProductDetails() {
     const hasWishlist = wishlistItems.some((item) =>
         item.id === currentProduct.id);
 
-    function handleAddToCart() {
-        if (!isAuthenticated) {
-            navigate("/login");
-            return;
-        }
+const handleAddToCart = () => {
+if (currentProduct.sizes?.length > 0 && !selectedSize) {
+    setSizeError("Please select a size");
+    return;
+}
 
-        let hasError = false;
+if (currentProduct.colors?.length > 0 && !selectedColor) {
+    setColorError("Please select a color");
+    return;
+}
 
-        if (currentProduct.sizes.length > 0 && !selectedSize) {
-            setSizeError("Please select a size");
-            hasError = true;
-        } else {
-            setSizeError("");
-        }
+    const cartItem = {
+        productId: currentProduct.id,
+        name: currentProduct.name,
+        price: currentProduct.price,
+        quantity,
+        size: selectedSize,
+        color: selectedColor,
+        image: currentProduct.image
+    };
 
-        if (currentProduct.colors.length > 0 && !selectedColor) {
-            setColorError("Please select a color");
-            hasError = true;
-        } else {
-            setColorError("");
-        }
+    dispatch(
+        addItem({
+            ...cartItem,
+            userId: user.id
+        })
+    );
 
-        if (hasError) {
-            return;
-        }
-
-        const cartItem = {
-            productId: currentProduct.id,
-            name: currentProduct.name,
-            price: currentProduct.price,
-            image: currentProduct.image,
-            quantity: quantity,
-            size: selectedSize,
-            color: selectedColor
-        };
-
-        dispatch(addItem(cartItem));
-        navigate("/cart");
-    }
+    setSizeError("");
+setColorError("");
+    navigate("/cart");
+};
     function handleWishlist() {
         if (!hasWishlist) {
             dispatch(addToWishlist(currentProduct))

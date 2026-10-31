@@ -1,7 +1,14 @@
-const CART_KEY = "cart";
+const getCartKey = (userId) => `cart_user_${userId}`;
 
-export const getCart = () => {
-    const savedCart = localStorage.getItem(CART_KEY);
+export const getCart = (userId) => {
+    if (!userId) {
+        return {
+            items: [],
+            totalItems: 0
+        };
+    }
+
+    const savedCart = localStorage.getItem(getCartKey(userId));
 
     if (!savedCart) {
         return {
@@ -13,6 +20,11 @@ export const getCart = () => {
     return JSON.parse(savedCart);
 };
 
-export const saveCart = (cart) => {
-    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+export const saveCart = (userId, cart) => {
+    if (!userId) return;
+
+    localStorage.setItem(
+        getCartKey(userId),
+        JSON.stringify(cart)
+    );
 };

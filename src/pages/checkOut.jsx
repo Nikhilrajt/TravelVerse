@@ -69,17 +69,24 @@ function Checkout() {
     try {
       setLoading(true);
       const createdOrder = await createOrder(orderData);
-dispatch(addOrder(createdOrder));
+      dispatch(addOrder(createdOrder));
 
       cart.forEach(({ productId, size, color }) => {
-        dispatch(removeItem({ productId, size, color }));
+        dispatch(
+          removeItem({
+            productId,
+            size,
+            color,
+            userId: user.id
+          })
+        );
       });
       navigate("/orders");
     } catch (requestError) {
       setError(
         requestError?.response?.data?.message ||
-          requestError?.message ||
-          "Failed to place your order. Please try again."
+        requestError?.message ||
+        "Failed to place your order. Please try again."
       );
     } finally {
       setLoading(false);

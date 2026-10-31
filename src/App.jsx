@@ -14,19 +14,24 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/checkOut";
+import { loadCart } from "./redux/slices/cartSlice";
 
 function App() {
     const dispatch = useDispatch();
-    useEffect(()=>{
-       const savedUser = localStorage.getItem("user");
-       if(savedUser){
+
+useEffect(() => {
+    const savedUser = localStorage.getItem("user");
+
+    if (savedUser) {
         const user = JSON.parse(savedUser);
+
         dispatch(loggedIn(user));
-       }
-       else{
+        dispatch(loadCart(user.id));
+    } else {
         dispatch(authInitialized());
-       }
-    },[dispatch])
+    }
+}, [dispatch]);
+
     return (
         <>
         <ProductLoader />
@@ -36,8 +41,8 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route element={<ShopLayout />}>
             <Route path="/productlist" element={<ProductList />}/>
-            <Route path="product/:id" element={<ProductDetails />}/>
             <Route element={<ProtectedRoute />}>
+            <Route path="product/:id" element={<ProductDetails />}/>
             <Route path="/wishlist" element={<WishList />}/>
             <Route path="/cart" element={<Cart />}/>
             <Route path="/checkout" element={<Checkout />}/>

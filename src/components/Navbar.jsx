@@ -2,10 +2,9 @@ import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
-
-    const isAuthenticated = useSelector(
-    (state) => state.auth.isAuthenticated
-);
+    const { isAuthenticated, user } = useSelector((state) => state.auth);
+    const displayName = user?.fullName?.trim() || user?.username || user?.email || "User";
+    const initial = displayName.charAt(0).toUpperCase();
 
     return (
         <nav className="border-b border-slate-200 bg-white shadow-sm">
@@ -75,15 +74,17 @@ function Navbar() {
 {isAuthenticated && (
     <NavLink
         to="/profile"
+        aria-label={`${displayName}'s profile`}
+        title={`${displayName}'s profile`}
         className={({ isActive }) =>
-            `text-sm font-medium transition ${
+            `flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition ${
                 isActive
-                    ? "text-blue-600"
-                    : "text-slate-600 hover:text-blue-700"
+                    ? "bg-blue-600 text-white"
+                    : "bg-slate-100 text-slate-700 hover:bg-blue-100 hover:text-blue-700"
             }`
         }
     >
-        Profile
+        {initial}
     </NavLink>
 )}
 

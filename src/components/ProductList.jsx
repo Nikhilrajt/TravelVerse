@@ -8,6 +8,7 @@ function ProductList() {
     const products = useSelector((state) => state.product.products);
     const isLoading = useSelector((state) => state.product.loading);
     const error = useSelector((state) => state.product.error);
+    const user = useSelector((state) => state.auth.user);
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("All Categories");
     const [sort, setSort] = useState("Default");
@@ -64,6 +65,11 @@ function ProductList() {
           <section className="mx-auto max-w-7xl px-6 py-12">
 
             <div className="mb-8">
+                {user && (
+                    <p className="-mt-4 mb-4 text-lg font-semibold text-slate-800">
+                        Hi, {user.fullName?.trim() || user.username || "there"}!
+                    </p>
+                )}
                 <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-gray-500">
                     TravelVerse Collection
                 </p>
