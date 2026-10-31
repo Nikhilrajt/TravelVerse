@@ -26,7 +26,12 @@ function Orders() {
       try {
         const userOrders = await getOrdersByUser(user.id);
         if (isCurrent) {
-          setOrders(userOrders);
+          setOrders(
+            [...userOrders].sort(
+              (firstOrder, secondOrder) =>
+                new Date(secondOrder.createdAt) - new Date(firstOrder.createdAt)
+            )
+          );
         }
       } catch (requestError) {
         if (isCurrent) {

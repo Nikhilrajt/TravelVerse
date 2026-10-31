@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { clearCart } from "../redux/slices/cartSlice";
+import { removeItem } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { createOrder } from "../services/orderService";
 
@@ -68,7 +68,9 @@ function Checkout() {
     try {
       setLoading(true);
       await createOrder(orderData);
-      dispatch(clearCart());
+      cart.forEach(({ productId, size, color }) => {
+        dispatch(removeItem({ productId, size, color }));
+      });
       navigate("/orders");
     } catch (requestError) {
       setError(

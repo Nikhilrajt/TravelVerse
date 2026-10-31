@@ -15,7 +15,15 @@ function Cart() {
       </h1>
 
       {cartItems.length === 0 ? (
-        <p className="text-gray-600">Your cart is empty.</p>
+        <div className="flex flex-col items-center text-center">
+          <p className="text-gray-600">Your cart is empty.</p>
+          <Link
+            to="/productlist"
+            className="mt-5 rounded-lg bg-gray-900 px-5 py-3 text-center font-semibold text-white transition hover:bg-gray-800"
+          >
+            Continue shopping
+          </Link>
+        </div>
       ) : (
         <div className="space-y-6">
           {cartItems.map((item) => {
