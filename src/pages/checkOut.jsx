@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { removeItem } from "../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 import { createOrder } from "../services/orderService";
+import { addOrder } from "../redux/slices/orderSlice";
 
 function Checkout() {
   const navigate = useNavigate();
@@ -67,7 +68,9 @@ function Checkout() {
 
     try {
       setLoading(true);
-      await createOrder(orderData);
+      const createdOrder = await createOrder(orderData);
+dispatch(addOrder(createdOrder));
+
       cart.forEach(({ productId, size, color }) => {
         dispatch(removeItem({ productId, size, color }));
       });
