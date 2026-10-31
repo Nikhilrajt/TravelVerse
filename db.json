@@ -6,7 +6,7 @@
       "description": "A lightweight cabin suitcase designed for short trips.",
       "price": 4999,
       "category": "Luggage & Bags",
-      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
       "stock": 12,
       "sizes": [],
       "colors": [
@@ -24,7 +24,7 @@
       "description": "A spacious and durable suitcase designed for longer journeys and check-in travel.",
       "price": 7499,
       "category": "Luggage & Bags",
-      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
       "stock": 8,
       "sizes": [
         "24-inch",
@@ -45,7 +45,7 @@
       "description": "A durable travel backpack designed for short trips and everyday travel.",
       "price": 2499,
       "category": "Luggage & Bags",
-      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
       "stock": 15,
       "sizes": [
         "20L",
@@ -67,7 +67,7 @@
       "description": "A spacious duffel bag suitable for weekend trips, gym visits, and short getaways.",
       "price": 1899,
       "category": "Luggage & Bags",
-      "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
       "stock": 18,
       "sizes": [],
       "colors": [
@@ -832,6 +832,60 @@
       "status": "placed",
       "createdAt": "2026-10-30T10:51:49.337Z",
       "id": "Oo915IYGYo8"
+    },
+    {
+      "userId": "-h-TDSjqa_k",
+      "shipping": {
+        "name": "mydeen",
+        "email": "mydeen@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "22222",
+        "phone": "8075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "",
+          "color": "Black"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-10-30T11:10:47.926Z",
+      "id": "pdqM5IE3m_A"
+    },
+    {
+      "userId": "-h-TDSjqa_k",
+      "shipping": {
+        "name": "mydeen",
+        "email": "mydeen@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "679335",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "image": "dist/images/WhatsApp Image 2026-10-30 at 4.04.05 PM.jpeg",
+          "quantity": 1,
+          "size": "30L",
+          "color": "Navy Blue"
+        }
+      ],
+      "subtotal": 2499,
+      "total": 2499,
+      "status": "placed",
+      "createdAt": "2026-10-30T11:19:38.262Z",
+      "id": "yzT2doNf3TE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

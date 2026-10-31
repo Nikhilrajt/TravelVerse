@@ -20,8 +20,10 @@ function Cart() {
         <div className="space-y-6">
           {cartItems.map((item) => {
             const product = products.find(
-              (product) => product.id === item.productId
+              (product) => String(product.id) === String(item.productId)
             );
+            const canIncreaseQuantity =
+              Number.isFinite(product?.stock) && item.quantity < product.stock;
             return (
               <div
                 key={`${item.productId}-${item.size}-${item.color}`}
@@ -79,7 +81,7 @@ function Cart() {
                             })
                           )
                         }
-                        disabled={item.quantity >= product.stock}
+                        disabled={!canIncreaseQuantity}
                         className="px-4 py-2 text-lg font-medium transition hover:bg-gray-100"
                       >
                         +
@@ -123,7 +125,7 @@ function Cart() {
 
               <div className="mt-4 flex justify-between text-gray-600">
                 <span>Total Items</span>
-               <span>{totalItems}</span>
+                <span>{totalItems}</span>
               </div>
 
               <div className="mt-3 flex justify-between text-lg font-semibold text-gray-900">
