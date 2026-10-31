@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { addItem } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { addToWishlist, removeFromWishlist } from "../redux/slices/wishlistSlice";
 
 function ProductDetails() {
     const { id } = useParams();
@@ -15,6 +16,7 @@ function ProductDetails() {
     const [quantity, setQuantity] = useState(1);
     const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const navigate = useNavigate();
+    const wishlistItems = useSelector((state) => state.wishlist.items);
 
     const currentProduct = products.find((product) => {
         return product.id === id;
@@ -29,6 +31,9 @@ function ProductDetails() {
             </div>
         );
     }
+    const hasWishlist = wishlistItems.some((item) =>
+        item.id === currentProduct.id);
+
     function handleAddToCart() {
         if (!isAuthenticated) {
             navigate("/login");
@@ -67,6 +72,14 @@ function ProductDetails() {
 
         dispatch(addItem(cartItem));
         navigate("/cart");
+    }
+    function handleWishlist() {
+        if (!hasWishlist) {
+            dispatch(addToWishlist(currentProduct))
+        }
+        else {
+            dispatch(removeFromWishlist(currentProduct))
+        }
     }
 
     return (
@@ -135,8 +148,8 @@ function ProductDetails() {
                                         key={size}
                                         onClick={() => setSelectedSize(size)}
                                         className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${selectedSize === size
-                                                ? "border-gray-900 bg-gray-900 text-white"
-                                                : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
+                                            ? "border-gray-900 bg-gray-900 text-white"
+                                            : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
                                             }`}
                                     >
                                         {size}
@@ -163,8 +176,8 @@ function ProductDetails() {
                                         key={color}
                                         onClick={() => setSelectedColor(color)}
                                         className={`rounded-lg border px-5 py-2 text-sm font-medium transition ${selectedColor === color
-                                                ? "border-gray-900 bg-gray-900 text-white"
-                                                : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
+                                            ? "border-gray-900 bg-gray-900 text-white"
+                                            : "border-gray-300 bg-white text-gray-700 hover:border-gray-900"
                                             }`}
                                     >
                                         {color}
@@ -218,7 +231,21 @@ function ProductDetails() {
                                     +
                                 </button>
                             </div>
-                            <button onClick={handleAddToCart} className="mt-4 rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800">Add to  Cart</button>
+                            <div className="mt-4 flex gap-3">
+                                <button
+                                    onClick={handleWishlist}
+                                    className="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 transition hover:bg-gray-100"
+                                >
+                                    {hasWishlist ? "♥ Wishlisted" : "♡ Wishlist"}
+                                </button>
+
+                                <button
+                                    onClick={handleAddToCart}
+                                    className="rounded-lg bg-gray-900 px-6 py-3 font-semibold text-white transition hover:bg-gray-800"
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
                         </div>
                     )}
                 </div>

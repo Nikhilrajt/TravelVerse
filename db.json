@@ -1084,6 +1084,33 @@
       "status": "placed",
       "createdAt": "2026-10-31T04:38:27.613Z",
       "id": "Va-LP0RVV8A"
+    },
+    {
+      "userId": "-h-TDSjqa_k",
+      "shipping": {
+        "name": "mydeen",
+        "email": "mydeen@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "4",
+          "name": "Weekender Duffel Bag",
+          "price": 1899,
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+          "quantity": 1,
+          "size": "",
+          "color": "Olive Green"
+        }
+      ],
+      "subtotal": 1899,
+      "total": 1899,
+      "status": "placed",
+      "createdAt": "2026-10-31T05:55:56.478Z",
+      "id": "jWkylUnhx98"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
