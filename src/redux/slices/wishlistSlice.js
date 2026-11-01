@@ -3,33 +3,44 @@ import { getWishlist, saveWishlist } from "../../utils/wishlistStorage";
 
 const wishlistSlice = createSlice({
     name: "wishlist",
-    initialState: getWishlist(),
+
+    initialState: {
+        items: []
+    },
 
     reducers: {
+        loadWishlist: (state, action) => {
+            const wishlist = getWishlist(action.payload);
+
+            state.items = wishlist.items;
+        },
+
         addToWishlist: (state, action) => {
+            const { product, userId } = action.payload;
+
             const exists = state.items.some(
-                (item) => item.id === action.payload.id
+                (item) => item.id === product.id
             );
 
             if (exists) {
                 return;
             }
 
-            state.items.push(action.payload);
+            state.items.push(product);
 
-            saveWishlist({
+            saveWishlist(userId, {
                 items: state.items
             });
         },
 
         removeFromWishlist: (state, action) => {
-            const product = action.payload;
+            const { product, userId } = action.payload;
 
             state.items = state.items.filter(
                 (item) => item.id !== product.id
             );
 
-            saveWishlist({
+            saveWishlist(userId, {
                 items: state.items
             });
         }
@@ -37,6 +48,7 @@ const wishlistSlice = createSlice({
 });
 
 export const {
+    loadWishlist,
     addToWishlist,
     removeFromWishlist
 } = wishlistSlice.actions;

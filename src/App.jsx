@@ -15,6 +15,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/checkOut";
 import { loadCart } from "./redux/slices/cartSlice";
+import { loadWishlist } from "./redux/slices/wishlistSlice";
 
 function App() {
     const dispatch = useDispatch();
@@ -27,6 +28,7 @@ useEffect(() => {
 
         dispatch(loggedIn(user));
         dispatch(loadCart(user.id));
+        dispatch(loadWishlist(user.id));
     } else {
         dispatch(authInitialized());
     }

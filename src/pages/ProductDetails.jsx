@@ -67,14 +67,23 @@ if (currentProduct.colors?.length > 0 && !selectedColor) {
 setColorError("");
     navigate("/cart");
 };
-    function handleWishlist() {
-        if (!hasWishlist) {
-            dispatch(addToWishlist(currentProduct))
-        }
-        else {
-            dispatch(removeFromWishlist(currentProduct))
-        }
+function handleWishlist() {
+    if (!hasWishlist) {
+        dispatch(
+            addToWishlist({
+                product: currentProduct,
+                userId: user.id
+            })
+        );
+    } else {
+        dispatch(
+            removeFromWishlist({
+                product: currentProduct,
+                userId: user.id
+            })
+        );
     }
+}
 
     return (
         <div className="mx-auto max-w-6xl px-6 py-10">

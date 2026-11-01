@@ -4,11 +4,17 @@ import { useNavigate } from "react-router-dom";
 
 function Wishlist() {
     const wishlistItems = useSelector((state) => state.wishlist.items);
+    const user = useSelector((state) => state.auth.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleRemove = (product) => {
-        dispatch(removeFromWishlist(product));
+        dispatch(
+            removeFromWishlist({
+                product,
+                userId: user.id
+            })
+        );
     };
 
     const handleMoveToCart = (product) => {

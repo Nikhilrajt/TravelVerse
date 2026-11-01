@@ -1255,6 +1255,33 @@
       "status": "placed",
       "createdAt": "2026-10-31T07:37:21.877Z",
       "id": "KhdSnWQMkpc"
+    },
+    {
+      "userId": "XlBDwlA8x_0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilt@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "8888",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "8",
+          "name": "Explorer Crossbody Bag",
+          "price": 1299,
+          "quantity": 1,
+          "size": "",
+          "color": "Khaki",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 1299,
+      "total": 1299,
+      "status": "placed",
+      "createdAt": "2026-10-31T09:22:41.009Z",
+      "id": "WoCVcoRNcjw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

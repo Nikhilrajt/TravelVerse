@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../redux/slices/authSlice";
 import { loadCart } from "../redux/slices/cartSlice";
+import { loadWishlist } from "../redux/slices/wishlistSlice";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ const handleSubmit = async (e) => {
         ).unwrap();
 
         dispatch(loadCart(loggedInUser.id));
+        dispatch(loadWishlist(loggedInUser.id));
 
         navigate("/productlist");
     } catch (error) {

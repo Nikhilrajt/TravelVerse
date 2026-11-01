@@ -1,7 +1,15 @@
-const WISHLIST_KEY = "wishlist";
+const getWishlistKey = (userId) => `wishlist_user_${userId}`;
 
-export const getWishlist = () => {
-    const savedWishlist = localStorage.getItem(WISHLIST_KEY);
+export const getWishlist = (userId) => {
+    if (!userId) {
+        return {
+            items: []
+        };
+    }
+
+    const savedWishlist = localStorage.getItem(
+        getWishlistKey(userId)
+    );
 
     if (!savedWishlist) {
         return {
@@ -12,6 +20,13 @@ export const getWishlist = () => {
     return JSON.parse(savedWishlist);
 };
 
-export const saveWishlist = (wishlist) => {
-    localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+export const saveWishlist = (userId, wishlist) => {
+    if (!userId) {
+        return;
+    }
+
+    localStorage.setItem(
+        getWishlistKey(userId),
+        JSON.stringify(wishlist)
+    );
 };
