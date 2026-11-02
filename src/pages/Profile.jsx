@@ -1,4 +1,3 @@
-
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../redux/slices/authSlice";
@@ -14,66 +13,69 @@ function Profile() {
     }
 
     return (
-        <div className="min-h-[calc(100vh-73px)] bg-slate-50 px-6 py-10">
-            <div className="mx-auto max-w-2xl">
-                <h1 className="mb-8 text-3xl font-bold text-slate-900">
-                    Profile
-                </h1>
+        <div className="min-h-[calc(100vh-73px)] bg-stone-50 px-4 py-6 sm:px-6 sm:py-10">
+            <div className="mx-auto max-w-5xl">
 
-                <div className="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+                <div className="mb-6">
+                    <h1 className="text-2xl font-bold text-stone-900 sm:text-3xl">
+                        Profile
+                    </h1>
 
-                    {/* Avatar */}
-                    <div className="flex items-center gap-5 border-b border-slate-200 pb-7">
-                        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-900 text-xl font-bold text-white">
-                            {user?.fullName?.charAt(0)?.toUpperCase()}
-                        </div>
+                    <p className="mt-1 text-sm text-stone-500">
+                        View your account details.
+                    </p>
+                </div>
 
-                        <div>
-                            <h2 className="text-xl font-semibold text-slate-900">
-                                {user?.fullName}
-                            </h2>
+                <div className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-8 lg:p-10">
 
-                            <p className="mt-1 text-sm text-slate-500">
-                                @{user?.username}
-                            </p>
-                        </div>
+                    <div className="border-l-4 border-amber-800 pl-3 sm:pl-4">
+                        <h2 className="text-base font-semibold text-stone-900 sm:text-lg">
+                            Account information
+                        </h2>
+
+                        <p className="mt-1 text-xs text-stone-500 sm:text-sm">
+                            Your personal details and membership information.
+                        </p>
                     </div>
 
-                    {/* User Information */}
-                    <div className="mt-7 grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                    <div className="mt-6 grid grid-cols-1 gap-3 sm:mt-7 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4">
 
-                        <div>
-                            <p className="text-sm text-slate-500">
+                        <div className="min-h-24 rounded-xl border border-stone-200/80 bg-gradient-to-br from-stone-50 to-white p-4 sm:p-5">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                                 Full Name
                             </p>
-                            <p className="mt-1 font-medium text-slate-900">
+
+                            <p className="mt-2 break-words text-sm font-semibold text-stone-900 sm:text-base">
                                 {user?.fullName}
                             </p>
                         </div>
 
-                        <div>
-                            <p className="text-sm text-slate-500">
+                        <div className="min-h-24 rounded-xl border border-stone-200/80 bg-gradient-to-br from-stone-50 to-white p-4 sm:p-5">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                                 Username
                             </p>
-                            <p className="mt-1 font-medium text-slate-900">
+
+                            <p className="mt-2 break-words text-sm font-semibold text-stone-900 sm:text-base">
                                 @{user?.username}
                             </p>
                         </div>
 
-                        <div>
-                            <p className="text-sm text-slate-500">
+                        <div className="min-h-24 rounded-xl border border-stone-200/80 bg-gradient-to-br from-stone-50 to-white p-4 sm:p-5">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                                 Email
                             </p>
-                            <p className="mt-1 break-all font-medium text-slate-900">
+
+                            <p className="mt-2 break-all text-sm font-semibold text-stone-900 sm:text-base">
                                 {user?.email}
                             </p>
                         </div>
 
-                        <div>
-                            <p className="text-sm text-slate-500">
+                        <div className="min-h-24 rounded-xl border border-stone-200/80 bg-gradient-to-br from-stone-50 to-white p-4 sm:p-5">
+                            <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">
                                 Member Since
                             </p>
-                            <p className="mt-1 font-medium text-slate-900">
+
+                            <p className="mt-2 text-sm font-semibold text-stone-900 sm:text-base">
                                 {user?.createdAt
                                     ? new Date(
                                           user.createdAt
@@ -85,13 +87,13 @@ function Profile() {
                                     : "N/A"}
                             </p>
                         </div>
+
                     </div>
 
-                    {/* Logout */}
-                    <div className="mt-8 flex justify-center border-t border-slate-200 pt-6">
+                    <div className="mt-6 flex justify-stretch border-t border-stone-200 pt-5 sm:mt-7 sm:justify-end">
                         <button
                             onClick={handleLogout}
-                            className="rounded-lg bg-red-600 px-8 py-2.5 text-sm font-semibold text-white transition hover:bg-red-700"
+                            className="w-full rounded-lg border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-amber-800 hover:bg-amber-50 hover:text-amber-900 sm:w-auto"
                         >
                             Logout
                         </button>

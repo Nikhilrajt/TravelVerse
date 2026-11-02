@@ -25,7 +25,6 @@ export const registerUser = createAsyncThunk(
 
             const createdUser = await createUser({
                 ...newUser,
-                avatar: "",
                 createdAt: new Date().toISOString()
             })
             return createdUser;
@@ -69,6 +68,10 @@ const authSlice = createSlice({
             state.authInitialized = true
             state.loading = false
             state.error = null
+        },
+        updateUser: (state, action) => {
+            state.user = action.payload;
+            localStorage.setItem("user", JSON.stringify(action.payload));
         },
         authInitialized: (state) => {
             state.authInitialized = true;
@@ -114,5 +117,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { loggedIn, logOut, authInitialized} = authSlice.actions;
+export const { loggedIn, logOut, authInitialized,updateUser } = authSlice.actions;
 export default authSlice.reducer;

@@ -19,7 +19,7 @@ function ProtectedRoute() {
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 px-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-stone-950/50 px-4">
             <section
                 role="dialog"
                 aria-modal="true"
@@ -28,28 +28,28 @@ function ProtectedRoute() {
             >
                 <h1
                     id="authentication-prompt-title"
-                    className="text-xl font-bold text-slate-900"
+                    className="text-xl font-bold text-stone-900"
                 >
                     Please log in or sign up
                 </h1>
-                <p className="mt-2 text-sm text-slate-600">
+                <p className="mt-2 text-sm text-stone-600">
                     You need an account to access this page.
                 </p>
                 <Link
                     to="/login"
-                    className="mt-6 block w-full rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+                    className="mt-6 block w-full rounded-lg bg-stone-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
                 >
                     Log in
                 </Link>
                 <Link
                     to="/register"
-                    className="mt-3 block w-full rounded-lg border border-slate-300 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                    className="mt-3 block w-full rounded-lg border border-stone-300 px-4 py-3 text-sm font-semibold text-stone-700 transition hover:bg-stone-50"
                 >
                     Sign up
                 </Link>
                 <Link
                     to="/productlist"
-                    className="mt-4 inline-block text-sm font-medium text-slate-500 hover:text-slate-700"
+                    className="mt-4 inline-block text-sm font-medium text-stone-500 hover:text-stone-700"
                 >
                     Maybe later
                 </Link>

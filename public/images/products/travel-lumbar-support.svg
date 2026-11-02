@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" fill="none">
+  <defs>
+    <linearGradient id="background" x1="110" y1="35" x2="780" y2="660" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FAF8F3"/>
+      <stop offset="1" stop-color="#E9E3D8"/>
+    </linearGradient>
+    <linearGradient id="seat" x1="335" y1="85" x2="595" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#696D69"/>
+      <stop offset=".52" stop-color="#464C49"/>
+      <stop offset="1" stop-color="#323936"/>
+    </linearGradient>
+    <linearGradient id="cushion" x1="252" y1="310" x2="658" y2="461" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#91AA9F"/>
+      <stop offset=".48" stop-color="#69877C"/>
+      <stop offset="1" stop-color="#4A6A60"/>
+    </linearGradient>
+    <linearGradient id="cushionSide" x1="280" y1="387" x2="648" y2="455" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#617E73"/>
+      <stop offset="1" stop-color="#3D5F55"/>
+    </linearGradient>
+    <pattern id="mesh" width="12" height="12" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.15" fill="#D4E1D9" opacity=".52"/>
+      <circle cx="9" cy="9" r="1.15" fill="#D4E1D9" opacity=".52"/>
+    </pattern>
+    <filter id="shadow" x="140" y="450" width="620" height="110" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+  </defs>
+  <path fill="url(#background)" d="M0 0h900v700H0z"/>
+  <ellipse cx="451" cy="502" fill="#4B443A" opacity=".2" rx="250" ry="27" filter="url(#shadow)"/>
+  <path d="M330 147c0-37 30-67 67-67h106c37 0 67 30 67 67v348H330V147Z" fill="url(#seat)" stroke="#373E3A" stroke-width="7"/>
+  <path d="M367 131v314m166-314v314" stroke="#A2A49D" stroke-linecap="round" stroke-width="5" opacity=".42"/>
+  <path d="M349 158c0-26 21-47 47-47h108c26 0 47 21 47 47" stroke="#8A908A" stroke-width="4" opacity=".45"/>
+  <path d="M347 477h206l44 62H301l46-62Z" fill="#3E4541" stroke="#333A36" stroke-width="6"/>
+  <path d="M316 533h311" stroke="#A7A49B" stroke-linecap="round" stroke-width="6" opacity=".7"/>
+  <path d="M278 326c0-31 25-56 56-56h228c48 0 87 39 87 87v32c0 42-34 76-76 76H348c-39 0-70-31-70-70v-69Z" fill="#344F47" opacity=".82"/>
+  <path d="M250 313c0-31 25-56 56-56h251c60 0 108 48 108 108v24c0 43-35 78-78 78H338c-49 0-88-39-88-88v-66Z" fill="url(#cushionSide)" stroke="#46665B" stroke-width="7"/>
+  <path d="M267 313c0-22 18-40 40-40h247c49 0 88 39 88 88v22c0 35-28 63-63 63H340c-40 0-73-33-73-73v-60Z" fill="url(#cushion)" stroke="#A9BDB3" stroke-width="5"/>
+  <path d="M286 311c0-13 11-24 24-24h240c36 0 65 29 65 65v26c0 27-22 49-49 49H342c-31 0-56-25-56-56v-60Z" fill="url(#mesh)" opacity=".8"/>
+  <path d="M286 311c0-13 11-24 24-24h240c36 0 65 29 65 65v26c0 27-22 49-49 49H342c-31 0-56-25-56-56v-60Z" stroke="#D6E1DA" stroke-width="4" opacity=".7"/>
+  <path d="M313 292v68c0 23 19 42 42 42h210" stroke="#E0E9E3" stroke-linecap="round" stroke-width="4" opacity=".6"/>
+  <path d="M300 276c-21-19-36-45-44-75m448 75c21-19 36-45 44-75" stroke="#334B43" stroke-linecap="round" stroke-width="14"/>
+  <path d="M297 272c-17-17-30-37-37-61m435 61c17-17 30-37 37-61" stroke="#A4B5AB" stroke-linecap="round" stroke-width="4"/>
+  <path d="M360 437v24m178-24v24" stroke="#536B61" stroke-linecap="round" stroke-width="5"/>
+</svg>

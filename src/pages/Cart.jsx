@@ -9,55 +9,90 @@ function Cart() {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
+  const subtotal = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   return (
-    <div className="mx-auto max-w-6xl px-6 py-10">
-      <h1 className="mb-8 text-3xl font-bold text-gray-900">
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+
+      <h1 className="mb-6 text-2xl font-bold text-stone-900 sm:mb-8 sm:text-3xl">
         Shopping Cart
       </h1>
 
       {cartItems.length === 0 ? (
-        <div className="flex flex-col items-center text-center">
-          <p className="text-gray-600">Your cart is empty.</p>
+        <div className="mt-8 flex flex-col items-center px-4 text-center">
+          <p className="text-sm text-stone-600 sm:text-base">
+            Your cart is empty.
+          </p>
+
           <Link
             to="/productlist"
-            className="mt-5 rounded-lg bg-gray-900 px-5 py-3 text-center font-semibold text-white transition hover:bg-gray-800"
+            className="mt-5 rounded-lg bg-stone-900 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-stone-800 sm:text-base"
           >
             Continue shopping
           </Link>
         </div>
       ) : (
         <div className="space-y-6">
+
           {cartItems.map((item) => {
             const product = products.find(
-              (product) => String(product.id) === String(item.productId)
+              (product) =>
+                String(product.id) === String(item.productId)
             );
+
             const canIncreaseQuantity =
-              Number.isFinite(product?.stock) && item.quantity < product.stock;
+              Number.isFinite(product?.stock) &&
+              item.quantity < product.stock;
+
             return (
               <div
                 key={`${item.productId}-${item.size}-${item.color}`}
-                className="flex gap-6 rounded-xl border border-gray-200 p-5"
+                className="flex flex-col gap-4 rounded-xl border border-stone-200 p-4 sm:flex-row sm:gap-6 sm:p-5"
               >
+
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-32 w-32 rounded-lg object-contain"
+                  className="h-48 w-full rounded-lg object-contain sm:h-32 sm:w-32"
                 />
 
                 <div className="flex-1">
-                  <h2 className="text-xl font-semibold text-gray-900">
+
+                  <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">
                     {item.name}
                   </h2>
 
-                  <p className="mt-2 text-lg font-semibold">
-                    ₹{item.price}
+                  <p className="mt-2 text-base font-semibold text-stone-900 sm:text-lg">
+                    ₹{item.price.toLocaleString("en-IN")}
                   </p>
+
+                  {(item.size || item.color) && (
+                    <div className="mt-2 space-y-1 text-sm text-stone-600">
+                      {item.size && (
+                        <p>
+                          Size: {item.size}
+                        </p>
+                      )}
+
+                      {item.color && (
+                        <p>
+                          Color: {item.color}
+                        </p>
+                      )}
+                    </div>
+                  )}
+
                   <div className="mt-4">
-                    <p className="mb-2 text-sm font-medium text-gray-700">
+
+                    <p className="mb-2 text-sm font-medium text-stone-700">
                       Quantity
                     </p>
 
-                    <div className="flex w-fit items-center overflow-hidden rounded-lg border border-gray-300">
+                    <div className="flex w-fit items-center overflow-hidden rounded-lg border border-stone-300">
+
                       <button
                         onClick={() =>
                           dispatch(
@@ -71,12 +106,12 @@ function Cart() {
                           )
                         }
                         disabled={item.quantity <= 1}
-                        className="px-4 py-2 text-lg font-medium transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40"
+                        className="px-3 py-2 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
                       >
                         −
                       </button>
 
-                      <span className="min-w-12 border-x border-gray-300 px-4 py-2 text-center font-medium">
+                      <span className="min-w-10 border-x border-stone-300 px-3 py-2 text-center text-sm font-medium sm:min-w-12 sm:px-4 sm:text-base">
                         {item.quantity}
                       </span>
 
@@ -93,23 +128,14 @@ function Cart() {
                           )
                         }
                         disabled={!canIncreaseQuantity}
-                        className="px-4 py-2 text-lg font-medium transition hover:bg-gray-100"
+                        className="px-3 py-2 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
                       >
                         +
                       </button>
+
                     </div>
                   </div>
-                  {item.size && (
-                    <p className="text-gray-600">
-                      Size: {item.size}
-                    </p>
-                  )}
 
-                  {item.color && (
-                    <p className="text-gray-600">
-                      Color: {item.color}
-                    </p>
-                  )}
                   <button
                     onClick={() =>
                       dispatch(
@@ -123,39 +149,42 @@ function Cart() {
                   >
                     Remove
                   </button>
+
                 </div>
               </div>
             );
           })}
-          <div className="mt-8 flex justify-end">
-            <div className="w-full max-w-sm rounded-xl border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900">
+
+          <div className="mt-8 flex justify-stretch sm:justify-end">
+
+            <div className="w-full max-w-sm rounded-xl border border-stone-200 p-5 sm:p-6">
+
+              <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">
                 Cart Summary
               </h2>
 
-              <div className="mt-4 flex justify-between text-gray-600">
+              <div className="mt-4 flex justify-between text-sm text-stone-600 sm:text-base">
                 <span>Total Items</span>
                 <span>{totalItems}</span>
               </div>
 
-              <div className="mt-3 flex justify-between text-lg font-semibold text-gray-900">
+              <div className="mt-3 flex justify-between text-base font-semibold text-stone-900 sm:text-lg">
                 <span>Subtotal</span>
                 <span>
-                  ₹{cartItems.reduce(
-                    (total, item) => total + item.price * item.quantity,
-                    0
-                  )}
+                  ₹{subtotal.toLocaleString("en-IN")}
                 </span>
               </div>
 
               <Link
                 to="/checkout"
-                className="mt-6 block w-full rounded-lg bg-gray-900 px-5 py-3 text-center font-semibold text-white transition hover:bg-gray-800"
+                className="mt-6 block w-full rounded-lg bg-stone-900 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-stone-800 sm:text-base"
               >
                 Checkout
               </Link>
+
             </div>
           </div>
+
         </div>
       )}
     </div>

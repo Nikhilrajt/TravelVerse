@@ -19,3 +19,10 @@ export const findUser = async (email)=>{
     const response = await api.get(`/users?email=${email}`);
     return response.data;
 }
+export const updateUserAddress = async (userId, address) => {
+    const response = await api.patch(`/users/${userId}`, {
+        address
+    });
+
+    return response.data;
+};

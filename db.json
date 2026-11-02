@@ -6,8 +6,8 @@
       "description": "A lightweight cabin suitcase designed for short trips.",
       "price": 4999,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-      "stock": 12,
+      "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp",
+      "stock": 10,
       "sizes": [],
       "colors": [
         "Black",
@@ -24,8 +24,8 @@
       "description": "A spacious and durable suitcase designed for longer journeys and check-in travel.",
       "price": 7499,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
-      "stock": 8,
+      "image": "/images/products/2026inchvoyageurset_620x.webp",
+      "stock": 9,
       "sizes": [
         "24-inch",
         "28-inch"
@@ -45,7 +45,7 @@
       "description": "A durable travel backpack designed for short trips and everyday travel.",
       "price": 2499,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg",
       "stock": 15,
       "sizes": [
         "20L",
@@ -67,7 +67,7 @@
       "description": "A spacious duffel bag suitable for weekend trips, gym visits, and short getaways.",
       "price": 1899,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/weekender-duffel.jpg",
       "stock": 18,
       "sizes": [],
       "colors": [
@@ -85,7 +85,7 @@
       "description": "A compact sling bag for carrying everyday travel essentials while on the move.",
       "price": 999,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/sling-bag.jpg",
       "stock": 25,
       "sizes": [],
       "colors": [
@@ -103,7 +103,7 @@
       "description": "A practical travel backpack with a padded laptop compartment and organized storage.",
       "price": 2799,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/laptop-backpack.jpg",
       "stock": 14,
       "sizes": [
         "20L",
@@ -125,7 +125,7 @@
       "description": "A compact travel bag designed for short weekend trips and overnight stays.",
       "price": 1599,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/compact-weekend-bag.jpg",
       "stock": 20,
       "sizes": [],
       "colors": [
@@ -143,7 +143,7 @@
       "description": "A lightweight crossbody bag for keeping travel essentials secure and easily accessible.",
       "price": 1299,
       "category": "Luggage & Bags",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/crossbody-bag.jpg",
       "stock": 22,
       "sizes": [],
       "colors": [
@@ -161,7 +161,7 @@
       "description": "A set of packing cubes designed to organize clothing and maximize luggage space.",
       "price": 899,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/packing-cubes.jpg",
       "stock": 30,
       "sizes": [
         "Small",
@@ -183,7 +183,7 @@
       "description": "A compact organizer for keeping passports, tickets, cards, and travel documents together.",
       "price": 699,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/document-organizer.jpg",
       "stock": 28,
       "sizes": [],
       "colors": [
@@ -201,7 +201,7 @@
       "description": "A slim holder designed to keep passports and essential travel cards organized.",
       "price": 499,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/passport-holder.jpg",
       "stock": 35,
       "sizes": [],
       "colors": [
@@ -219,7 +219,7 @@
       "description": "A compact pouch with organized compartments for storing charging cables and small accessories.",
       "price": 599,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/cable-organizer.jpg",
       "stock": 26,
       "sizes": [],
       "colors": [
@@ -237,7 +237,7 @@
       "description": "A set of lightweight shoe bags that keeps footwear separated from other belongings.",
       "price": 399,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/shoe-bag.jpg",
       "stock": 32,
       "sizes": [],
       "colors": [
@@ -255,7 +255,7 @@
       "description": "A travel organizer with multiple compartments for keeping personal care items neatly arranged.",
       "price": 799,
       "category": "Travel Organization",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/toiletry-organizer.jpg",
       "stock": 24,
       "sizes": [],
       "colors": [
@@ -273,7 +273,7 @@
       "description": "A versatile travel adapter designed to support charging devices across different international socket types.",
       "price": 1499,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/travel-adapter.jpg",
       "stock": 18,
       "sizes": [],
       "colors": [
@@ -290,7 +290,7 @@
       "description": "A high-capacity power bank designed to keep smartphones and other devices charged while traveling.",
       "price": 1999,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/power-bank.jpg",
       "stock": 16,
       "sizes": [],
       "colors": [
@@ -307,7 +307,7 @@
       "description": "A compact 65W charger designed for fast charging compatible phones, tablets, and laptops.",
       "price": 1799,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/travel-charger.jpg",
       "stock": 20,
       "sizes": [],
       "colors": [
@@ -324,7 +324,7 @@
       "description": "A versatile charging cable kit with multiple connectors for everyday travel needs.",
       "price": 699,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/cable-kit.jpg",
       "stock": 34,
       "sizes": [],
       "colors": [
@@ -341,7 +341,7 @@
       "description": "A compact charging hub that allows multiple USB devices to be charged from a single outlet.",
       "price": 999,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/charging-hub.jpg",
       "stock": 21,
       "sizes": [],
       "colors": [
@@ -358,7 +358,7 @@
       "description": "A compact tracking device designed to help travelers locate their luggage and personal belongings.",
       "price": 1299,
       "category": "Travel Tech",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/luggage-tracker.jpg",
       "stock": 17,
       "sizes": [],
       "colors": [
@@ -375,7 +375,7 @@
       "description": "A supportive memory foam neck pillow designed for comfortable rest during long journeys.",
       "price": 1099,
       "category": "Travel Comfort",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/neck-pillow.jpg",
       "stock": 19,
       "sizes": [],
       "colors": [
@@ -393,7 +393,7 @@
       "description": "A soft travel eye mask designed to block light and improve comfort while resting.",
       "price": 399,
       "category": "Travel Comfort",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/sleep-mask.jpg",
       "stock": 40,
       "sizes": [],
       "colors": [
@@ -411,7 +411,7 @@
       "description": "A lightweight and foldable blanket designed to provide extra warmth during travel.",
       "price": 899,
       "category": "Travel Comfort",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/travel-blanket.jpg",
       "stock": 22,
       "sizes": [
         "Standard"
@@ -431,7 +431,7 @@
       "description": "An inflatable footrest designed to provide comfortable leg and foot support during long journeys.",
       "price": 699,
       "category": "Travel Comfort",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/inflatable-footrest.svg",
       "stock": 27,
       "sizes": [],
       "colors": [
@@ -449,7 +449,7 @@
       "description": "A supportive lumbar pillow designed to provide back support while traveling or sitting for long periods.",
       "price": 999,
       "category": "Travel Comfort",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/travel-lumbar-support.svg",
       "stock": 18,
       "sizes": [],
       "colors": [
@@ -467,7 +467,7 @@
       "description": "An insulated travel bottle designed to keep beverages at a suitable temperature while traveling.",
       "price": 899,
       "category": "Travel Essentials",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/insulated-bottle.jpg",
       "stock": 25,
       "sizes": [
         "500ml",
@@ -489,7 +489,7 @@
       "description": "A compact toiletry kit for carrying essential personal care items during trips.",
       "price": 699,
       "category": "Travel Essentials",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/toiletry-kit.jpg",
       "stock": 29,
       "sizes": [],
       "colors": [
@@ -507,7 +507,7 @@
       "description": "A compact TSA-compatible combination lock designed to secure luggage during travel.",
       "price": 499,
       "category": "Travel Essentials",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/tsa-lock.jpg",
       "stock": 36,
       "sizes": [],
       "colors": [
@@ -524,7 +524,7 @@
       "description": "A lightweight compact umbrella designed to fit easily inside travel bags.",
       "price": 599,
       "category": "Travel Essentials",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/travel-umbrella.jpg",
       "stock": 31,
       "sizes": [],
       "colors": [
@@ -542,7 +542,7 @@
       "description": "A compact first aid kit containing essential supplies for common minor travel emergencies.",
       "price": 799,
       "category": "Travel Essentials",
-      "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg",
+      "image": "/images/products/first-aid.jpg",
       "stock": 23,
       "sizes": [],
       "colors": [],
@@ -557,63 +557,52 @@
       "username": "akshay_s",
       "email": "akshay@gmail.com",
       "password": "akshay123",
-      "avatar": "",
       "createdAt": "2026-10-28T05:17:54.419Z",
-      "id": "RqXuiIDc7zw"
+      "id": "RqXuiIDc7zw",
+      "address": {
+        "address": "Chgi",
+        "city": "Ydyfug",
+        "pincode": "5756868",
+        "phone": "786653"
+      }
     },
     {
       "fullName": "mydeen",
       "username": "mydeen1",
       "email": "mydeen@gmail.com",
       "password": "12345678",
-      "avatar": "",
       "createdAt": "2026-10-30T10:51:00.154Z",
       "id": "-h-TDSjqa_k"
     },
     {
-      "fullName": "Kani",
-      "username": "KaniAnalyst",
-      "email": "kani@gmail.com",
-      "password": "12345678",
-      "avatar": "",
-      "createdAt": "2026-10-31T06:26:19.488Z",
-      "id": "Ho3OM9ujKBA"
+      "fullName": "sheik",
+      "username": "_sheik",
+      "email": "sheik@gmail.com",
+      "password": "sheik123",
+      "createdAt": "2026-11-02T05:24:37.808Z",
+      "id": "GXBuIMPPet8"
     },
     {
       "fullName": "nikhil",
-      "username": "niki",
+      "username": "nikhil",
       "email": "nikhil@gmail.com",
-      "password": "12345678",
-      "avatar": "",
-      "createdAt": "2026-10-31T06:27:50.394Z",
-      "id": "jPXcSa1FYrk"
+      "password": "nikhil123",
+      "createdAt": "2026-11-02T06:58:45.222Z",
+      "id": "alINMPZC0fU",
+      "address": {
+        "address": "bridgeonskillversity,coimbathoor",
+        "city": "coimbathor",
+        "pincode": "2929929",
+        "phone": "29208404030"
+      }
     },
     {
-      "fullName": "nikhil",
-      "username": "nikhillll",
-      "email": "nikhilraj@gmail.com",
-      "password": "12345678",
-      "avatar": "",
-      "createdAt": "2026-10-31T06:29:02.152Z",
-      "id": "bMc4-AsNwb0"
-    },
-    {
-      "fullName": "nikhil",
-      "username": "nikhilt",
-      "email": "nikhilt@gmail.com",
-      "password": "nikhilt123",
-      "avatar": "",
-      "createdAt": "2026-10-31T07:14:06.057Z",
-      "id": "XlBDwlA8x_0"
-    },
-    {
-      "fullName": "akhil",
-      "username": "akhil",
-      "email": "akhil@gmail.com",
-      "password": "akhil123",
-      "avatar": "",
-      "createdAt": "2026-11-02T03:43:08.833Z",
-      "id": "S2rNSHdAw3Q"
+      "fullName": "rahul",
+      "username": "rahul",
+      "email": "rahul@gmail.com",
+      "password": "rahul123",
+      "createdAt": "2026-11-02T07:03:45.707Z",
+      "id": "HUeMF2jw_Lc"
     }
   ],
   "orders": [
@@ -1318,6 +1307,285 @@
       "status": "placed",
       "createdAt": "2026-11-02T03:40:21.797Z",
       "id": "Ysnfpi_iFgo"
+    },
+    {
+      "userId": "XlBDwlA8x_0",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhilt@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "6789",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 3,
+          "size": "",
+          "color": "Black",
+          "image": "public/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 14997,
+      "total": 14997,
+      "status": "placed",
+      "createdAt": "2026-11-02T05:11:01.402Z",
+      "id": "rGDWx0muUWg"
+    },
+    {
+      "userId": "GXBuIMPPet8",
+      "shipping": {
+        "name": "sheik",
+        "email": "sheik@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "333333",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 5,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 24995,
+      "total": 24995,
+      "status": "placed",
+      "createdAt": "2026-11-02T05:30:01.567Z",
+      "id": "9IJZ2rQPr-Y"
+    },
+    {
+      "userId": "GXBuIMPPet8",
+      "shipping": {
+        "name": "sheik",
+        "email": "sheik@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "777",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 1,
+          "size": "20L",
+          "color": "Navy Blue",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        },
+        {
+          "productId": "5",
+          "name": "UrbanCross Sling Bag",
+          "price": 999,
+          "quantity": 1,
+          "size": "",
+          "color": "Grey",
+          "image": "/images/products/sling-bag.jpg"
+        }
+      ],
+      "subtotal": 3498,
+      "total": 3498,
+      "status": "placed",
+      "createdAt": "2026-11-02T05:42:38.694Z",
+      "id": "rxHKW7SkpT0"
+    },
+    {
+      "userId": "GXBuIMPPet8",
+      "shipping": {
+        "name": "sheik",
+        "email": "sheik@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 1,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        },
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 1,
+          "size": "20L",
+          "color": "Black",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        },
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 5,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 32493,
+      "total": 32493,
+      "status": "placed",
+      "createdAt": "2026-11-02T06:25:24.082Z",
+      "id": "NwCYePaXLyU"
+    },
+    {
+      "userId": "GXBuIMPPet8",
+      "shipping": {
+        "name": "sheik",
+        "email": "sheik@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "78900",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 7,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        },
+        {
+          "productId": "2",
+          "name": "Voyager Check-In Suitcase",
+          "price": 7499,
+          "quantity": 3,
+          "size": "24-inch",
+          "color": "Blue",
+          "image": "/images/products/2026inchvoyageurset_620x.webp"
+        }
+      ],
+      "subtotal": 57490,
+      "total": 57490,
+      "status": "placed",
+      "createdAt": "2026-11-02T06:46:59.022Z",
+      "id": "y2c9h6lmokc"
+    },
+    {
+      "userId": "GXBuIMPPet8",
+      "shipping": {
+        "name": "sheik",
+        "email": "sheik@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 4,
+          "size": "",
+          "color": "Silver",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 19996,
+      "total": 19996,
+      "status": "placed",
+      "createdAt": "2026-11-02T06:47:29.960Z",
+      "id": "Ap8--NeFAPE"
+    },
+    {
+      "userId": "alINMPZC0fU",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhil@gmail.com",
+        "address": "bridgeonskillversity,coimbathoor",
+        "city": "coimbathor",
+        "pincode": "2929929",
+        "phone": "29208404030"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 1,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-11-02T07:02:50.143Z",
+      "id": "kcFYru8k8s0"
+    },
+    {
+      "userId": "alINMPZC0fU",
+      "shipping": {
+        "name": "nikhil",
+        "email": "nikhil@gmail.com",
+        "address": "bridgeonskillversity,coimbathoor",
+        "city": "coimbathor",
+        "pincode": "2929929",
+        "phone": "29208404030"
+      },
+      "items": [
+        {
+          "productId": "2",
+          "name": "Voyager Check-In Suitcase",
+          "price": 7499,
+          "quantity": 1,
+          "size": "24-inch",
+          "color": "Charcoal",
+          "image": "/images/products/2026inchvoyageurset_620x.webp"
+        }
+      ],
+      "subtotal": 7499,
+      "total": 7499,
+      "status": "placed",
+      "createdAt": "2026-11-02T07:03:06.878Z",
+      "id": "6w7MNW2yGTM"
+    },
+    {
+      "userId": "RqXuiIDc7zw",
+      "shipping": {
+        "name": "Akshay",
+        "email": "akshay@gmail.com",
+        "address": "Chgi",
+        "city": "Ydyfug",
+        "pincode": "5756868",
+        "phone": "786653"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 4,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 19996,
+      "total": 19996,
+      "status": "placed",
+      "createdAt": "2026-11-02T07:29:33.500Z",
+      "id": "KcA5-FiIYSM"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
