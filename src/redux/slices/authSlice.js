@@ -103,6 +103,7 @@ const authSlice = createSlice({
                 state.loading = false;
                 state.user = action.payload;
                 state.isAuthenticated = true;
+                state.authInitialized = true;
                 state.error = null;
                 localStorage.setItem("user", JSON.stringify(action.payload));
             })

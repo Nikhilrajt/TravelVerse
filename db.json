@@ -605,6 +605,15 @@
       "avatar": "",
       "createdAt": "2026-10-31T07:14:06.057Z",
       "id": "XlBDwlA8x_0"
+    },
+    {
+      "fullName": "akhil",
+      "username": "akhil",
+      "email": "akhil@gmail.com",
+      "password": "akhil123",
+      "avatar": "",
+      "createdAt": "2026-11-02T03:43:08.833Z",
+      "id": "S2rNSHdAw3Q"
     }
   ],
   "orders": [
@@ -1282,6 +1291,33 @@
       "status": "placed",
       "createdAt": "2026-10-31T09:22:41.009Z",
       "id": "WoCVcoRNcjw"
+    },
+    {
+      "userId": "RqXuiIDc7zw",
+      "shipping": {
+        "name": "Akshay",
+        "email": "akshay@gmail.com",
+        "address": "Thottathil(h),Nellaya(po),cherpulassery,palakkad",
+        "city": "palakkad",
+        "pincode": "679335",
+        "phone": "+918921830994"
+      },
+      "items": [
+        {
+          "productId": "4",
+          "name": "Weekender Duffel Bag",
+          "price": 1899,
+          "quantity": 1,
+          "size": "",
+          "color": "Black",
+          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 1899,
+      "total": 1899,
+      "status": "placed",
+      "createdAt": "2026-11-02T03:40:21.797Z",
+      "id": "Ysnfpi_iFgo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
