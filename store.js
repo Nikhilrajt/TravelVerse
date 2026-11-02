@@ -6,11 +6,11 @@ import wishlistReducer from "./src//redux/slices/wishlistSlice";
 import orderReducer from "./src/redux/slices/orderSlice";
 
 export const store = configureStore({
-    reducer:{
-      product:productReducer,
-      auth:authReducer,
-      cart:cartReducer,
-      wishlist:wishlistReducer,
-      order: orderReducer
-    }
+  reducer: {
+    product: productReducer,
+    auth: authReducer,
+    cart: cartReducer,
+    wishlist: wishlistReducer,
+    order: orderReducer
+  }
 })

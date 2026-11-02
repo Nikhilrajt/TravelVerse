@@ -96,7 +96,6 @@ function ProductDetails() {
 
             <div className="grid gap-8 md:grid-cols-2 md:gap-10">
 
-                {/* Product Image */}
                 <div className="flex items-center justify-center rounded-2xl bg-stone-100 p-4 sm:p-8">
                     <img
                         src={currentProduct.image}
@@ -105,7 +104,6 @@ function ProductDetails() {
                     />
                 </div>
 
-                {/* Product Information */}
                 <div className="flex flex-col justify-center">
 
                     <p className="mb-2 text-xs font-medium text-stone-500 sm:text-sm">
@@ -148,7 +146,6 @@ function ProductDetails() {
 
                     <div className="my-5 border-t border-stone-200 sm:my-6" />
 
-                    {/* Size */}
                     {currentProduct.sizes.length > 0 && (
                         <div>
                             <h2 className="mb-3 text-sm font-semibold text-stone-900 sm:text-base">
@@ -163,11 +160,10 @@ function ProductDetails() {
                                             setSelectedSize(size);
                                             setSizeError("");
                                         }}
-                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${
-                                            selectedSize === size
-                                                ? "border-stone-900 bg-stone-900 text-white"
-                                                : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
-                                        }`}
+                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedSize === size
+                                            ? "border-stone-900 bg-stone-900 text-white"
+                                            : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
+                                            }`}
                                     >
                                         {size}
                                     </button>
@@ -182,7 +178,6 @@ function ProductDetails() {
                         </div>
                     )}
 
-                    {/* Color */}
                     {currentProduct.colors.length > 0 && (
                         <div className="mt-5 sm:mt-6">
                             <h2 className="mb-3 text-sm font-semibold text-stone-900 sm:text-base">
@@ -197,11 +192,10 @@ function ProductDetails() {
                                             setSelectedColor(color);
                                             setColorError("");
                                         }}
-                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${
-                                            selectedColor === color
-                                                ? "border-stone-900 bg-stone-900 text-white"
-                                                : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
-                                        }`}
+                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedColor === color
+                                            ? "border-stone-900 bg-stone-900 text-white"
+                                            : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
+                                            }`}
                                     >
                                         {color}
                                     </button>
@@ -216,7 +210,6 @@ function ProductDetails() {
                         </div>
                     )}
 
-                    {/* Quantity and Actions */}
                     {currentProduct.stock === 0 ? (
                         <div className="mt-6 rounded-lg bg-red-50 p-4 sm:mt-8">
                             <p className="font-semibold text-red-600">

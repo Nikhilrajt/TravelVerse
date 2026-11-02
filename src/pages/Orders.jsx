@@ -73,7 +73,6 @@ function Orders() {
                                     className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
                                 >
 
-                                    {/* Order Header */}
                                     <div className="flex flex-col gap-3 border-b border-stone-100 pb-4 sm:flex-row sm:items-start sm:justify-between">
 
                                         <div>
@@ -94,7 +93,6 @@ function Orders() {
 
                                     </div>
 
-                                    {/* Order Items */}
                                     <div className="divide-y divide-stone-100">
 
                                         {(order.items ?? []).map((item) => (
@@ -144,7 +142,6 @@ function Orders() {
 
                                     </div>
 
-                                    {/* Order Footer */}
                                     <div className="mt-4 flex flex-col gap-2 border-t border-stone-100 pt-4 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
 
                                         <span className="text-stone-500">

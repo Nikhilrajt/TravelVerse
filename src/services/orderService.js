@@ -17,8 +17,8 @@ export const getOrdersByUser = async (userId) => {
 };
 
 export const updateProductStock = async (productId, stock) => {
-    const response = await api.patch(`/products/${productId}`, {
-        stock
-    });
-    return response.data;
+  const response = await api.patch(`/products/${productId}`, {
+    stock
+  });
+  return response.data;
 };

@@ -23,10 +23,9 @@ function Navbar() {
                     <NavLink
                         to="/productlist"
                         className={({ isActive }) =>
-                            `whitespace-nowrap text-sm font-medium transition ${
-                                isActive
-                                    ? "text-orange-800"
-                                    : "text-stone-600 hover:text-orange-900"
+                            `whitespace-nowrap text-sm font-medium transition ${isActive
+                                ? "text-orange-800"
+                                : "text-stone-600 hover:text-orange-900"
                             }`
                         }
                     >
@@ -36,10 +35,9 @@ function Navbar() {
                     <NavLink
                         to="/wishlist"
                         className={({ isActive }) =>
-                            `whitespace-nowrap text-sm font-medium transition ${
-                                isActive
-                                    ? "text-orange-800"
-                                    : "text-stone-600 hover:text-orange-900"
+                            `whitespace-nowrap text-sm font-medium transition ${isActive
+                                ? "text-orange-800"
+                                : "text-stone-600 hover:text-orange-900"
                             }`
                         }
                     >
@@ -49,10 +47,9 @@ function Navbar() {
                     <NavLink
                         to="/cart"
                         className={({ isActive }) =>
-                            `whitespace-nowrap text-sm font-medium transition ${
-                                isActive
-                                    ? "text-orange-800"
-                                    : "text-stone-600 hover:text-orange-900"
+                            `whitespace-nowrap text-sm font-medium transition ${isActive
+                                ? "text-orange-800"
+                                : "text-stone-600 hover:text-orange-900"
                             }`
                         }
                     >
@@ -62,10 +59,9 @@ function Navbar() {
                     <NavLink
                         to="/orders"
                         className={({ isActive }) =>
-                            `whitespace-nowrap text-sm font-medium transition ${
-                                isActive
-                                    ? "text-orange-800"
-                                    : "text-stone-600 hover:text-orange-900"
+                            `whitespace-nowrap text-sm font-medium transition ${isActive
+                                ? "text-orange-800"
+                                : "text-stone-600 hover:text-orange-900"
                             }`
                         }
                     >
@@ -78,10 +74,9 @@ function Navbar() {
                             aria-label={`${displayName}'s profile`}
                             title={`${displayName}'s profile`}
                             className={({ isActive }) =>
-                                `flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold transition ${
-                                    isActive
-                                        ? "bg-orange-800 text-white"
-                                        : "bg-stone-100 text-stone-700 hover:bg-amber-100 hover:text-orange-900"
+                                `flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold transition ${isActive
+                                    ? "bg-orange-800 text-white"
+                                    : "bg-stone-100 text-stone-700 hover:bg-amber-100 hover:text-orange-900"
                                 }`
                             }
                         >

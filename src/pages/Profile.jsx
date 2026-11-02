@@ -78,12 +78,12 @@ function Profile() {
                             <p className="mt-2 text-sm font-semibold text-stone-900 sm:text-base">
                                 {user?.createdAt
                                     ? new Date(
-                                          user.createdAt
-                                      ).toLocaleDateString("en-US", {
-                                          year: "numeric",
-                                          month: "long",
-                                          day: "numeric"
-                                      })
+                                        user.createdAt
+                                    ).toLocaleDateString("en-US", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric"
+                                    })
                                     : "N/A"}
                             </p>
                         </div>

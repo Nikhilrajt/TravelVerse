@@ -73,7 +73,7 @@ function ProductCard({ product }) {
             })
         );
 
-        navigate("/checkout");
+        navigate("/cart");
     };
 
     return (

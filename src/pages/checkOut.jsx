@@ -172,7 +172,6 @@ function Checkout() {
 
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start lg:gap-8">
 
-          {/* Shipping Information */}
           <section className="rounded-2xl border border-stone-100 bg-white p-4 shadow-xl shadow-stone-200/50 sm:rounded-3xl sm:p-8 lg:col-span-7">
 
             <h2 className="mb-5 text-lg font-bold text-stone-800 sm:mb-6">
@@ -327,7 +326,6 @@ function Checkout() {
             </form>
           </section>
 
-          {/* Order Summary */}
           <section className="rounded-2xl border border-stone-100 bg-white p-4 shadow-xl shadow-stone-200/50 sm:rounded-3xl sm:p-8 lg:col-span-5">
 
             <h2 className="mb-5 text-lg font-bold text-stone-800 sm:mb-6">

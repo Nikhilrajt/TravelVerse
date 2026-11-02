@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import ProductLoader from "./components/ProductLoader";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loggedIn,authInitialized } from "./redux/slices/authSlice";
+import { loggedIn, authInitialized } from "./redux/slices/authSlice";
 import WishList from "./pages/Wishlist";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
@@ -20,40 +20,40 @@ import { loadWishlist } from "./redux/slices/wishlistSlice";
 function App() {
     const dispatch = useDispatch();
 
-useEffect(() => {
-    const savedUser = localStorage.getItem("user");
+    useEffect(() => {
+        const savedUser = localStorage.getItem("user");
 
-    if (savedUser) {
-        const user = JSON.parse(savedUser);
+        if (savedUser) {
+            const user = JSON.parse(savedUser);
 
-        dispatch(loggedIn(user));
-        dispatch(loadCart(user.id));
-        dispatch(loadWishlist(user.id));
-    } else {
-        dispatch(authInitialized());
-    }
-}, [dispatch]);
+            dispatch(loggedIn(user));
+            dispatch(loadCart(user.id));
+            dispatch(loadWishlist(user.id));
+        } else {
+            dispatch(authInitialized());
+        }
+    }, [dispatch]);
 
     return (
         <>
-        <ProductLoader />
-        <Routes>
-            <Route path="/" element={<Navigate to="/productlist" replace />}/>
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route element={<ShopLayout />}>
-            <Route path="/productlist" element={<ProductList />}/>
-            <Route element={<ProtectedRoute />}>
-            <Route path="product/:id" element={<ProductDetails />}/>
-            <Route path="/wishlist" element={<WishList />}/>
-            <Route path="/cart" element={<Cart />}/>
-            <Route path="/checkout" element={<Checkout />}/>
-            <Route path="/orders" element={<Orders />}/>
-            <Route path="/profile" element={<Profile />}/>
-            </Route>
-            </Route>
-        </Routes>
-        
+            <ProductLoader />
+            <Routes>
+                <Route path="/" element={<Navigate to="/productlist" replace />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route element={<ShopLayout />}>
+                    <Route path="/productlist" element={<ProductList />} />
+                    <Route element={<ProtectedRoute />}>
+                        <Route path="product/:id" element={<ProductDetails />} />
+                        <Route path="/wishlist" element={<WishList />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/orders" element={<Orders />} />
+                        <Route path="/profile" element={<Profile />} />
+                    </Route>
+                </Route>
+            </Routes>
+
         </>
     );
 }

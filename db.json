@@ -7,7 +7,7 @@
       "price": 4999,
       "category": "Luggage & Bags",
       "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp",
-      "stock": 10,
+      "stock": 7,
       "sizes": [],
       "colors": [
         "Black",
@@ -46,7 +46,7 @@
       "price": 2499,
       "category": "Luggage & Bags",
       "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg",
-      "stock": 15,
+      "stock": 13,
       "sizes": [
         "20L",
         "30L",
@@ -68,7 +68,7 @@
       "price": 1899,
       "category": "Luggage & Bags",
       "image": "/images/products/weekender-duffel.jpg",
-      "stock": 18,
+      "stock": 17,
       "sizes": [],
       "colors": [
         "Black",
@@ -104,7 +104,7 @@
       "price": 2799,
       "category": "Luggage & Bags",
       "image": "/images/products/laptop-backpack.jpg",
-      "stock": 14,
+      "stock": 13,
       "sizes": [
         "20L",
         "25L",
@@ -126,7 +126,7 @@
       "price": 1599,
       "category": "Luggage & Bags",
       "image": "/images/products/compact-weekend-bag.jpg",
-      "stock": 20,
+      "stock": 19,
       "sizes": [],
       "colors": [
         "Black",
@@ -144,7 +144,7 @@
       "price": 1299,
       "category": "Luggage & Bags",
       "image": "/images/products/crossbody-bag.jpg",
-      "stock": 22,
+      "stock": 21,
       "sizes": [],
       "colors": [
         "Black",
@@ -202,7 +202,7 @@
       "price": 499,
       "category": "Travel Organization",
       "image": "/images/products/passport-holder.jpg",
-      "stock": 35,
+      "stock": 34,
       "sizes": [],
       "colors": [
         "Black",
@@ -543,7 +543,7 @@
       "price": 799,
       "category": "Travel Essentials",
       "image": "/images/products/first-aid.jpg",
-      "stock": 23,
+      "stock": 22,
       "sizes": [],
       "colors": [],
       "rating": 4.6,
@@ -602,7 +602,13 @@
       "email": "rahul@gmail.com",
       "password": "rahul123",
       "createdAt": "2026-11-02T07:03:45.707Z",
-      "id": "HUeMF2jw_Lc"
+      "id": "HUeMF2jw_Lc",
+      "address": {
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      }
     }
   ],
   "orders": [
@@ -1586,6 +1592,204 @@
       "status": "placed",
       "createdAt": "2026-11-02T07:29:33.500Z",
       "id": "KcA5-FiIYSM"
+    },
+    {
+      "userId": "HUeMF2jw_Lc",
+      "shipping": {
+        "name": "rahul",
+        "email": "rahul@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 1,
+          "size": "",
+          "color": "Navy Blue",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        }
+      ],
+      "subtotal": 4999,
+      "total": 4999,
+      "status": "placed",
+      "createdAt": "2026-11-02T09:14:57.452Z",
+      "id": "x9H63u4GuAI"
+    },
+    {
+      "userId": "HUeMF2jw_Lc",
+      "shipping": {
+        "name": "rahul",
+        "email": "rahul@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "7",
+          "name": "Compact Weekend Bag",
+          "price": 1599,
+          "quantity": 1,
+          "size": "",
+          "color": "Brown",
+          "image": "/images/products/compact-weekend-bag.jpg"
+        }
+      ],
+      "subtotal": 1599,
+      "total": 1599,
+      "status": "placed",
+      "createdAt": "2026-11-02T09:15:14.043Z",
+      "id": "ufuBZAOHdjw"
+    },
+    {
+      "userId": "HUeMF2jw_Lc",
+      "shipping": {
+        "name": "rahul",
+        "email": "rahul@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "6",
+          "name": "Nomad Laptop Backpack",
+          "price": 2799,
+          "quantity": 1,
+          "size": "25L",
+          "color": "Navy Blue",
+          "image": "/images/products/laptop-backpack.jpg"
+        },
+        {
+          "productId": "8",
+          "name": "Explorer Crossbody Bag",
+          "price": 1299,
+          "quantity": 1,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/crossbody-bag.jpg"
+        }
+      ],
+      "subtotal": 4098,
+      "total": 4098,
+      "status": "placed",
+      "createdAt": "2026-11-02T09:15:40.688Z",
+      "id": "DxOBAiSqCBc"
+    },
+    {
+      "userId": "HUeMF2jw_Lc",
+      "shipping": {
+        "name": "rahul",
+        "email": "rahul@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "11",
+          "name": "Passport & Card Holder",
+          "price": 499,
+          "quantity": 1,
+          "size": "",
+          "color": "Brown",
+          "image": "/images/products/passport-holder.jpg"
+        },
+        {
+          "productId": "30",
+          "name": "TravelAid Mini First Aid Kit",
+          "price": 799,
+          "quantity": 1,
+          "size": "",
+          "color": "",
+          "image": "/images/products/first-aid.jpg"
+        },
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 1,
+          "size": "20L",
+          "color": "Black",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 3797,
+      "total": 3797,
+      "status": "placed",
+      "createdAt": "2026-11-02T09:16:50.704Z",
+      "id": "hrosKlcphZI"
+    },
+    {
+      "userId": "HUeMF2jw_Lc",
+      "shipping": {
+        "name": "rahul",
+        "email": "rahul@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 1,
+          "size": "20L",
+          "color": "Navy Blue",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        },
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 2,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        },
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 3,
+          "size": "20L",
+          "color": "Black",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        },
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 1,
+          "size": "30L",
+          "color": "Olive Green",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        },
+        {
+          "productId": "4",
+          "name": "Weekender Duffel Bag",
+          "price": 1899,
+          "quantity": 1,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/weekender-duffel.jpg"
+        }
+      ],
+      "subtotal": 24392,
+      "total": 24392,
+      "status": "placed",
+      "createdAt": "2026-11-02T09:22:29.299Z",
+      "id": "2A1yVzSRSak"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
