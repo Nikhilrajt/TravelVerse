@@ -6,7 +6,7 @@ function ProductLoader(){
     const dispatch = useDispatch();
     useEffect(()=>{
         dispatch(fetchProducts())
-    },[])
+    },[dispatch])
    return null;
 }
 export default ProductLoader;
