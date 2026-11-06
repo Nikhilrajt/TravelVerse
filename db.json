@@ -7,7 +7,7 @@
       "price": 4999,
       "category": "Luggage & Bags",
       "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp",
-      "stock": 7,
+      "stock": 4,
       "sizes": [],
       "colors": [
         "Black",
@@ -46,7 +46,7 @@
       "price": 2499,
       "category": "Luggage & Bags",
       "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg",
-      "stock": 13,
+      "stock": 10,
       "sizes": [
         "20L",
         "30L",
@@ -608,6 +608,20 @@
         "city": "palakkad",
         "pincode": "678001",
         "phone": "+918075767720"
+      }
+    },
+    {
+      "fullName": "nikhilraj",
+      "username": "nikhil12",
+      "email": "nikhilraj@gmail.com",
+      "password": "nikhil123",
+      "createdAt": "2026-11-03T08:36:07.303Z",
+      "id": "0X9ynDGAU74",
+      "address": {
+        "address": "bridgeonskillversity,coimbathoor",
+        "city": "coimbathor",
+        "pincode": "6277282",
+        "phone": "29208404030"
       }
     }
   ],
@@ -1790,6 +1804,49 @@
       "status": "placed",
       "createdAt": "2026-11-02T09:22:29.299Z",
       "id": "2A1yVzSRSak"
+    },
+    {
+      "userId": "0X9ynDGAU74",
+      "shipping": {
+        "name": "nikhilraj",
+        "email": "nikhilraj@gmail.com",
+        "address": "bridgeonskillversity,coimbathoor",
+        "city": "coimbathor",
+        "pincode": "6277282",
+        "phone": "29208404030"
+      },
+      "items": [
+        {
+          "productId": "1",
+          "name": "AeroLite Cabin Suitcase",
+          "price": 4999,
+          "quantity": 3,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/M-LITE-324-Main_e1253fcc-b4d3-480b-9015-c38ed35290e3.webp"
+        },
+        {
+          "productId": "3",
+          "name": "TrailPack Travel Backpack",
+          "price": 2499,
+          "quantity": 3,
+          "size": "30L",
+          "color": "Navy Blue",
+          "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
+        }
+      ],
+      "subtotal": 22494,
+      "total": 22494,
+      "status": "placed",
+      "createdAt": "2026-11-03T08:40:41.890Z",
+      "id": "1uHEeDhiUJc"
+    }
+  ],
+  "admins":[
+    {
+       "id":"1",
+       "username":"admin",
+       "password":"admin123"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -16,6 +16,10 @@ import Profile from "./pages/Profile";
 import Checkout from "./pages/checkOut";
 import { loadCart } from "./redux/slices/cartSlice";
 import { loadWishlist } from "./redux/slices/wishlistSlice";
+import AdminLogin from "./admin/pages/AdminLogin";
+import AdminProtectedRoute from "./admin/routes/AdminprotectedRoute";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+
 
 function App() {
     const dispatch = useDispatch();
@@ -41,6 +45,10 @@ function App() {
                 <Route path="/" element={<Navigate to="/productlist" replace />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route element={<AdminProtectedRoute />}>
+                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                </Route>
                 <Route element={<ShopLayout />}>
                     <Route path="/productlist" element={<ProductList />} />
                     <Route element={<ProtectedRoute />}>

@@ -90,7 +90,7 @@ const authSlice = createSlice({
                 state.loading = true;
                 state.error = null;
             })
-            .addCase(registerUser.fulfilled, (state, action) => {
+            .addCase(registerUser.fulfilled, (state) => {
                 state.loading = false;
                 state.error = null;
             })
@@ -117,5 +117,5 @@ const authSlice = createSlice({
     }
 })
 
-export const { loggedIn, logOut, authInitialized,updateUser } = authSlice.actions;
+export const { loggedIn, updateUser, logOut, authInitialized } = authSlice.actions;
 export default authSlice.reducer;
