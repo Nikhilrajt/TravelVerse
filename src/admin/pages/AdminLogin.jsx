@@ -30,18 +30,18 @@ function AdminLogin() {
             setError("Password is required");
             return;
         }
-try {
-    await dispatch(adminLoginThunk({ username, password })).unwrap();
-    navigate("/admin/dashboard");
-} catch {
-}
+
+        try {
+            await dispatch(adminLoginThunk({ username, password })).unwrap();
+            navigate("/admin/dashboard");
+        } catch (err) {
+            setError(err || "Invalid username or password");
+        }
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
-
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-10">
-
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
                         TravelVerse
@@ -55,7 +55,6 @@ try {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
-
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Username
@@ -114,13 +113,11 @@ try {
                     >
                         {loading ? "SIGNING IN..." : "SIGN IN"}
                     </button>
-
                 </form>
 
                 <p className="text-center text-xs text-gray-400 mt-8">
                     TravelVerse Admin Dashboard
                 </p>
-
             </div>
         </div>
     );
