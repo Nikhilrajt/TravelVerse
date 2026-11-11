@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { LayoutDashboard, Package, Users, ShoppingBag } from "lucide-react";
 
 function AdminSidebar() {
     const menuItems = [
@@ -7,6 +8,12 @@ function AdminSidebar() {
         { label: "Users", icon: "Users", path: "/admin/users" },
         { label: "Orders", icon: "ShoppingBag", path: "/admin/orders" },
     ];
+    const icons = {
+        LayoutDashboard,
+        Package,
+        Users,
+        ShoppingBag
+    };
 
     return (
         <aside className="w-64 min-h-screen bg-white border-r border-gray-200 flex flex-col">
@@ -21,27 +28,29 @@ function AdminSidebar() {
             </div>
 
             <nav className="flex-1 px-4 py-6">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4 px-3">
-                    Main Menu
-                </p>
 
                 <div className="space-y-2">
-                    {menuItems.map((item) => (
-                        <NavLink
-                            to={item.path}
-                            key={item.label}
-                            className={({ isActive }) =>
-                                `flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition ${isActive
-                                    ? "bg-[#3F2B96] text-white"
-                                    : "text-gray-600 hover:bg-purple-50 hover:text-[#3F2B96]"
-                                }`
-                            }
-                        >
-                            <span className="text-sm font-medium">
-                                {item.label}
-                            </span>
-                        </NavLink>
-                    ))}
+                    {menuItems.map((item) => {
+                        const Icon = icons[item.icon];
+                        return (
+                            <NavLink
+                                to={item.path}
+                                key={item.label}
+                                className={({ isActive }) =>
+                                    `flex items-center gap-3 px-4 py-3 rounded-lg cursor-pointer transition ${isActive
+                                        ? "bg-[#3F2B96] text-white"
+                                        : "text-gray-600 hover:bg-purple-50 hover:text-[#3F2B96]"
+                                    }`
+                                }
+                            >
+                                <Icon size={18} />
+                                <span className="text-sm font-medium">
+                                    {item.label}
+                                </span>
+                            </NavLink>
+                        )
+                    }
+                    )}
                 </div>
             </nav>
 
