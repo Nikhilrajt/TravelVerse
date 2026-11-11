@@ -19,7 +19,10 @@ import { loadWishlist } from "./redux/slices/wishlistSlice";
 import AdminLogin from "./admin/pages/AdminLogin";
 import AdminProtectedRoute from "./admin/routes/AdminprotectedRoute";
 import AdminDashboard from "./admin/pages/AdminDashboard";
-
+import AdminLayout from "./admin/layouts/AdminLayout";
+import AdminProducts from "./admin/pages/AdminProducts";
+import AdminUsers from "./admin/pages/AdminUsers";
+import AdminOrders from "./admin/pages/AdminOrders";
 
 function App() {
     const dispatch = useDispatch();
@@ -47,7 +50,12 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route element={<AdminProtectedRoute />}>
-                    <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                    <Route element={<AdminLayout />}>
+                        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                        <Route path="/admin/products" element={<AdminProducts />} />
+                        <Route path="/admin/users" element={<AdminUsers />} />
+                        <Route path="/admin/orders" element={<AdminOrders />} />
+                    </Route>
                 </Route>
                 <Route element={<ShopLayout />}>
                     <Route path="/productlist" element={<ProductList />} />
