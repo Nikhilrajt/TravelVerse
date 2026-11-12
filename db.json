@@ -238,7 +238,7 @@
       "price": 399,
       "category": "Travel Organization",
       "image": "/images/products/shoe-bag.jpg",
-      "stock": 32,
+      "stock": 0,
       "sizes": [],
       "colors": [
         "Black",
@@ -557,11 +557,12 @@
       "username": "akshay_s",
       "email": "akshay@gmail.com",
       "password": "akshay123",
+      "isBlocked": false,
       "createdAt": "2026-10-28T05:17:54.419Z",
       "id": "RqXuiIDc7zw",
       "address": {
-        "address": "Chgi",
-        "city": "Ydyfug",
+        "address": "Alanallur(po)",
+        "city": "Alanallur",
         "pincode": "5756868",
         "phone": "786653"
       }
@@ -571,6 +572,7 @@
       "username": "mydeen1",
       "email": "mydeen@gmail.com",
       "password": "12345678",
+      "isBlocked": false,
       "createdAt": "2026-10-30T10:51:00.154Z",
       "id": "-h-TDSjqa_k"
     },
@@ -579,6 +581,7 @@
       "username": "_sheik",
       "email": "sheik@gmail.com",
       "password": "sheik123",
+      "isBlocked": false,
       "createdAt": "2026-11-02T05:24:37.808Z",
       "id": "GXBuIMPPet8"
     },
@@ -587,11 +590,12 @@
       "username": "nikhil",
       "email": "nikhil@gmail.com",
       "password": "nikhil123",
+      "isBlocked": false,
       "createdAt": "2026-11-02T06:58:45.222Z",
       "id": "alINMPZC0fU",
       "address": {
-        "address": "bridgeonskillversity,coimbathoor",
-        "city": "coimbathor",
+        "address": "Nellaya(po),Krishnappadi",
+        "city": "Cherpulassery",
         "pincode": "2929929",
         "phone": "29208404030"
       }
@@ -601,6 +605,7 @@
       "username": "rahul",
       "email": "rahul@gmail.com",
       "password": "rahul123",
+      "isBlocked": false,
       "createdAt": "2026-11-02T07:03:45.707Z",
       "id": "HUeMF2jw_Lc",
       "address": {
@@ -611,18 +616,13 @@
       }
     },
     {
-      "fullName": "nikhilraj",
-      "username": "nikhil12",
-      "email": "nikhilraj@gmail.com",
-      "password": "nikhil123",
-      "createdAt": "2026-11-03T08:36:07.303Z",
-      "id": "0X9ynDGAU74",
-      "address": {
-        "address": "bridgeonskillversity,coimbathoor",
-        "city": "coimbathor",
-        "pincode": "6277282",
-        "phone": "29208404030"
-      }
+      "fullName": "Amal",
+      "username": "Amal",
+      "email": "amal@gmail.com",
+      "password": "amalkrishna",
+      "isBlocked": false,
+      "createdAt": "2026-11-12T16:06:00.996Z",
+      "id": "zXujP7RNqu4"
     }
   ],
   "orders": [
@@ -1442,7 +1442,7 @@
           "productId": "3",
           "name": "TrailPack Travel Backpack",
           "price": 2499,
-          "quantity": 1,
+          "quantity": 2,
           "size": "20L",
           "color": "Black",
           "image": "/images/products/Lightweight-Travel-Backpack-1-1024x585.jpg"
@@ -1842,11 +1842,11 @@
       "id": "1uHEeDhiUJc"
     }
   ],
-  "admins":[
+  "admins": [
     {
-       "id":"1",
-       "username":"admin",
-       "password":"admin123"
+      "id": "1",
+      "username": "admin",
+      "password": "admin123"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

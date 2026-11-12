@@ -25,6 +25,7 @@ export const registerUser = createAsyncThunk(
 
             const createdUser = await createUser({
                 ...newUser,
+                isBlocked: false,
                 createdAt: new Date().toISOString()
             })
             return createdUser;
@@ -46,6 +47,9 @@ export const loginUser = createAsyncThunk(
             const user = users[0];
             if (user.password !== password) {
                 return rejectWithValue("Invalid email or password");
+            }
+            if(user.isBlocked){
+                return rejectWithValue("Your account has been blocked. Please contact support.")
             }
             const { password: _, ...safeUser } = user;
             return safeUser;

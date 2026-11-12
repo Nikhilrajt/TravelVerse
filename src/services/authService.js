@@ -26,3 +26,17 @@ export const updateUserAddress = async (userId, address) => {
 
     return response.data;
 };
+export const fetchAllUsers = async () =>{
+    const response = await api.get(`/users`);
+    return response.data;
+}
+export const updateUserStatus = async (userId, isBlocked) =>{
+    const response = await api.patch(`/users/${userId}`,{
+        isBlocked
+    });
+    return response.data;
+}
+export const fetchUserById = async (userId)=>{
+    const response = await api.get(`/users/${userId}`);
+    return response.data;
+}

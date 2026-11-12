@@ -4,7 +4,6 @@ import ProductList from "./components/ProductList";
 import { Routes, Route, Navigate } from "react-router-dom";
 import ProductLoader from "./components/ProductLoader";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { loggedIn, authInitialized } from "./redux/slices/authSlice";
 import WishList from "./pages/Wishlist";
 import Cart from "./pages/Cart";
@@ -23,9 +22,13 @@ import AdminLayout from "./admin/layouts/AdminLayout";
 import AdminProducts from "./admin/pages/AdminProducts";
 import AdminUsers from "./admin/pages/AdminUsers";
 import AdminOrders from "./admin/pages/AdminOrders";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "./redux/slices/authSlice";
+import { fetchUserById } from "./services/authService";
 
 function App() {
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
 
     useEffect(() => {
         const savedUser = localStorage.getItem("user");
@@ -40,6 +43,24 @@ function App() {
             dispatch(authInitialized());
         }
     }, [dispatch]);
+
+    useEffect(() => {
+        if (!user) return;
+
+        const interval = setInterval(async () => {
+            try {
+                const latestUser = await fetchUserById(user.id);
+                if (latestUser.isBlocked) {
+                    dispatch(logOut());
+                }
+            } catch (error) {
+                console.error("Failed to check user status:", error);
+            }
+        }, 5000);
+
+        return () => clearInterval(interval);
+
+    }, [user, dispatch]);
 
     return (
         <>
