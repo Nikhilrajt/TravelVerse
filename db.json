@@ -549,6 +549,28 @@
       "rating": 4.6,
       "reviewCount": 71,
       "featured": true
+    },
+    {
+      "name": "Hand kit",
+      "description": "Comfortable handkit",
+      "price": 300,
+      "category": "Travel Comfort",
+      "image": "/images/products/71IUFJj6veL._AC_SL1500_.jpg",
+      "stock": 10,
+      "sizes": [
+        "20L",
+        "30L",
+        "40L"
+      ],
+      "colors": [
+        "Pink",
+        "Brown",
+        "Majenda"
+      ],
+      "rating": 0,
+      "reviewCount": 0,
+      "featured": true,
+      "id": "7gcuMmpsYzk"
     }
   ],
   "users": [
