@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getOrdersByUser } from "../../services/orderService";
+import { getOrdersByUser, getAllOrders } from "../../services/orderService";
 
 const initialState = {
     orders: [],
@@ -12,6 +12,20 @@ export const fetchOrders = createAsyncThunk(
     async (userId, { rejectWithValue }) => {
         try {
             const orders = await getOrdersByUser(userId);
+            return orders;
+        } catch (error) {
+            return rejectWithValue(
+                error.response?.data?.message || error.message
+            );
+        }
+    }
+);
+
+export const fetchAllOrders = createAsyncThunk(
+    "orders/fetchAllOrders",
+    async (_, { rejectWithValue }) => {
+        try {
+            const orders = await getAllOrders();
             return orders;
         } catch (error) {
             return rejectWithValue(
@@ -44,6 +58,20 @@ const orderSlice = createSlice({
             })
 
             .addCase(fetchOrders.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.payload;
+            })
+            .addCase(fetchAllOrders.pending, (state) => {
+                state.loading = true;
+                state.error = null;
+            })
+
+            .addCase(fetchAllOrders.fulfilled, (state, action) => {
+                state.loading = false;
+                state.orders = [...action.payload].reverse();
+            })
+
+            .addCase(fetchAllOrders.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload;
             });

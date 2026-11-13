@@ -1,12 +1,21 @@
 
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import { addNewProduct, updateExistingProduct, removeProduct } from "../../redux/slices/productSlice";
+import { useState, useEffect } from "react";
+import {
+  addNewProduct,
+  updateExistingProduct,
+  removeProduct
+} from "../../redux/slices/productSlice";
 
 function AdminProducts() {
   const [showForm, setShowForm] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
+  const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 8;
+
   const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     name: "",
     description: "",
@@ -34,6 +43,36 @@ function AdminProducts() {
   );
   const lowStock = lowStockProducts.length;
 
+  const filteredProducts = products.filter((product) => {
+    const searched = search.toLowerCase().trim();
+
+    return (
+      product.name?.toLowerCase().includes(searched) ||
+      String(product.id).toLowerCase().includes(searched) ||
+      product.category?.toLowerCase().includes(searched)
+    );
+  });
+
+      useEffect(() => {
+      setCurrentPage(1);
+    }, [search]);
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  useEffect(() => {
+    if (totalPages > 0 && currentPage > totalPages) {
+      setCurrentPage(totalPages);
+    }
+  }, [currentPage, totalPages]);
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   const handleEdit = (product) => {
     setEditingProduct(product);
 
@@ -45,6 +84,7 @@ function AdminProducts() {
 
     setShowForm(true);
   };
+
   const handleDelete = async (productId) => {
     const confirmDelete = window.confirm(
       "Are you sure you want to delete this product?"
@@ -61,6 +101,7 @@ function AdminProducts() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newProduct = {
       ...formData,
       price: Number(formData.price),
@@ -74,6 +115,7 @@ function AdminProducts() {
         .map((color) => color.trim())
         .filter((color) => color !== ""),
     };
+
     try {
       if (editingProduct) {
         await dispatch(
@@ -92,6 +134,7 @@ function AdminProducts() {
       console.error("Failed to save product:", error);
     }
   };
+
   return (
     <div className="w-full space-y-8">
 
@@ -102,7 +145,7 @@ function AdminProducts() {
             <form onSubmit={handleSubmit} className="space-y-5">
 
               <h2 className="text-xl font-bold text-gray-900">
-                Add New Product
+                {editingProduct ? "Edit Product" : "Add New Product"}
               </h2>
 
               <div className="space-y-2">
@@ -247,6 +290,7 @@ function AdminProducts() {
                   Mark as Featured Product
                 </label>
               </div>
+
               <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
                 <button
                   type="button"
@@ -260,9 +304,10 @@ function AdminProducts() {
                   type="submit"
                   className="px-5 py-2.5 text-sm font-medium text-white bg-[#3F2B96] rounded-lg hover:bg-[#33227D]"
                 >
-                  Save Product
+                  {editingProduct ? "Update Product" : "Save Product"}
                 </button>
               </div>
+
             </form>
           </div>
         </div>
@@ -303,6 +348,7 @@ function AdminProducts() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
           <p className="text-sm text-gray-500">Total Products</p>
           <h2 className="text-2xl font-bold text-gray-900 mt-2">
@@ -323,11 +369,59 @@ function AdminProducts() {
             {lowStock}
           </h2>
         </div>
+
+      </div>
+
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+
+        <div className="relative w-full sm:max-w-md">
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="7" strokeWidth="2" />
+            <path
+              d="m16 16 4 4"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search by product name, ID or category..."
+            className="w-full pl-10 pr-10 py-3 text-sm bg-white border border-gray-200 rounded-xl outline-none transition focus:border-[#3F2B96] focus:ring-2 focus:ring-[#3F2B96]/10"
+          />
+
+          {search && (
+            <button
+              type="button"
+              onClick={() => setSearch("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700"
+            >
+              ✕
+            </button>
+          )}
+        </div>
+
+        <p className="text-sm text-gray-500">
+          Showing{" "}
+          <span className="font-semibold text-gray-800">
+            {filteredProducts.length}
+          </span>{" "}
+          of {totalProducts} products
+        </p>
+
       </div>
 
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left">
+
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
                 <th className="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Product</th>
@@ -340,64 +434,130 @@ function AdminProducts() {
             </thead>
 
             <tbody className="divide-y divide-gray-100">
-              {products.map((product) => (
-                <tr key={product.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3 min-w-[220px]">
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-12 h-12 object-cover rounded-lg border border-gray-200"
-                      />
-                      <span className="text-sm font-medium text-gray-900">
-                        {product.name}
-                      </span>
-                    </div>
-                  </td>
 
-                  <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap">
-                    {product.category}
-                  </td>
-
-                  <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                    ₹{product.price}
-                  </td>
-
-                  <td className="px-6 py-4 text-sm text-gray-700">
-                    {product.stock}
-                  </td>
-
-                  <td className="px-6 py-4">
-                    <span
-                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${product.stock > 0
-                        ? "bg-green-50 text-green-700"
-                        : "bg-red-50 text-red-700"
-                        }`}
-                    >
-                      {product.stock > 0 ? "In Stock" : "Out of Stock"}
-                    </span>
-                  </td>
-
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3 whitespace-nowrap">
-                      <button onClick={() => handleEdit(product)} className="text-[#3F2B96] hover:text-[#33227D] text-sm font-medium transition">
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(product.id)}
-                        className="text-red-500 hover:text-red-700 text-sm font-medium transition"
-                      >
-                        Delete
-                      </button>
-                    </div>
+              {filteredProducts.length === 0 ? (
+                <tr>
+                  <td colSpan="6" className="px-6 py-12 text-center">
+                    <p className="text-gray-700 font-medium">
+                      No products found
+                    </p>
+                    <p className="text-sm text-gray-400 mt-1">
+                      Try another product name, ID or category.
+                    </p>
                   </td>
                 </tr>
-              ))}
+              ) : (
+                currentProducts.map((product) => (
+                  <tr
+                    key={product.id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3 min-w-[220px]">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-12 h-12 object-cover rounded-lg border border-gray-200"
+                        />
+                        <span className="text-sm font-medium text-gray-900">
+                          {product.name}
+                        </span>
+                      </div>
+                    </td>
+
+                    <td className="px-6 py-4 text-sm text-gray-600 whitespace-nowrap">
+                      {product.category}
+                    </td>
+
+                    <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
+                      ₹{product.price}
+                    </td>
+
+                    <td className="px-6 py-4 text-sm text-gray-700">
+                      {product.stock}
+                    </td>
+
+                    <td className="px-6 py-4">
+                      <span
+                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${product.stock > 0
+                          ? "bg-green-50 text-green-700"
+                          : "bg-red-50 text-red-700"
+                          }`}
+                      >
+                        {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                      </span>
+                    </td>
+
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-3 whitespace-nowrap">
+                        <button
+                          onClick={() => handleEdit(product)}
+                          className="text-[#3F2B96] hover:text-[#33227D] text-sm font-medium transition"
+                        >
+                          Edit
+                        </button>
+
+                        <button
+                          onClick={() => handleDelete(product.id)}
+                          className="text-red-500 hover:text-red-700 text-sm font-medium transition"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+
             </tbody>
           </table>
         </div>
-      </div>
 
+        {totalPages > 0 && (
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
+
+            <p className="text-sm text-gray-500">
+              Showing {indexOfFirstProduct + 1} to{" "}
+              {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
+              {filteredProducts.length} products
+            </p>
+
+            <div className="flex items-center gap-2">
+
+              <button
+                onClick={() => setCurrentPage((prev) => prev - 1)}
+                disabled={currentPage === 1}
+                className="px-3 py-2 text-sm border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50"
+              >
+                Previous
+              </button>
+
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentPage(index + 1)}
+                  className={`w-9 h-9 rounded-lg text-sm font-medium transition ${currentPage === index + 1
+                    ? "bg-purple-600 text-white"
+                    : "border border-gray-200 text-gray-600 hover:bg-gray-50"
+                    }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => setCurrentPage((prev) => prev + 1)}
+                disabled={currentPage === totalPages}
+                className="px-3 py-2 text-sm border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50"
+              >
+                Next
+              </button>
+
+            </div>
+          </div>
+        )}
+
+      </div>
     </div>
   );
 }

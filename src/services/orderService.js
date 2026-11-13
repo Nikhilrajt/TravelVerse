@@ -22,3 +22,8 @@ export const updateProductStock = async (productId, stock) => {
   });
   return response.data;
 };
+
+export const getAllOrders = async () => {
+  const response = await api.get("/orders");
+  return response.data;
+};

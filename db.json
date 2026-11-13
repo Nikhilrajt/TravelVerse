@@ -238,7 +238,7 @@
       "price": 399,
       "category": "Travel Organization",
       "image": "/images/products/shoe-bag.jpg",
-      "stock": 0,
+      "stock": 20,
       "sizes": [],
       "colors": [
         "Black",
@@ -525,7 +525,7 @@
       "price": 599,
       "category": "Travel Essentials",
       "image": "/images/products/travel-umbrella.jpg",
-      "stock": 31,
+      "stock": 30,
       "sizes": [],
       "colors": [
         "Black",
@@ -543,7 +543,7 @@
       "price": 799,
       "category": "Travel Essentials",
       "image": "/images/products/first-aid.jpg",
-      "stock": 22,
+      "stock": 21,
       "sizes": [],
       "colors": [],
       "rating": 4.6,
@@ -556,7 +556,7 @@
       "price": 300,
       "category": "Travel Comfort",
       "image": "/images/products/71IUFJj6veL._AC_SL1500_.jpg",
-      "stock": 10,
+      "stock": 9,
       "sizes": [
         "20L",
         "30L",
@@ -644,28 +644,16 @@
       "password": "amalkrishna",
       "isBlocked": false,
       "createdAt": "2026-11-12T16:06:00.996Z",
-      "id": "zXujP7RNqu4"
+      "id": "zXujP7RNqu4",
+      "address": {
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      }
     }
   ],
   "orders": [
-    {
-      "id": "1",
-      "userId": 1,
-      "items": [
-        {
-          "productId": 3,
-          "name": "TrailPack Travel Backpack",
-          "price": 2499,
-          "quantity": 2,
-          "size": "30L",
-          "color": "Black",
-          "image": "/images/Lightweight-Travel-Backpack-1-1024x585.jpg"
-        }
-      ],
-      "totalAmount": 4998,
-      "status": "Placed",
-      "createdAt": "2026-10-24T12:30:00.000Z"
-    },
     {
       "userId": "RqXuiIDc7zw",
       "shipping": {
@@ -1862,6 +1850,87 @@
       "status": "placed",
       "createdAt": "2026-11-03T08:40:41.890Z",
       "id": "1uHEeDhiUJc"
+    },
+    {
+      "userId": "zXujP7RNqu4",
+      "shipping": {
+        "name": "Amal",
+        "email": "amal@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "7gcuMmpsYzk",
+          "name": "Hand kit",
+          "price": 300,
+          "quantity": 1,
+          "size": "20L",
+          "color": "Pink",
+          "image": "/images/products/71IUFJj6veL._AC_SL1500_.jpg"
+        }
+      ],
+      "subtotal": 300,
+      "total": 300,
+      "status": "placed",
+      "createdAt": "2026-11-13T06:50:01.799Z",
+      "id": "nZEfXSVbO5M"
+    },
+    {
+      "userId": "zXujP7RNqu4",
+      "shipping": {
+        "name": "Amal",
+        "email": "amal@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "30",
+          "name": "TravelAid Mini First Aid Kit",
+          "price": 799,
+          "quantity": 1,
+          "size": "",
+          "color": "",
+          "image": "/images/products/first-aid.jpg"
+        }
+      ],
+      "subtotal": 799,
+      "total": 799,
+      "status": "placed",
+      "createdAt": "2026-11-13T06:50:13.401Z",
+      "id": "4zNQ9b6I7vY"
+    },
+    {
+      "userId": "zXujP7RNqu4",
+      "shipping": {
+        "name": "Amal",
+        "email": "amal@gmail.com",
+        "address": "pallithodu(h),palakkad(po),palakkad",
+        "city": "palakkad",
+        "pincode": "678001",
+        "phone": "+918075767720"
+      },
+      "items": [
+        {
+          "productId": "29",
+          "name": "FoldAway Compact Umbrella",
+          "price": 599,
+          "quantity": 1,
+          "size": "",
+          "color": "Black",
+          "image": "/images/products/travel-umbrella.jpg"
+        }
+      ],
+      "subtotal": 599,
+      "total": 599,
+      "status": "placed",
+      "createdAt": "2026-11-13T08:01:59.759Z",
+      "id": "zGujMENePl4"
     }
   ],
   "admins": [
