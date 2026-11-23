@@ -1,7 +1,7 @@
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ProductList from "./components/ProductList";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Link } from "react-router-dom";
 import ProductLoader from "./components/ProductLoader";
 import { useEffect } from "react";
 import { loggedIn, authInitialized } from "./redux/slices/authSlice";
@@ -89,6 +89,19 @@ function App() {
                         <Route path="/profile" element={<Profile />} />
                     </Route>
                 </Route>
+                <Route
+                    path="*"
+                    element={(
+                        <main className="flex min-h-screen items-center justify-center bg-canvas px-4 py-10">
+                            <section className="w-full max-w-lg rounded-lg border border-stone-200 bg-white p-8 text-center shadow-sm sm:p-12">
+                                <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">TravelVerse</p>
+                                <h1 className="mt-3 font-serif text-3xl font-medium text-brand sm:text-4xl">Page not found</h1>
+                                <p className="mt-3 text-sm leading-6 text-stone-600">That page may have moved. Let’s get you back to the travel essentials.</p>
+                                <Link to="/productlist" className="mt-6 inline-flex min-h-11 items-center rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover">Back to shopping</Link>
+                            </section>
+                        </main>
+                    )}
+                />
             </Routes>
 
         </>

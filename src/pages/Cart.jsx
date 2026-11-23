@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { updateQuantity, removeItem } from "../redux/slices/cartSlice";
+import { updateQuantity, removeItem, clearCart } from "../redux/slices/cartSlice";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
@@ -15,53 +15,76 @@ function Cart() {
   );
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto max-w-7xl px-4 py-7 sm:px-6 sm:py-10">
 
-      <h1 className="mb-6 text-2xl font-bold text-stone-900 sm:mb-8 sm:text-3xl">
-        Shopping Cart
-      </h1>
+      <div className="mb-7 flex flex-col gap-4 border-b border-stone-300 pb-6 sm:mb-9 sm:flex-row sm:items-end sm:justify-between sm:pb-7">
+        <div>
+          <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">Your selection</p>
+          <h1 className="font-serif text-3xl font-medium tracking-tight text-stone-900 sm:text-4xl">
+            Shopping Cart
+          </h1>
+          <p className="mt-1 text-sm text-stone-500">
+            Review your travel essentials before checkout.
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="w-fit border-l-2 border-accent bg-white px-4 py-3 text-sm font-semibold text-brand shadow-sm">
+            {totalItems} {totalItems === 1 ? "item" : "items"}
+          </span>
+          {cartItems.length > 0 && (
+            <button
+              type="button"
+              onClick={() => dispatch(clearCart(user.id))}
+              className="min-h-11 rounded-md border border-red-200 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
+            >
+              Clear Cart
+            </button>
+          )}
+        </div>
+      </div>
 
       {cartItems.length === 0 ? (
-        <div className="mt-8 flex flex-col items-center px-4 text-center">
+        <div className="mt-8 flex flex-col items-center rounded-lg border border-stone-200 bg-white px-4 py-10 text-center shadow-sm">
           <p className="text-sm text-stone-600 sm:text-base">
             Your cart is empty.
           </p>
 
           <Link
             to="/productlist"
-            className="mt-5 rounded-lg bg-stone-900 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-stone-800 sm:text-base"
+            className="mt-5 min-h-11 rounded-md bg-brand px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-hover sm:text-base"
           >
             Continue shopping
           </Link>
         </div>
       ) : (
-        <div className="space-y-6">
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8">
 
-          {cartItems.map((item) => {
-            const product = products.find(
-              (product) =>
-                String(product.id) === String(item.productId)
-            );
+          <div className="space-y-4">
+            {cartItems.map((item) => {
+              const product = products.find(
+                (product) =>
+                  String(product.id) === String(item.productId)
+              );
 
-            const canIncreaseQuantity =
-              Number.isFinite(product?.stock) &&
-              item.quantity < product.stock;
+              const canIncreaseQuantity =
+                Number.isFinite(product?.stock) &&
+                item.quantity < product.stock;
 
-            return (
-              <div
-                key={`${item.productId}-${item.size}-${item.color}`}
-                className="flex flex-col gap-4 rounded-xl border border-stone-200 p-4 sm:flex-row sm:gap-6 sm:p-5"
-              >
+              return (
+                <div
+                  key={`${item.productId}-${item.size}-${item.color}`}
+                  className="flex flex-col gap-4 rounded-lg border border-stone-200 bg-white p-4 shadow-sm transition-shadow hover:shadow-md sm:flex-row sm:gap-6 sm:p-6"
+                >
 
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="h-48 w-full rounded-lg object-contain sm:h-32 sm:w-32"
+                  className="h-44 w-full rounded-md bg-surface-muted object-contain p-4 sm:h-36 sm:w-36"
                 />
 
                 <div className="flex-1">
 
-                  <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">
+                  <h2 className="font-serif text-xl font-semibold text-stone-900 sm:text-2xl">
                     {item.name}
                   </h2>
 
@@ -106,7 +129,7 @@ function Cart() {
                           )
                         }
                         disabled={item.quantity <= 1}
-                        className="px-3 py-2 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
+                        className="min-h-11 min-w-11 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:min-w-12"
                       >
                         −
                       </button>
@@ -128,7 +151,7 @@ function Cart() {
                           )
                         }
                         disabled={!canIncreaseQuantity}
-                        className="px-3 py-2 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
+                        className="min-h-11 min-w-11 text-lg font-medium transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:min-w-12"
                       >
                         +
                       </button>
@@ -145,21 +168,22 @@ function Cart() {
                         })
                       )
                     }
-                    className="mt-4 rounded-lg border border-red-200 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
+                    className="mt-4 min-h-11 rounded-md border border-red-200 px-4 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
                   >
                     Remove
                   </button>
 
                 </div>
-              </div>
-            );
-          })}
+                </div>
+              );
+            })}
+          </div>
 
-          <div className="mt-8 flex justify-stretch sm:justify-end">
+          <div className="flex justify-stretch sm:justify-end lg:sticky lg:top-6">
 
-            <div className="w-full max-w-sm rounded-xl border border-stone-200 p-5 sm:p-6">
+            <div className="w-full max-w-sm rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:p-7">
 
-              <h2 className="text-lg font-semibold text-stone-900 sm:text-xl">
+              <h2 className="font-serif text-xl font-semibold text-stone-900 sm:text-2xl">
                 Cart Summary
               </h2>
 
@@ -168,7 +192,7 @@ function Cart() {
                 <span>{totalItems}</span>
               </div>
 
-              <div className="mt-3 flex justify-between text-base font-semibold text-stone-900 sm:text-lg">
+              <div className="mt-3 flex justify-between border-t border-stone-100 pt-4 text-base font-semibold text-stone-900 sm:text-lg">
                 <span>Subtotal</span>
                 <span>
                   ₹{subtotal.toLocaleString("en-IN")}
@@ -177,7 +201,7 @@ function Cart() {
 
               <Link
                 to="/checkout"
-                className="mt-6 block w-full rounded-lg bg-stone-900 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-stone-800 sm:text-base"
+                className="mt-6 block min-h-11 w-full rounded-md bg-brand px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-brand-hover sm:text-base"
               >
                 Checkout
               </Link>

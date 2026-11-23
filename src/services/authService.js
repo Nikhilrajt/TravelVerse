@@ -32,7 +32,7 @@ export const fetchAllUsers = async () =>{
 }
 export const updateUserStatus = async (userId, isBlocked) =>{
     const response = await api.patch(`/users/${userId}`,{
-        isBlocked
+        isBlocked 
     });
     return response.data;
 }

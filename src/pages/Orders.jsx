@@ -21,12 +21,21 @@ function Orders() {
     }, [dispatch, user?.id]);
 
     return (
-        <main className="min-h-[calc(100vh-64px)] bg-stone-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-            <div className="mx-auto max-w-5xl">
+        <main className="min-h-[calc(100vh-64px)] px-4 py-6 sm:px-6 sm:py-9 lg:px-10">
+            <div className="mx-auto max-w-[1200px]">
 
-                <h1 className="mb-6 text-2xl font-bold text-stone-900 sm:mb-8 sm:text-3xl">
-                    Your Orders
-                </h1>
+                <div className="mb-7 flex flex-col gap-3 rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:mb-9 sm:flex-row sm:items-end sm:justify-between sm:p-8">
+                    <div>
+                    <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-brand">Order history</p>
+                    <h1 className="font-serif text-3xl font-medium tracking-tight text-stone-900 sm:text-4xl">
+                        Your Orders
+                    </h1>
+                    <p className="mt-1 text-sm text-stone-500">
+                        Keep track of your recent purchases.
+                    </p>
+                    </div>
+                    <span className="text-sm font-medium text-stone-500">{orders.length} {orders.length === 1 ? "order" : "orders"}</span>
+                </div>
 
                 {loading ? (
                     <p className="text-sm text-stone-600 sm:text-base">
@@ -35,12 +44,12 @@ function Orders() {
                 ) : error ? (
                     <p
                         role="alert"
-                        className="rounded-xl bg-red-50 p-3 text-sm text-red-700 sm:p-4"
+                        className="rounded-lg bg-red-50 p-3 text-sm text-red-700 sm:p-4"
                     >
                         {error}
                     </p>
                 ) : orders.length === 0 ? (
-                    <div className="rounded-2xl border border-stone-200 bg-white p-6 text-center sm:p-8">
+                    <div className="rounded-lg border border-stone-200 bg-white p-6 text-center shadow-sm sm:p-8">
 
                         <h2 className="text-lg font-semibold text-stone-800">
                             No orders yet
@@ -52,7 +61,7 @@ function Orders() {
 
                         <Link
                             to="/productlist"
-                            className="mt-5 inline-block rounded-xl bg-stone-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+                            className="mt-5 inline-flex min-h-11 items-center rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover"
                         >
                             Browse products
                         </Link>
@@ -70,7 +79,7 @@ function Orders() {
                             .map((order) => (
                                 <article
                                     key={order.id}
-                                    className="rounded-2xl border border-stone-200 bg-white p-4 shadow-sm sm:p-6"
+                                    className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:p-7"
                                 >
 
                                     <div className="flex flex-col gap-3 border-b border-stone-100 pb-4 sm:flex-row sm:items-start sm:justify-between">
@@ -87,7 +96,7 @@ function Orders() {
                                             </p>
                                         </div>
 
-                                        <span className="w-fit rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold capitalize text-emerald-700">
+                                        <span className="w-fit rounded-full bg-success-surface px-3 py-1 text-xs font-semibold capitalize text-success">
                                             {order.status}
                                         </span>
 

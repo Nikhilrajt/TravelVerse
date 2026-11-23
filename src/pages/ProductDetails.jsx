@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { addItem } from "../redux/slices/cartSlice";
+import { Heart, Star } from "lucide-react";
 import {
     addToWishlist,
     removeFromWishlist
@@ -10,12 +11,15 @@ import {
 function ProductDetails() {
     const { id } = useParams();
     const products = useSelector((state) => state.product.products);
+    const cart = useSelector((state) => state.cart.items);
     const dispatch = useDispatch();
 
     const [selectedSize, setSelectedSize] = useState("");
     const [selectedColor, setSelectedColor] = useState("");
     const [sizeError, setSizeError] = useState("");
     const [colorError, setColorError] = useState("");
+    const [cartError, setCartError] = useState("");
+    const [cartSuccess, setCartSuccess] = useState(false);
     const [quantity, setQuantity] = useState(1);
 
     const navigate = useNavigate();
@@ -28,11 +32,14 @@ function ProductDetails() {
 
     if (!currentProduct) {
         return (
-            <div className="flex min-h-[60vh] items-center justify-center px-4">
-                <h1 className="text-xl font-semibold text-stone-700 sm:text-2xl">
-                    Product Not Found
-                </h1>
-            </div>
+            <main className="flex min-h-[60vh] items-center justify-center px-4 py-10">
+                <section className="w-full max-w-lg rounded-lg border border-stone-200 bg-white p-8 text-center shadow-sm sm:p-10">
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">TravelVerse</p>
+                    <h1 className="mt-3 font-serif text-2xl font-semibold text-brand sm:text-3xl">Product not found</h1>
+                    <p className="mt-2 text-sm leading-6 text-stone-600">This item may no longer be available. Browse the collection to find something else for your trip.</p>
+                    <Link to="/productlist" className="mt-6 inline-flex min-h-11 items-center rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover">Browse travel essentials</Link>
+                </section>
+            </main>
         );
     }
 
@@ -40,7 +47,28 @@ function ProductDetails() {
         (item) => item.id === currentProduct.id
     );
 
+    const quantityInCart = cart.reduce(
+        (total, item) =>
+            String(item.productId) === String(currentProduct.id)
+                ? total + Number(item.quantity)
+                : total,
+        0
+    );
+    const remainingStock = Math.max(
+        0,
+        Number(currentProduct.stock) - quantityInCart
+    );
+
     const handleAddToCart = () => {
+        if (quantity > remainingStock) {
+            setCartError(
+                remainingStock === 0
+                    ? "All available stock is already in your cart."
+                    : `Only ${remainingStock} more item${remainingStock === 1 ? "" : "s"} can be added.`
+            );
+            return;
+        }
+
         if (currentProduct.sizes?.length > 0 && !selectedSize) {
             setSizeError("Please select a size");
             return;
@@ -70,7 +98,8 @@ function ProductDetails() {
 
         setSizeError("");
         setColorError("");
-        navigate("/cart");
+        setCartError("");
+        setCartSuccess(true);
     };
 
     function handleWishlist() {
@@ -92,25 +121,28 @@ function ProductDetails() {
     }
 
     return (
-        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+        <div className="mx-auto max-w-[1320px] px-4 py-6 sm:px-6 sm:py-9 lg:px-10">
 
-            <div className="grid gap-8 md:grid-cols-2 md:gap-10">
+            <div className="mb-5 text-xs font-semibold uppercase tracking-[0.16em] text-brand sm:mb-7">
+                TravelVerse <span className="mx-2 text-stone-400">/</span> {currentProduct.category}
+            </div>
+            <div className="grid items-start gap-4 md:grid-cols-[1.1fr_0.9fr] md:gap-8 lg:gap-10">
 
-                <div className="flex items-center justify-center rounded-2xl bg-stone-100 p-4 sm:p-8">
+                <div className="flex aspect-square max-h-[680px] min-h-[280px] items-center justify-center overflow-hidden rounded-lg border border-stone-200 bg-surface-muted p-5 sm:p-10 md:sticky md:top-8">
                     <img
                         src={currentProduct.image}
                         alt={currentProduct.name}
-                        className="max-h-[400px] w-full rounded-xl object-contain sm:max-h-[500px]"
+                        className="max-h-[360px] w-full object-contain sm:max-h-[500px]"
                     />
                 </div>
 
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:p-8 lg:p-10">
 
                     <p className="mb-2 text-xs font-medium text-stone-500 sm:text-sm">
                         {currentProduct.category}
                     </p>
 
-                    <h1 className="text-2xl font-bold leading-tight text-stone-900 sm:text-3xl md:text-4xl">
+                    <h1 className="font-serif text-3xl font-medium leading-tight text-stone-900 sm:text-4xl">
                         {currentProduct.name}
                     </h1>
 
@@ -118,13 +150,13 @@ function ProductDetails() {
                         {currentProduct.description}
                     </p>
 
-                    <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-6 sm:gap-6">
-                        <h2 className="text-2xl font-bold text-stone-900 sm:text-3xl">
+                    <div className="mt-5 flex flex-wrap items-center gap-3 border-y border-stone-100 py-5 sm:mt-6 sm:gap-6">
+                        <h2 className="font-serif text-2xl font-semibold text-stone-900 sm:text-3xl">
                             ₹{currentProduct.price.toLocaleString("en-IN")}
                         </h2>
 
                         <div className="flex items-center gap-1 text-xs text-stone-600 sm:text-sm">
-                            <span className="text-yellow-500">★</span>
+                            <Star size={16} className="fill-accent text-accent" aria-hidden="true" />
                             {currentProduct.rating}
                             <span>
                                 ({currentProduct.reviewCount} reviews)
@@ -134,12 +166,16 @@ function ProductDetails() {
 
                     <div className="mt-4">
                         {currentProduct.stock === 0 ? (
-                            <span className="font-semibold text-red-600">
+                            <span className="inline-flex w-fit items-center rounded-full bg-red-50 px-3 py-1 text-sm font-semibold text-red-700">
                                 Out of Stock
                             </span>
+                        ) : remainingStock === 0 ? (
+                            <span className="inline-flex w-fit items-center rounded-full bg-amber-50 px-3 py-1 text-sm font-medium text-amber-800">
+                                All available stock is in your cart
+                            </span>
                         ) : (
-                            <span className="text-sm font-medium text-green-600">
-                                {currentProduct.stock} items available
+                            <span className="inline-flex w-fit items-center rounded-full bg-success-surface px-3 py-1 text-sm font-medium text-success">
+                                {remainingStock} item{remainingStock === 1 ? "" : "s"} available to add
                             </span>
                         )}
                     </div>
@@ -156,13 +192,17 @@ function ProductDetails() {
                                 {currentProduct.sizes.map((size) => (
                                     <button
                                         key={size}
+                                        type="button"
+                                        aria-pressed={selectedSize === size}
                                         onClick={() => {
                                             setSelectedSize(size);
                                             setSizeError("");
+                                            setCartError("");
+                                            setCartSuccess(false);
                                         }}
-                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedSize === size
-                                            ? "border-stone-900 bg-stone-900 text-white"
-                                            : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
+                                        className={`min-h-11 rounded-md border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedSize === size
+                                            ? "border-brand bg-brand text-white"
+                                            : "border-stone-300 bg-white text-stone-700 hover:border-accent"
                                             }`}
                                     >
                                         {size}
@@ -170,7 +210,7 @@ function ProductDetails() {
                                 ))}
 
                                 {sizeError && (
-                                    <p className="w-full text-sm text-red-600">
+                                    <p role="alert" className="w-full text-sm text-red-600">
                                         {sizeError}
                                     </p>
                                 )}
@@ -188,13 +228,17 @@ function ProductDetails() {
                                 {currentProduct.colors.map((color) => (
                                     <button
                                         key={color}
+                                        type="button"
+                                        aria-pressed={selectedColor === color}
                                         onClick={() => {
                                             setSelectedColor(color);
                                             setColorError("");
+                                            setCartError("");
+                                            setCartSuccess(false);
                                         }}
-                                        className={`rounded-lg border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedColor === color
-                                            ? "border-stone-900 bg-stone-900 text-white"
-                                            : "border-stone-300 bg-white text-stone-700 hover:border-stone-900"
+                                        className={`min-h-11 rounded-md border px-4 py-2 text-sm font-medium transition sm:px-5 ${selectedColor === color
+                                            ? "border-brand bg-brand text-white"
+                                            : "border-stone-300 bg-white text-stone-700 hover:border-accent"
                                             }`}
                                     >
                                         {color}
@@ -202,7 +246,7 @@ function ProductDetails() {
                                 ))}
 
                                 {colorError && (
-                                    <p className="w-full text-sm text-red-600">
+                                    <p role="alert" className="w-full text-sm text-red-600">
                                         {colorError}
                                     </p>
                                 )}
@@ -210,10 +254,12 @@ function ProductDetails() {
                         </div>
                     )}
 
-                    {currentProduct.stock === 0 ? (
-                        <div className="mt-6 rounded-lg bg-red-50 p-4 sm:mt-8">
-                            <p className="font-semibold text-red-600">
-                                This product is currently unavailable.
+                    {currentProduct.stock === 0 || remainingStock === 0 ? (
+                        <div className={`mt-6 rounded-lg p-4 sm:mt-8 ${currentProduct.stock === 0 ? "bg-red-50" : "bg-amber-50"}`}>
+                            <p className={`font-semibold ${currentProduct.stock === 0 ? "text-red-600" : "text-amber-800"}`}>
+                                {currentProduct.stock === 0
+                                    ? "This product is currently unavailable."
+                                    : "All available stock is already in your cart."}
                             </p>
                         </div>
                     ) : (
@@ -223,13 +269,13 @@ function ProductDetails() {
                                 Quantity
                             </h2>
 
-                            <div className="flex w-fit items-center overflow-hidden rounded-lg border border-stone-300">
+                            <div className="flex w-fit items-center overflow-hidden rounded-xl border border-stone-200 bg-stone-50">
                                 <button
                                     onClick={() =>
-                                        setQuantity((prev) => prev - 1)
+                                        setQuantity((prev) => Math.max(1, prev - 1))
                                     }
                                     disabled={quantity <= 1}
-                                    className="px-3 py-2 text-lg hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
+                                    className="min-h-11 min-w-11 text-lg hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:min-w-12"
                                 >
                                     −
                                 </button>
@@ -240,32 +286,48 @@ function ProductDetails() {
 
                                 <button
                                     onClick={() =>
-                                        setQuantity((prev) => prev + 1)
+                                        setQuantity((prev) => Math.min(remainingStock, prev + 1))
                                     }
                                     disabled={
-                                        quantity >= currentProduct.stock
+                                        quantity >= remainingStock
                                     }
-                                    className="px-3 py-2 text-lg hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
+                                    className="min-h-11 min-w-11 text-lg hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-40 sm:min-w-12"
                                 >
                                     +
                                 </button>
                             </div>
 
-                            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                            {cartError && (
+                                <p role="alert" className="mt-3 text-sm text-red-600">
+                                    {cartError}
+                                </p>
+                            )}
+                            {cartSuccess && (
+                                <p role="status" className="mt-3 rounded-md bg-success-surface px-3 py-2 text-sm font-medium text-success">
+                                    Added to your cart.
+                                </p>
+                            )}
+                            {quantityInCart > 0 && (
+                                <p className="mt-2 text-sm text-stone-500">
+                                    {quantityInCart} already in your cart; {remainingStock} available to add.
+                                </p>
+                            )}
+
+                            <div className="mt-4 flex flex-col gap-3 border-t border-stone-100 pt-5 sm:flex-row">
                                 <button
                                     onClick={handleWishlist}
-                                    className="w-full rounded-lg border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-700 transition hover:bg-stone-100 sm:w-auto sm:px-6 sm:text-base"
+                                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-md border border-stone-300 px-5 py-3 text-sm font-semibold text-stone-700 transition hover:border-accent hover:bg-amber-50 hover:text-brand sm:w-auto sm:px-6 sm:text-base"
                                 >
-                                    {hasWishlist
-                                        ? "♥ Wishlisted"
-                                        : "♡ Wishlist"}
+                                    <Heart size={17} className={hasWishlist ? "fill-error text-error" : ""} aria-hidden="true" />
+                                    {hasWishlist ? "Wishlisted" : "Wishlist"}
                                 </button>
 
                                 <button
                                     onClick={handleAddToCart}
-                                    className="w-full rounded-lg bg-stone-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800 sm:w-auto sm:px-6 sm:text-base"
+                                    disabled={quantity > remainingStock}
+                                    className="min-h-11 w-full rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-6 sm:text-base"
                                 >
-                                    Add to Cart
+                                    {remainingStock === 0 ? "Stock in Cart" : "Add to Cart"}
                                 </button>
                             </div>
 

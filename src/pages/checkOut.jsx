@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { removeItem } from "../redux/slices/cartSlice";
 import { createOrder, updateProductStock } from "../services/orderService";
+import { getProductById } from "../services/productServices";
+import { productStockUpdated } from "../redux/slices/productSlice";
 import { addOrder } from "../redux/slices/orderSlice";
 import { updateUserAddress } from "../services/authService";
 import { updateUser } from "../redux/slices/authSlice";
@@ -13,7 +15,6 @@ function Checkout() {
 
   const cart = useSelector((state) => state.cart.items);
   const user = useSelector((state) => state.auth.user);
-  const products = useSelector((state) => state.product.products);
 
   const [shipping, setShipping] = useState({
     name: user?.fullName ?? "",
@@ -26,6 +27,7 @@ function Checkout() {
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const submittingRef = useRef(false);
 
   const subtotal = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -48,22 +50,12 @@ function Checkout() {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    if (submittingRef.current) return;
     setError("");
 
     if (Object.values(shipping).some((value) => !value.trim())) {
       setError("Please complete all shipping fields.");
       return;
-    }
-
-    for (const item of cart) {
-      const product = products.find(
-        (product) => product.id === item.productId
-      );
-
-      if (!product || product.stock < item.quantity) {
-        setError(`Insufficient stock for ${item.name}`);
-        return;
-      }
     }
 
     if (!user?.id) {
@@ -73,48 +65,94 @@ function Checkout() {
       return;
     }
 
-    const orderData = {
-      userId: user.id,
-      shipping: {
-        ...shipping,
-        name: shipping.name.trim(),
-        email: shipping.email.trim(),
-        address: shipping.address.trim(),
-        city: shipping.city.trim(),
-        pincode: shipping.pincode.trim(),
-        phone: shipping.phone.trim()
-      },
-      items: cart,
-      subtotal,
-      total: subtotal,
-      status: "placed",
-      createdAt: new Date().toISOString()
-    };
-
+    submittingRef.current = true;
     try {
       setLoading(true);
 
-      const createdOrder = await createOrder(orderData);
+      const quantitiesByProduct = new Map();
+      for (const item of cart) {
+        const key = String(item.productId);
+        const requested = quantitiesByProduct.get(key) ?? {
+          productId: item.productId,
+          name: item.name,
+          quantity: 0
+        };
+        requested.quantity += Number(item.quantity);
+        quantitiesByProduct.set(key, requested);
+      }
+
+      const stockChanges = [];
+      let createdOrder;
+      try {
+        for (const requested of quantitiesByProduct.values()) {
+          if (!Number.isFinite(requested.quantity) || requested.quantity <= 0) {
+            throw new Error(`Invalid quantity for ${requested.name}.`);
+          }
+
+          const latestProduct = await getProductById(requested.productId);
+          const available = Number(latestProduct.stock);
+
+          if (!Number.isFinite(available) || requested.quantity > available) {
+            throw new Error(
+              `Insufficient stock for ${latestProduct.name ?? requested.name}. Available: ${Number.isFinite(available) ? available : 0}.`
+            );
+          }
+
+          const updatedProduct = await updateProductStock(
+            latestProduct.id,
+            available - requested.quantity
+          );
+          stockChanges.push(latestProduct);
+          dispatch(productStockUpdated(updatedProduct));
+        }
+
+        const orderData = {
+          userId: user.id,
+          shipping: {
+            ...shipping,
+            name: shipping.name.trim(),
+            email: shipping.email.trim(),
+            address: shipping.address.trim(),
+            city: shipping.city.trim(),
+            pincode: shipping.pincode.trim(),
+            phone: shipping.phone.trim()
+          },
+          items: cart,
+          subtotal,
+          total: subtotal,
+          status: "placed",
+          createdAt: new Date().toISOString()
+        };
+        createdOrder = await createOrder(orderData);
+      } catch (checkoutError) {
+        // JSON Server has no transactions. Restore any completed patches if a
+        // later stock update or order request fails; rollback is best effort.
+        for (const product of [...stockChanges].reverse()) {
+          try {
+            const restoredProduct = await updateProductStock(
+              product.id,
+              product.stock
+            );
+            dispatch(productStockUpdated(restoredProduct));
+          } catch {
+            // Continue attempting to restore the remaining products.
+          }
+        }
+        throw checkoutError;
+      }
+
       dispatch(addOrder(createdOrder));
 
-      const updatedUser = await updateUserAddress(user.id, {
-        address: shipping.address.trim(),
-        city: shipping.city.trim(),
-        pincode: shipping.pincode.trim(),
-        phone: shipping.phone.trim()
-      });
-
-      dispatch(updateUser(updatedUser));
-
-      for (const item of cart) {
-        const product = products.find(
-          (product) => product.id === item.productId
-        );
-
-        await updateProductStock(
-          product.id,
-          product.stock - item.quantity
-        );
+      try {
+        const updatedUser = await updateUserAddress(user.id, {
+          address: shipping.address.trim(),
+          city: shipping.city.trim(),
+          pincode: shipping.pincode.trim(),
+          phone: shipping.phone.trim()
+        });
+        dispatch(updateUser(updatedUser));
+      } catch (addressError) {
+        console.error("Could not save the updated shipping address:", addressError);
       }
 
       cart.forEach(({ productId, size, color }) => {
@@ -136,14 +174,15 @@ function Checkout() {
         "Failed to place your order. Please try again."
       );
     } finally {
+      submittingRef.current = false;
       setLoading(false);
     }
   }
 
   if (cart.length === 0) {
     return (
-      <div className="flex min-h-[50vh] flex-col items-center justify-center px-4 text-center sm:p-6">
-        <h2 className="text-xl font-bold text-stone-800">
+      <div className="mx-auto flex min-h-[50vh] max-w-lg flex-col items-center justify-center rounded-lg border border-stone-200 bg-white px-6 text-center shadow-sm sm:p-8">
+      <h2 className="font-serif text-xl font-semibold text-stone-800">
           Your cart is empty
         </h2>
 
@@ -153,7 +192,7 @@ function Checkout() {
 
         <Link
           to="/productlist"
-          className="mt-5 rounded-xl bg-stone-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-stone-800"
+          className="mt-5 min-h-11 rounded-md bg-brand px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-hover"
         >
           Browse products
         </Link>
@@ -162,26 +201,34 @@ function Checkout() {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-stone-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+    <div className="min-h-[calc(100vh-64px)] px-4 py-7 sm:px-6 sm:py-10 lg:px-8">
 
       <div className="mx-auto max-w-6xl">
 
-        <h1 className="mb-6 text-2xl font-extrabold tracking-tight text-stone-900 sm:mb-8 sm:text-3xl">
-          Checkout
-        </h1>
+        <div className="mb-7 rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:mb-9 sm:p-8">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+            Almost there
+          </p>
+          <h1 className="font-serif text-3xl font-medium tracking-tight text-stone-900 sm:text-4xl">
+            Checkout
+          </h1>
+          <p className="mt-2 text-sm text-stone-500">
+            Confirm your delivery details and review your order.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:items-start lg:gap-8">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-8">
 
-          <section className="rounded-2xl border border-stone-100 bg-white p-4 shadow-xl shadow-stone-200/50 sm:rounded-3xl sm:p-8 lg:col-span-7">
+          <section className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:p-8 lg:col-span-7">
 
-            <h2 className="mb-5 text-lg font-bold text-stone-800 sm:mb-6">
+            <h2 className="mb-5 font-serif text-lg font-semibold text-stone-800 sm:mb-6">
               Shipping Information
             </h2>
 
             {error && (
               <p
                 role="alert"
-                className="mb-5 rounded-xl border border-red-200 bg-red-50 p-3 text-sm font-semibold text-red-600 sm:mb-6"
+                className="mb-5 rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium text-red-600 sm:mb-6"
               >
                 {error}
               </p>
@@ -205,7 +252,7 @@ function Checkout() {
                   value={shipping.name}
                   onChange={handleShippingChange}
                   required
-                  className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                  className="min-h-11 w-full rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                 />
               </div>
 
@@ -225,7 +272,7 @@ function Checkout() {
                   value={shipping.email}
                   onChange={handleShippingChange}
                   required
-                  className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                  className="min-h-11 w-full rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                 />
               </div>
 
@@ -245,7 +292,7 @@ function Checkout() {
                   value={shipping.address}
                   onChange={handleShippingChange}
                   required
-                  className="w-full resize-none rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                  className="w-full resize-none rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                 />
               </div>
 
@@ -267,7 +314,7 @@ function Checkout() {
                     value={shipping.city}
                     onChange={handleShippingChange}
                     required
-                    className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                    className="min-h-11 w-full rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                   />
                 </div>
 
@@ -288,7 +335,7 @@ function Checkout() {
                     value={shipping.pincode}
                     onChange={handleShippingChange}
                     required
-                    className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                    className="min-h-11 w-full rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                   />
                 </div>
 
@@ -311,14 +358,14 @@ function Checkout() {
                   value={shipping.phone}
                   onChange={handleShippingChange}
                   required
-                  className="w-full rounded-xl border border-stone-200 bg-stone-50 px-3 py-3 text-sm text-stone-800 transition focus:border-stone-900 focus:bg-white focus:outline-none sm:px-4"
+                  className="min-h-11 w-full rounded-md border border-stone-200 bg-canvas px-3 py-3 text-sm text-stone-800 transition focus:border-accent focus:bg-white focus:outline-none focus:ring-2 focus:ring-accent/20 sm:px-4"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-5 w-full rounded-xl bg-stone-900 py-3.5 text-sm font-semibold text-white shadow-md transition hover:bg-stone-800 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 sm:mt-6"
+                className="mt-5 min-h-11 w-full rounded-md bg-brand py-3.5 text-sm font-semibold text-white transition hover:bg-brand-hover active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-50 sm:mt-6"
               >
                 {loading ? "Placing Order..." : "Place Order"}
               </button>
@@ -326,9 +373,9 @@ function Checkout() {
             </form>
           </section>
 
-          <section className="rounded-2xl border border-stone-100 bg-white p-4 shadow-xl shadow-stone-200/50 sm:rounded-3xl sm:p-8 lg:col-span-5">
+          <section className="h-fit rounded-lg border border-stone-200 bg-white p-5 shadow-sm sm:p-8 lg:sticky lg:top-6 lg:col-span-5">
 
-            <h2 className="mb-5 text-lg font-bold text-stone-800 sm:mb-6">
+            <h2 className="mb-5 font-serif text-lg font-semibold text-stone-800 sm:mb-6">
               Order Summary
             </h2>
 
@@ -343,7 +390,7 @@ function Checkout() {
                   <div className="flex min-w-0 items-center gap-2 sm:gap-3">
 
                     {item.image && (
-                      <div className="h-11 w-11 flex-shrink-0 overflow-hidden rounded-lg border border-stone-100 bg-stone-50 p-1 sm:h-12 sm:w-12">
+                      <div className="h-11 w-11 flex-shrink-0 overflow-hidden rounded-md border border-stone-100 bg-stone-50 p-1 sm:h-12 sm:w-12">
                         <img
                           src={item.image}
                           alt={item.name}
@@ -384,7 +431,7 @@ function Checkout() {
 
               <div className="flex justify-between text-xs text-stone-500 sm:text-sm">
                 <span>Shipping</span>
-                <span className="font-semibold text-emerald-600">
+                <span className="font-semibold text-success">
                   Free
                 </span>
               </div>

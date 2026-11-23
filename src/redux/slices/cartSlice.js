@@ -66,6 +66,16 @@ const cartSlice = createSlice({
             });
         },
 
+        clearCart: (state, action) => {
+            state.items = [];
+            state.totalItems = 0;
+
+            saveCart(action.payload, {
+                items: state.items,
+                totalItems: state.totalItems
+            });
+        },
+
         updateQuantity: (state, action) => {
             const {
                 userId,
@@ -101,6 +111,7 @@ export const {
     loadCart,
     addItem,
     removeItem,
+    clearCart,
     updateQuantity
 } = cartSlice.actions;
 

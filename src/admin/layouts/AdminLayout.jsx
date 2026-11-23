@@ -23,7 +23,7 @@ function AdminLayout() {
     }
 
     return (
-        <div className="flex min-h-screen bg-gray-50">
+        <div className="flex min-h-screen flex-col bg-canvas md:flex-row md:pl-64">
             <AdminSidebar />
 
             <div className="flex-1 min-w-0">
@@ -33,7 +33,7 @@ function AdminLayout() {
                     onLogout={handleLogout}
                 />
 
-                <main className="p-8">
+                <main className="min-w-0 p-4 sm:p-6 lg:p-8">
                     <Outlet />
                 </main>
             </div>

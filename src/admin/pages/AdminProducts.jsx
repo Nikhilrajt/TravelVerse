@@ -12,6 +12,7 @@ function AdminProducts() {
   const [editingProduct, setEditingProduct] = useState(null);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [deletingProduct, setDeletingProduct] = useState(null);
   const productsPerPage = 8;
 
   const dispatch = useDispatch();
@@ -53,9 +54,9 @@ function AdminProducts() {
     );
   });
 
-      useEffect(() => {
-      setCurrentPage(1);
-    }, [search]);
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [search]);
 
   const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
@@ -86,14 +87,9 @@ function AdminProducts() {
   };
 
   const handleDelete = async (productId) => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete this product?"
-    );
-
-    if (!confirmDelete) return;
-
     try {
       await dispatch(removeProduct(productId)).unwrap();
+      setDeletingProduct(null);
     } catch (error) {
       console.error("Failed to delete product:", error);
     }
@@ -138,13 +134,68 @@ function AdminProducts() {
   return (
     <div className="w-full space-y-8">
 
+      {deletingProduct && (
+        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-red-50">
+              <svg
+                className="h-7 w-7 text-red-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 6h18M8 6V4h8v2m-9 0 1 14h8l1-14M10 11v5m4-5v5"
+                />
+              </svg>
+            </div>
+
+            <h2 className="text-center font-serif text-xl font-semibold text-gray-900">
+              Delete Product?
+            </h2>
+
+            <p className="mt-2 text-center text-sm leading-6 text-gray-500">
+              Are you sure you want to delete{" "}
+              <span className="font-semibold text-gray-800">
+                {deletingProduct.name}
+              </span>
+              ? This action cannot be undone.
+            </p>
+
+            <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:justify-center">
+
+              <button
+                type="button"
+                onClick={() => setDeletingProduct(null)}
+                className="min-h-11 rounded-md border border-gray-300 px-5 py-2.5 text-sm font-medium text-gray-700 transition hover:bg-gray-50"
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleDelete(deletingProduct.id)}
+                className="min-h-11 rounded-md bg-red-600 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-red-700"
+              >
+                Delete Product
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+
       {showForm && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
-          <div className="bg-white w-full max-w-lg rounded-xl shadow-xl p-6 max-h-[90vh] overflow-y-auto">
+          <div className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-lg border border-gray-200 bg-white p-4 shadow-lg sm:p-6">
 
             <form onSubmit={handleSubmit} className="space-y-5">
 
-              <h2 className="text-xl font-bold text-gray-900">
+              <h2 className="font-serif text-xl font-semibold text-brand">
                 {editingProduct ? "Edit Product" : "Add New Product"}
               </h2>
 
@@ -159,7 +210,7 @@ function AdminProducts() {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   placeholder="Enter product name"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                  className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
               </div>
 
@@ -174,11 +225,11 @@ function AdminProducts() {
                   }
                   placeholder="Enter product description"
                   rows={4}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96] resize-none"
+                  className="w-full resize-none rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
                   <label className="block text-sm font-medium text-gray-700">
                     Price (₹)
@@ -191,7 +242,7 @@ function AdminProducts() {
                       setFormData({ ...formData, price: e.target.value })
                     }
                     placeholder="Enter price"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                    className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </div>
 
@@ -207,7 +258,7 @@ function AdminProducts() {
                       setFormData({ ...formData, stock: e.target.value })
                     }
                     placeholder="Enter quantity"
-                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                    className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </div>
               </div>
@@ -221,7 +272,7 @@ function AdminProducts() {
                   onChange={(e) =>
                     setFormData({ ...formData, category: e.target.value })
                   }
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                  className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 >
                   <option value="">Select Category</option>
                   <option value="Luggage & Bags">Luggage & Bags</option>
@@ -243,7 +294,7 @@ function AdminProducts() {
                     setFormData({ ...formData, image: e.target.value })
                   }
                   placeholder="/images/products/product-name.webp"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                  className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
               </div>
 
@@ -258,7 +309,7 @@ function AdminProducts() {
                     setFormData({ ...formData, sizes: e.target.value })
                   }
                   placeholder="Example: 20L, 30L, 40L"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                  className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
               </div>
 
@@ -273,7 +324,7 @@ function AdminProducts() {
                     setFormData({ ...formData, colors: e.target.value })
                   }
                   placeholder="Example: Black, Blue, Grey"
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-[#3F2B96]"
+                  className="min-h-11 w-full rounded-md border border-gray-300 bg-canvas px-3 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                 />
               </div>
 
@@ -284,25 +335,25 @@ function AdminProducts() {
                   onChange={(e) =>
                     setFormData({ ...formData, featured: e.target.checked })
                   }
-                  className="w-4 h-4 accent-[#3F2B96]"
+                  className="h-4 w-4 accent-accent"
                 />
                 <label className="text-sm font-medium text-gray-700">
                   Mark as Featured Product
                 </label>
               </div>
 
-              <div className="flex justify-end gap-3 pt-4 border-t border-gray-200">
+              <div className="flex flex-col-reverse gap-3 border-t border-gray-200 pt-4 sm:flex-row sm:justify-end">
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="px-4 py-2.5 text-sm font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50"
+                  className="min-h-11 w-full rounded-md border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-600 transition hover:bg-gray-50 sm:w-auto"
                 >
                   Cancel
                 </button>
 
                 <button
                   type="submit"
-                  className="px-5 py-2.5 text-sm font-medium text-white bg-[#3F2B96] rounded-lg hover:bg-[#33227D]"
+                  className="min-h-11 w-full rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-hover sm:w-auto"
                 >
                   {editingProduct ? "Update Product" : "Save Product"}
                 </button>
@@ -315,7 +366,7 @@ function AdminProducts() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          <h2 className="font-serif text-2xl font-semibold text-brand sm:text-3xl">
             Products
           </h2>
           <p className="text-sm text-gray-500 mt-2">
@@ -341,7 +392,7 @@ function AdminProducts() {
             });
             setShowForm(true);
           }}
-          className="bg-[#3F2B96] hover:bg-[#33227D] text-white px-5 py-3 rounded-lg text-sm font-medium transition"
+          className="min-h-11 rounded-md bg-brand px-5 py-3 text-sm font-medium text-white transition hover:bg-brand-hover"
         >
           + Add Product
         </button>
@@ -349,23 +400,23 @@ function AdminProducts() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">Total Products</p>
-          <h2 className="text-2xl font-bold text-gray-900 mt-2">
+          <h2 className="mt-2 font-serif text-2xl font-semibold text-brand">
             {totalProducts}
           </h2>
         </div>
 
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">In Stock Products</p>
-          <h2 className="text-2xl font-bold text-gray-900 mt-2">
+          <h2 className="mt-2 font-serif text-2xl font-semibold text-brand">
             {totalStocked}
           </h2>
         </div>
 
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
           <p className="text-sm text-gray-500">Low Stock</p>
-          <h2 className="text-2xl font-bold text-gray-900 mt-2">
+          <h2 className="mt-2 font-serif text-2xl font-semibold text-brand">
             {lowStock}
           </h2>
         </div>
@@ -394,7 +445,7 @@ function AdminProducts() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by product name, ID or category..."
-            className="w-full pl-10 pr-10 py-3 text-sm bg-white border border-gray-200 rounded-xl outline-none transition focus:border-[#3F2B96] focus:ring-2 focus:ring-[#3F2B96]/10"
+            className="min-h-11 w-full rounded-md border border-gray-200 bg-white py-3 pl-10 pr-10 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
           />
 
           {search && (
@@ -418,9 +469,9 @@ function AdminProducts() {
 
       </div>
 
-      <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+      <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
         <div className="overflow-x-auto">
-          <table className="w-full text-left">
+          <table className="w-full min-w-[700px] text-left">
 
             <thead className="bg-gray-50 border-b border-gray-200">
               <tr>
@@ -457,7 +508,7 @@ function AdminProducts() {
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="w-12 h-12 object-cover rounded-lg border border-gray-200"
+                          className="h-12 w-12 rounded-md border border-gray-200 object-contain p-1"
                         />
                         <span className="text-sm font-medium text-gray-900">
                           {product.name}
@@ -479,12 +530,18 @@ function AdminProducts() {
 
                     <td className="px-6 py-4">
                       <span
-                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${product.stock > 0
-                          ? "bg-green-50 text-green-700"
-                          : "bg-red-50 text-red-700"
+                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${product.stock === 0
+                          ? "bg-red-50 text-red-700"
+                          : product.stock <= 5
+                            ? "bg-yellow-50 text-yellow-700"
+                            : "bg-green-50 text-green-700"
                           }`}
                       >
-                        {product.stock > 0 ? "In Stock" : "Out of Stock"}
+                        {product.stock === 0
+                          ? "Out of Stock"
+                          : product.stock <= 5
+                            ? "Low Stock"
+                            : "In Stock"}
                       </span>
                     </td>
 
@@ -492,14 +549,14 @@ function AdminProducts() {
                       <div className="flex items-center gap-3 whitespace-nowrap">
                         <button
                           onClick={() => handleEdit(product)}
-                          className="text-[#3F2B96] hover:text-[#33227D] text-sm font-medium transition"
+                          className="min-h-11 rounded-sm px-2 text-sm font-medium text-brand transition hover:text-brand-hover"
                         >
                           Edit
                         </button>
 
                         <button
-                          onClick={() => handleDelete(product.id)}
-                          className="text-red-500 hover:text-red-700 text-sm font-medium transition"
+                          onClick={() => setDeletingProduct(product)}
+                          className="min-h-11 rounded-sm px-2 text-sm font-medium text-red-600 transition hover:text-red-700"
                         >
                           Delete
                         </button>
@@ -514,20 +571,26 @@ function AdminProducts() {
         </div>
 
         {totalPages > 0 && (
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-6">
+          <div className="flex flex-col justify-between gap-4 border-t border-gray-100 px-4 py-4 sm:flex-row sm:items-center sm:px-6">
 
-            <p className="text-sm text-gray-500">
-              Showing {indexOfFirstProduct + 1} to{" "}
-              {Math.min(indexOfLastProduct, filteredProducts.length)} of{" "}
-              {filteredProducts.length} products
+            <p className="text-sm text-gray-500 text-center sm:text-left">
+              Showing{" "}
+              <span className="font-medium text-gray-800">
+                {indexOfFirstProduct + 1}–{Math.min(indexOfLastProduct, filteredProducts.length)}
+              </span>{" "}
+              of{" "}
+              <span className="font-medium text-gray-800">
+                {filteredProducts.length}
+              </span>{" "}
+              products
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 flex-wrap">
 
               <button
                 onClick={() => setCurrentPage((prev) => prev - 1)}
                 disabled={currentPage === 1}
-                className="px-3 py-2 text-sm border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="min-h-11 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-600 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Previous
               </button>
@@ -536,9 +599,9 @@ function AdminProducts() {
                 <button
                   key={index}
                   onClick={() => setCurrentPage(index + 1)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium transition ${currentPage === index + 1
-                    ? "bg-purple-600 text-white"
-                    : "border border-gray-200 text-gray-600 hover:bg-gray-50"
+                  className={`min-h-11 min-w-11 rounded-md text-sm font-medium transition ${currentPage === index + 1
+                    ? "bg-brand text-white"
+                    : "border border-gray-200 text-gray-600 hover:bg-amber-50 hover:text-brand"
                     }`}
                 >
                   {index + 1}
@@ -548,7 +611,7 @@ function AdminProducts() {
               <button
                 onClick={() => setCurrentPage((prev) => prev + 1)}
                 disabled={currentPage === totalPages}
-                className="px-3 py-2 text-sm border border-gray-200 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed hover:bg-gray-50"
+                className="min-h-11 rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-600 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Next
               </button>

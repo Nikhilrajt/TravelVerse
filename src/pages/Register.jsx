@@ -77,17 +77,17 @@ function Register() {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-stone-50 px-4 py-5 sm:px-6 sm:py-6">
+    <main className="flex min-h-screen items-center justify-center bg-canvas px-4 py-7 sm:px-6">
 
-      <section className="w-full max-w-lg rounded-2xl border border-stone-200 bg-white p-5 shadow-xl shadow-stone-200/60 sm:p-7">
+      <section className="w-full max-w-xl rounded-lg border border-stone-200 bg-white p-6 shadow-md sm:p-10">
 
         <div className="mb-5 text-center sm:mb-6">
 
-          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-orange-900 sm:text-sm">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-brand sm:text-sm">
             TravelVerse
           </p>
 
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl">
+          <h1 className="font-serif text-3xl font-medium tracking-tight text-stone-900 sm:text-4xl">
             Create your account
           </h1>
 
@@ -97,7 +97,7 @@ function Register() {
 
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-3.5">
+        <form onSubmit={handleSubmit} className="grid gap-x-5 gap-y-3.5 sm:grid-cols-2">
 
           <div>
             <label className="mb-1.5 block text-sm font-medium text-stone-700">
@@ -111,7 +111,7 @@ function Register() {
               onChange={(event) =>
                 setFullName(event.target.value)
               }
-              className="w-full rounded-lg border border-stone-300 bg-white px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-orange-800 focus:ring-4 focus:ring-orange-800/10 sm:py-2.5 sm:text-base"
+              className="min-h-11 w-full rounded-md border border-stone-300 bg-canvas px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20 sm:text-base"
             />
           </div>
 
@@ -127,7 +127,7 @@ function Register() {
               onChange={(event) =>
                 setUsername(event.target.value)
               }
-              className="w-full rounded-lg border border-stone-300 bg-white px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-orange-800 focus:ring-4 focus:ring-orange-800/10 sm:py-2.5 sm:text-base"
+              className="min-h-11 w-full rounded-md border border-stone-300 bg-canvas px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20 sm:text-base"
             />
           </div>
 
@@ -143,7 +143,7 @@ function Register() {
               onChange={(event) =>
                 setEmail(event.target.value)
               }
-              className="w-full rounded-lg border border-stone-300 bg-white px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-orange-800 focus:ring-4 focus:ring-orange-800/10 sm:py-2.5 sm:text-base"
+              className="min-h-11 w-full rounded-md border border-stone-300 bg-canvas px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20 sm:text-base"
             />
           </div>
 
@@ -159,7 +159,7 @@ function Register() {
               onChange={(event) =>
                 setPassword(event.target.value)
               }
-              className="w-full rounded-lg border border-stone-300 bg-white px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-orange-800 focus:ring-4 focus:ring-orange-800/10 sm:py-2.5 sm:text-base"
+              className="min-h-11 w-full rounded-md border border-stone-300 bg-canvas px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20 sm:text-base"
             />
           </div>
 
@@ -175,14 +175,14 @@ function Register() {
               onChange={(event) =>
                 setConfirmPassword(event.target.value)
               }
-              className="w-full rounded-lg border border-stone-300 bg-white px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-orange-800 focus:ring-4 focus:ring-orange-800/10 sm:py-2.5 sm:text-base"
+              className="min-h-11 w-full rounded-md border border-stone-300 bg-canvas px-3.5 py-3 text-sm text-stone-900 outline-none transition placeholder:text-stone-400 focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20 sm:text-base"
             />
           </div>
 
           {validationError && (
             <p
               role="alert"
-              className="rounded-lg bg-red-50 px-3.5 py-3 text-sm text-red-700"
+              className="rounded-md bg-red-50 px-3.5 py-3 text-sm text-red-700 sm:col-span-2"
             >
               {validationError}
             </p>
@@ -191,17 +191,17 @@ function Register() {
           {error && (
             <p
               role="alert"
-              className="rounded-lg bg-red-50 px-3.5 py-3 text-sm text-red-700"
+              className="rounded-md bg-red-50 px-3.5 py-3 text-sm text-red-700 sm:col-span-2"
             >
               {error}
             </p>
           )}
 
-          <div className="pt-1">
+          <div className="pt-1 sm:col-span-2">
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-stone-800 px-4 py-3 text-sm font-semibold text-white transition hover:bg-orange-950 focus:outline-none focus:ring-4 focus:ring-orange-900/20 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
+              className="min-h-11 w-full rounded-md bg-brand px-4 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus:ring-2 focus:ring-accent/30 disabled:cursor-not-allowed disabled:opacity-60 sm:text-base"
             >
               {loading
                 ? "Creating Account..."
@@ -216,7 +216,7 @@ function Register() {
           <button
             type="button"
             onClick={() => navigate("/login")}
-            className="font-semibold text-orange-900 hover:text-orange-950"
+            className="font-semibold text-brand underline-offset-4 hover:text-brand-hover hover:underline"
           >
             Login
           </button>

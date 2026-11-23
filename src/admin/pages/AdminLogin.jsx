@@ -38,15 +38,15 @@ try {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
+        <div className="flex min-h-screen items-center justify-center bg-canvas px-4 py-10">
 
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 sm:p-10">
+            <div className="w-full max-w-md rounded-lg border border-gray-200 bg-white p-6 shadow-md sm:p-10">
 
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900 tracking-tight">
+                    <h1 className="font-serif text-3xl font-semibold tracking-tight text-brand">
                         TravelVerse
                     </h1>
-                    <p className="text-sm font-medium text-blue-600 mt-1">
+                    <p className="mt-1 text-sm font-semibold tracking-[0.16em] text-accent-hover">
                         ADMIN PANEL
                     </p>
                     <p className="text-gray-500 text-sm mt-5">
@@ -68,7 +68,7 @@ try {
                                 setUsername(event.target.value);
                                 setError("");
                             }}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                            className="min-h-11 w-full rounded-md border border-gray-300 px-4 py-3 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                             required
                         />
                     </div>
@@ -87,14 +87,14 @@ try {
                                     setPassword(event.target.value);
                                     setError("");
                                 }}
-                                className="w-full px-4 py-3 pr-16 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                className="min-h-11 w-full rounded-md border border-gray-300 px-4 py-3 pr-16 outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                                 required
                             />
 
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 text-sm font-medium text-blue-600 hover:text-blue-800"
+                                className="absolute right-4 top-1/2 min-h-11 -translate-y-1/2 text-sm font-medium text-brand hover:text-brand-hover"
                             >
                                 {showPassword ? "Hide" : "Show"}
                             </button>
@@ -110,7 +110,7 @@ try {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-gray-900 text-white font-semibold py-3 rounded-lg hover:bg-gray-800 disabled:opacity-50 transition"
+                        className="min-h-11 w-full rounded-md bg-brand py-3 font-semibold text-white transition hover:bg-brand-hover disabled:opacity-50"
                     >
                         {loading ? "SIGNING IN..." : "SIGN IN"}
                     </button>

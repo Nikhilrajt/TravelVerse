@@ -27,11 +27,11 @@ function AdminOrders() {
   });
 
   return (
-    <div className="p-6">
+    <div className="w-full space-y-6">
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="font-serif text-2xl font-semibold text-brand">
             Orders
           </h1>
           <p className="text-sm text-gray-500 mt-1">
@@ -67,7 +67,7 @@ function AdminOrders() {
             placeholder="Search by order ID, customer name or email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-10 py-3 bg-white border border-gray-200 rounded-xl text-sm outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-100 transition"
+            className="min-h-11 w-full rounded-md border border-gray-200 bg-white py-3 pl-10 pr-10 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
           />
 
           {searchTerm && (
@@ -94,7 +94,7 @@ function AdminOrders() {
       )}
 
       {!loading && !error && filteredOrders.length === 0 && (
-        <div className="bg-white border border-gray-200 rounded-xl p-10 text-center">
+        <div className="rounded-lg border border-gray-200 bg-white p-10 text-center shadow-sm">
           <p className="text-gray-700 font-medium">
             {searchTerm
               ? "No matching orders found."
@@ -113,7 +113,7 @@ function AdminOrders() {
           {filteredOrders.map((order) => (
             <div
               key={order.id}
-              className="bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition"
+              className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
             >
 
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-gray-100">
@@ -126,7 +126,7 @@ function AdminOrders() {
                   </h2>
                 </div>
 
-                <span className="w-fit px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 capitalize">
+                <span className="w-fit rounded-full bg-warning-surface px-3 py-1 text-xs font-semibold capitalize text-warning">
                   {order.status || "Placed"}
                 </span>
               </div>
@@ -160,7 +160,7 @@ function AdminOrders() {
                   <p className="text-xs text-gray-500 mb-1">
                     Total Amount
                   </p>
-                  <p className="text-lg font-bold text-gray-900">
+                  <p className="font-serif text-lg font-semibold text-brand">
                     ₹{order.total ?? order.totalAmount}
                   </p>
                 </div>
@@ -197,7 +197,7 @@ function AdminOrders() {
               <div className="flex justify-end border-t border-gray-100 pt-4 mt-2">
                 <button
                   onClick={() => setSelectedOrder(order)}
-                  className="px-4 py-2 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition"
+                  className="min-h-11 rounded-md bg-brand px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-hover"
                 >
                   View Details
                 </button>
@@ -209,12 +209,12 @@ function AdminOrders() {
 
       
 {selectedOrder && (
-  <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-    <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-xl">
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 backdrop-blur-sm sm:p-4">
+    <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
 
-      <div className="flex justify-between items-center px-6 py-5 border-b border-gray-100">
+      <div className="flex items-center justify-between gap-3 border-b border-gray-100 px-4 py-4 sm:px-6 sm:py-5">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="font-serif text-xl font-semibold text-brand">
             Order Details
           </h2>
           <p className="text-sm text-gray-500 mt-1">
@@ -224,16 +224,16 @@ function AdminOrders() {
 
         <button
           onClick={() => setSelectedOrder(null)}
-          className="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 hover:text-red-500 transition text-xl"
+          className="flex h-11 w-11 items-center justify-center rounded-md text-gray-500 transition hover:bg-gray-100 hover:text-red-600"
         >
           ✕
         </button>
       </div>
 
-      <div className="p-6 space-y-6">
+      <div className="space-y-6 p-4 sm:p-6">
 
         <section>
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="mb-3 font-serif font-semibold text-brand">
             Order Information
           </h3>
 
@@ -262,7 +262,7 @@ function AdminOrders() {
               <p className="text-xs text-gray-500 mb-1">
                 Order Status
               </p>
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 capitalize">
+              <span className="inline-block rounded-full bg-warning-surface px-3 py-1 text-xs font-semibold capitalize text-warning">
                 {selectedOrder.status || "Placed"}
               </span>
             </div>
@@ -282,7 +282,7 @@ function AdminOrders() {
         </section>
 
         <section>
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="mb-3 font-serif font-semibold text-brand">
             Customer Information
           </h3>
 
@@ -315,7 +315,7 @@ function AdminOrders() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <p className="text-xs text-gray-500 mb-1">City</p>
                 <p className="text-sm text-gray-800">
@@ -334,7 +334,7 @@ function AdminOrders() {
         </section>
 
         <section>
-          <h3 className="font-semibold text-gray-900 mb-3">
+          <h3 className="mb-3 font-serif font-semibold text-brand">
             Ordered Products
           </h3>
 
@@ -373,7 +373,7 @@ function AdminOrders() {
         </section>
 
         <section className="bg-gray-50 rounded-xl p-5">
-          <h3 className="font-semibold text-gray-900 mb-4">
+          <h3 className="mb-4 font-serif font-semibold text-brand">
             Order Summary
           </h3>
 
@@ -393,7 +393,7 @@ function AdminOrders() {
             <span className="font-semibold text-gray-900">
               Total Amount
             </span>
-            <span className="text-xl font-bold text-purple-700">
+            <span className="font-serif text-xl font-semibold text-brand">
               ₹{selectedOrder.total ?? selectedOrder.totalAmount}
             </span>
           </div>
@@ -401,10 +401,10 @@ function AdminOrders() {
 
       </div>
 
-      <div className="px-6 py-4 border-t border-gray-100 flex justify-end">
+      <div className="flex justify-end border-t border-gray-100 px-4 py-4 sm:px-6">
         <button
           onClick={() => setSelectedOrder(null)}
-          className="px-5 py-2.5 bg-purple-600 text-white text-sm font-medium rounded-lg hover:bg-purple-700 transition"
+          className="min-h-11 w-full rounded-md bg-brand px-5 py-2.5 text-sm font-medium text-white transition hover:bg-brand-hover sm:w-auto"
         >
           Close
         </button>
